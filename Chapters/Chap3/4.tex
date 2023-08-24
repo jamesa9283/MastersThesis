@@ -1,16 +1,16 @@
 % !TEX root = ../../thesis.tex
 
 \section{Numerics}
-Proving quantities are conserved is a great way of theoretically verifying our results are correct. However in practicality the reason that numerical analysts are interested in this area of mathematics is to create more precise numerical schemes. We shall now show that normal numerical schemes sometimes provide non-realistic solutions and show how we can produce more realistic results.\\
+Proving quantities are conserved is a great way of theoretically verifying our results are correct. However, in practicality, numerical analysts are interested in this area of mathematics to create more precise numerical schemes. We shall now show that normal numerical schemes sometimes provide non-realistic solutions and how we can produce more realistic results.\\
 
 \noindent
 We shall take the standard Euler equations as a simplistic example to show our point. Consider the following Euler equation.
 $$ \pd {\vec u} t + ({\vec u} \cdot\nab){\vec u} = 0. $$
-We can run a Crank-Nicholson scheme on this. It is well known that Crank-Nicholson is symplectic, that is it preserves the symplectic form. Further, this means that it conserves energy. These schemes can be adapted to conserve other quantities. To motivate these we consider a finite element scheme with a cubed $50\times 50$ grid with order $2$ Lagrange elements. We set an initial condition of,
+We can run a Crank-Nicholson scheme on this. It is well known that Crank-Nicholson is symplectic; that is, it preserves the symplectic form. Further, this means that it conserves energy. These schemes can be adapted to conserve other quantities. We consider a finite element scheme with a cubed $50\times 50$ grid with order $2$ Lagrange elements to motivate these. We set an initial condition of,
 $$ u_0(x,\, y) = \left( -\cos \left( \frac{\pi x}{2} \right)\sin \left( \frac{\pi x}{2} \right),\, \sin\left( \frac{\pi x}{2} \right)\cos \left( \frac{\pi y}{2} \right) \right), $$
-and Neumann boundary conditions. The finite element scheme solves for the spatial steps and we use a Crank-Nicholson for the temporal steps. Hence our scheme is,
+and Neumann boundary conditions. The finite element scheme solves the spatial steps, and we use a Crank-Nicholson for the temporal steps. Hence, our scheme is,
 $$ \frac{{\vec u}^{n+1} - {\vec u}^n}{\D t} = \frac{1}{2}\left( \left({\vec u}^{n+1} \cdot \nab\right){\vec u}^{n+1} + \left({\vec u}^{n} \cdot \nab\right){\vec u}^{n}\right). $$
-We notice that we haven't produced a weak form of the equation. This is due the Euler equations being unstable with weak forms.
+We notice that we haven't produced a weak form of the equation. This is due to the Euler equations being unstable with weak forms.
 This produces the following simulation in Figure \ref{fig:Sim}.
 
 \begin{figure}[!ht]
@@ -34,7 +34,7 @@ This produces the following simulation in Figure \ref{fig:Sim}.
 \end{figure}
 
 \noindent
-We can also consider the conserved quantities. In this system we will consider the total energy and enstrophy,
+We can also consider the conserved quantities. In this system, we will consider the total energy and enstrophy,
 $$ E = \int_M |\vec u|^2\mu \qquad H = \int_M \vec u \cdot \mathrm{rot} \vec u\mu . $$
 
 \begin{figure*}
@@ -76,10 +76,10 @@ $$ E = \int_M |\vec u|^2\mu \qquad H = \int_M \vec u \cdot \mathrm{rot} \vec u\m
 \end{figure*}
 \newpage
 \noindent
-We notice that the conserved quantities in Figure \ref{fig:conserv}, are unfortunately presenting non-conservation. Due to us using a Crank-Nicholson timestep, which is symplectic, we can say that the error in our scheme comes from our spatial approximation. This is expected as in general finite element schemes are not structure-preserving or symplectic. This leads us to search for a new scheme that allows us to conserve these quantities. We will overview the theory of structure preserving numerical methods and then implement a method. \\
+Unfortunately, the conserved quantities in Figure \ref{fig:conserv} present non-conservation. Due to us using a Crank-Nicholson timestep, which is symplectic, we can say that the error in our scheme comes from our spatial approximation. This is expected as, in general, finite element schemes are not structure-preserving or symplectic. This leads us to search for a new scheme to conserve these quantities. We will overview the theory of structure-preserving numerical methods and then implement a method. \\
 
 \noindent
-The idea is as follows, we can discretise the theory we have presented in this document. Let $F : T^*Q \ti \R \to T^*Q$ be an integrator, where $T^*Q$ is just the tangent space of a phase space, manifold, $Q$ and $\R$ is the space where the time steps $h$ live in. Then we can derive discrete Euler-Lagrange equation from a discrete Lagrangian $L_d : TQ \ti \R \to \R$ and discrete Hamilton's equations from $H_d : T^*Q\to \R$.\\
+The idea is as follows: We can discretise the theory presented in this document. Let $F : T^*Q \ti \R \to T^*Q$ be an integrator, where $T^*Q$ is just the tangent space of phase space, manifold, $Q$ and $\R$ is the space where the time steps $h$ live in. Then we can derive a discrete Euler-Lagrange equation from a discrete Lagrangian $L_d : TQ \ti \R \to \R$ and discrete Hamilton's equations from $H_d : T^*Q\to \R$.\\
 
 \noindent
 FINISH OFF SOMEHOW?!!?
