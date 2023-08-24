@@ -7,6 +7,7 @@
 \usepackage{preamble}
 \usepackage{ox_thesis}
 \usepackage{epigraph}
+\usepackage{subcaption}
 
 \usepackage{xcolor}
 
@@ -28,21 +29,30 @@
 \newpage
 \setcounter{page}{1}
 
-\begin{abstract}
- \noindent
- ABSTRACT
-\end{abstract}
+\begin{dedication}
+  \noindent
+  \input{./extras/dedication.tex}
+\end{dedication}
 
 \begin{acknowledgements}
-  Thanks to a lot of people
+  \noindent
+  \input{./extras/acknowledgements.tex}
 \end{acknowledgements}
 
+\begin{abstract}
+ \noindent
+ \input{./extras/abstract.tex}
+\end{abstract}
+
+
+
+
 \newpage
-\setcounter{tocdepth}{1}
 \tableofcontents
+\thispagestyle{empty}
 
 \newpage
-
+\setcounter{page}{1}
 
 \foreach \i in {0,1,2,3,4,5,6} {%
     \foreach \j in {0,1,2,3,4,5,6} {%
