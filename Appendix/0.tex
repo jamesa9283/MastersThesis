@@ -1,0 +1,240 @@
+% !TEX root = ../thesis.tex
+
+\section{An Introduction to Differential Geometry and Exterior Calculus}
+
+In this section we will aim to give a brief overview of exterior calculus and the tools that we use in the rest of the thesis. Specifically this will entail a lot of notation and some basic ideas around Hamiltonian mechanics written using different language.\\
+
+\noindent
+The main idea we will show is that the so called symplectic two form is conserved across flows and hence Hamiltonian flows are symmetric. This leads to a lot of nice conservation results and opens up to levels of general theory. This general theory will then require some more heavy duty tools from differential geometry that we will introduce along the way. We first introduce the idea of a \textit{manifold}.
+
+\begin{ndefi}[Smooth Manifold]
+  A smooth manifold, $M$, is a set with a countable set of subets $U_a \subset M$ such that their union covers the manifold, $\bigcup_\a U_\a = M$, and bijective functions $\phi_\a : U_\a \to \R$ such that the following condition is satisfied. For any nonempty intersection, $U_\a \cap U_\b$, the set $\phi_\a (U_\a \cap U_\b)$ is an open subset of $\R^n$ and the bijection  $\phi_\b \circ \phi_\a^{-1}$ is a smooth function is smooth on $\phi_\a (U_\a \cap U_\b)$.
+\end{ndefi}
+
+\noindent
+This definition is very formal but is full of jargon. Simply speaking a manifold is a space that for each point it locally can be treated as $\R^n$. That is for every point on the manifold, $x \in M$, you can construct a continuous bijection with continuous inverse, a homeomorphism, from the epsilon ball around $x$, $B^M_\e(x)$ to an delta ball around some $y \in \R^n$, $B^{\R^n}_\d (y)$. To hammer home the point, \textbf{manifolds are spaces that are locally flat}. Henceforth when say \textit{manifold}, we mean \textit{smooth manifold}. \\
+
+\noindent
+The whole idea of using the manifold is to work in absense of coordinates. Hence we can talk about \textit{generalised coordinates}. This is because for any arbitrary choices of coordinates, $q$ and $Q$, we can a map, $q \to Q$ such that it's nondegenerate, $\det\left(\pd Q q\right) \ne 0$. Hence we call $\{q\}$ the \textit{generalised coordinates}.\\
+
+\noindent
+Now we have an idea of generalised coordinates, we can quickly define tangent spaces, bundles and the duals.
+\begin{ndefi}[Tangent Spaces and Bundles]
+  Take some $q(t) \in M$ at some fixed time $t$. The \textit{tangent space} is all of the tangent vectors, $\dot q(t)$, to $q(t)$ at time $t$. This is denoted $T_qM$. The union for all $q \in M$ of the tangent spaces is the \textit{tangent bundle}.
+\end{ndefi}
+
+\noindent
+As an example if we find the tangent bundle of a circle, we will see that it $\R^2$ minus the circle and its interior. The tangent space of one point on the circle is just a tangent vector.
+
+\begin{ndefi}[Cotangent Spaces and bundles]
+  The \textit{cotangent space} is the dual to the tangent space\footnote{The dual is associated to the differential map we will introduce later} filled with covectors. \textit{Covectors} are linear functionals $v : T_qM \to \R$ that undoes the action of vectors, in a loose sense. The cotangent bundle is the union of the cotangent spaces.
+\end{ndefi}
+
+\noindent
+In many places we will need to move between the tangent and cotangent spaces of a manifold. This can be done using the musical isomorphisms. These are the canonical maps between the tangent and cotangent spaces. We define $\flat : TM \to T^*M$ by a map $X \mapsto X_j\vec e^j$ where $X$ is a vector field. We define sharp, $\sharp : T^*M \to TM$ by a map $\o \mapsto \o^j\vec e_j$ where $\o$ is a covector.
+
+
+\noindent
+An interesting mechanical fact of the cotangent spaces is that they are spanned by the \textit{conjugate momenta} that come out of Hamilton's equations. This will be useful later when we start to talk about Hamilton's equations in more depth. Before moving onto some heavier machinery on these spaces we need to introduce one of the most important tools in this thesis, forms. \\
+
+
+\noindent
+In order to talk about differentiation and integration we need to have some sort of way of measuring what our manifold looks like. In normal settings this would be down to the coordinate system we are working in. However, in differential geometry there is no coordinate system. This provides a slight problem when the whole of calculus is based on small coordinated changes. Hence we introduce the idea of differential forms in differential geometry. \\
+
+\subsection{Forms}
+
+\noindent
+\textit{Forms} are a way of talking about these infinitesimal areas in a coordinate free way. A 1-form is an infinitesimal oriented length, a 2-form is an infinitesimal orientable area, and so on. We also have 0-forms which represent infinitesimal points, the scalar functions. More formally we can define \textit{1-forms}, $\o$, which assigns a covector $v \in T^*_q M$ to each point $q \in M$. Hence we have mapping from $\vec u$ to scalar functions $\o(\vec u)$, by composing $\vec u$ with 1-forms. Further we can write 1-forms with basis $(\dd x^1, \dd x^2, \dots)$, and we can decompose them,
+$$ \o = \sum_i \o^i \dd x^i. $$
+Again we will formally define $\dd$ later. Differential Geometry has an intolerable amount of overarching definitions. Now we need to go on a slight detour to look at the wedge product,
+
+\subsection{Wedge Product}
+\noindent
+We define the \textbf{wedge product} of a $k$-form ($k = 0,1,2, \dots$) and an $\ell$-form $(\ell=0,1,2,\dots)$ as a $(k+\ell)$-form. It satisfies the following,
+\begin{enumerate}
+  \item Bilinearity, $(a\a + b\b)\wedge \o = a(\a \wedge \o) + b(\b \wedge \o)$ and $\a \wedge (a\o + b\e) = a(\a \wedge \o) + b(\a \wedge \e)$
+  \item Anticommutativity, $\o \wedge \g = (-1)^{k\ell}\g \wedge \o$ where $\o$ is a $k$-form and $\g$ is a $\ell$-form.
+  \item Associativity, $(\o \wedge \g) \wedge \kappa = \o \wedge (\g \wedge \kappa)$
+\end{enumerate}
+
+\noindent
+Here are two other useful properties of the wedge product,
+\begin{itemize}
+  \item Given two 1-forms, $\a, \b$ on $M$, then $\a \wedge \b$ is a two form defined by,
+  $$ \a \wedge \b (v_1, v_2) = \a(v_1)\b(v_2)- \a(v_2)\b(v_1). $$
+  \item Given a scalar function (0-form), $f$, and a $k$-form, $\o$,
+  $$f \wedge \o = f\o.$$
+\end{itemize}
+
+\noindent
+Now we state a final result on the wedge product,
+\begin{nlemma}
+  Given, $\o, \g$ are 1-forms. Then $\a \wedge \b = \a \dx^1 \wedge \dx^2$, where $\a = w^1 \g^2 - \o^2 \g^1$.
+\end{nlemma}
+\begin{proof}
+  Expand the forms in terms of a basis and then use bilinearity properties and note that $dx^i \wedge dx^i = 0$.
+\end{proof}
+\cbar
+
+\noindent
+A \textit{2- form} is a function that assigns a skew-symmetric bilinear map $T_xM \ti T_xM \to \R$ on the tangent space $T_xM$ to each point $x \in M$. This is used to define surface integrals and the surface form. In coordinates we see that,
+$$ \int_M \o = \int_{\phi(M)} \a \mathrm{d}x^1 \wedge \mathrm{d}x^2 $$
+where $\phi_U(M)$ just places you in local coordinates (remember that a manifold is locally just Euclidian). Then we can show that there is a certain $\a$, called $\a_S$, which allows the above to make sense and further gives you the surface area of every submanifold, $U \sub M$. This then gives us the \textit{surface form} $\dS = \a \dx^1 \wedge \mathrm{d}x^2$. This then tells us that every 2-form can be written as, $\o = \b \dS$. Note again, all of this is still coordinate independent! At no point have we chosen a set of coordinates, if at any point we did, it cancelled out under a change of variable formula.\\
+
+\noindent
+More generally we are interested in $k$-forms, these can be written in the following form,
+$$ \o = \sum_{i_1, \dots, i_k = 1}^n \o^{i_1, \dots, i_k} \dd x^{i_1} \wedge \dd x^{i_2} \wedge \dots \wedge \dd x^{i_k}. $$
+We are saying that the wedge of any $k$ $dx^j$'s is a $k$-form. We define the space of $k$-forms as $\La^k(M)$ ($k = 0,1,2, \dots$).
+
+\subsection{Contractions and vector fields}
+
+We now look to study the interplay between vector fields and differential forms. These are two very important objects and we want to be able to use them together in the following theory. The contraction, $\cont$, is an operation that defined a pairing between vector fields and forms. Contraction defined the following duality relations,
+$$ \partial_q \cont \dd q = \partial_p \cont \dd p = 1  \qquad \partial_q \cont \dd p = \partial_p \cont \dd q = 0. $$
+
+\noindent
+In order to define this formally we define the exterior derivative and define vector fields,
+
+\subsection{Exterior Derivatives}
+We want some way to get between different for spaces. We also want to relate vector calculus operations to geometric operations. This is where the exterior derivative comes in. We define $d : \La^k(M) \to \La^{k+1}(M)$ for some $\a = \a_{i_1, \dots, i_k} \dd x^{i_1} \wedge \dots \wedge \dd x^{i_k}$ as,
+$$ d \a = \dd\a_{i_1, \dots, i_k} \dd x^{i_1} \wedge \dots \wedge \dd x^{i_k}, $$
+where, $\dd\a = \left( \pd {\a_{i_1, \dots, i_k}} {x^j} \right)\dd x^j$.\\
+
+\noindent
+Hence we can show the following properties,
+\begin{nprop}
+  The following properties hold for the exterior derivative,
+  \begin{enumerate}
+    \item If $\a$ is a 0-form then $\dd f$ is 1-form given by the differential of $f$,
+    \item $\dd \a$ is linear in $\a$,
+    $$ \dd (c_1\a_1 + c_2\a_2) = c_1\dd \a_1 + c_2\dd \a_2, \qquad c_1, c_2 \in \R$$
+    \item $\dd \a$ has a product rule. Let $\a$ be a $k$-form and $\b$ is a $\ell$-form,
+    $$ \dd (\a \wedge \b) = (\dd \a) \wedge \b + (-1)^k \a \wedge \dd \b $$
+    \item $\dd^2 = 0$ for any $k$-form
+    \item $\dd$ is a local operator, hence it is determined by its local properties in a neighbourhood of any $x \in M$.
+   \end{enumerate}
+\end{nprop}
+\begin{proof}
+  Maybe?
+\end{proof}
+\cbar
+
+\noindent
+We can now define a vector field, and then the contraction,
+\begin{ndefi}[Vector Field]
+  A \textit{vector field}, $X$, on a manifold $M$, is a map $X : M \to TM$ that assigns a vector, $X(m)$, to a point on the manifold $m \in M$. The real vector space of vector fields is denoted $\mathfrak{X}(M)$.
+\end{ndefi}
+
+\noindent
+As we know the basis of $TM$ is going to be given by $\nab := \left( \partial_1, \dots, \partial_n \right)$ and $X$ has components $X^j$ we can say the basis of the vector field is,
+$$ X = X^j \partial_j. $$
+
+\noindent
+We can finally define a contraction.
+\begin{ndefi}[Contraction]
+  Let $\a \in \La^k$ lie on $M$, where,
+  $$ \a = \a_{i_1, \dots, i_n} \dd x^{i_1} \wedge \dots \wedge \dd x^{i_k}, $$
+  and $X = X^j\partial_j$ be a vector field. The contraction $X \cont \a$ is defined by,
+  $$ X \cont \a = X^j\a_{ji_2\dots i_k}\dd x^{i_2} \wedge \dots \wedge \dd x^{i_x}. $$
+\end{ndefi}
+
+\noindent
+We note quite nicely that contraction can split wedge products,
+\begin{nprop}
+  Let $\a$ be a $k$-form and $\b$ be a 1-form, $X$ be a vector field on a manifold $M$. Then the contraction of $X$ through $\a \wedge \b$ is,
+  $$ X \cont (\a \wedge \b) = (X \cont \a) \wedge \b + (-1)^k \a \wedge (X \cont \b). $$
+\end{nprop}
+\begin{proof}
+  This follows from unfolding definitions, then splitting into two sums and carefully swapping the forms around to achieve the $(-1)^k$ from moving the one form to the front.
+\end{proof}
+
+\subsection{Pullbacks and pushforwards}
+We discussed briefly about change of coordinates on manifolds and they coordinates don't matter because you can just construct a map between any two coordinates to create a change of coordinates. For changes of basis, these mappings are usually pullbacks or pushforwards. We can define them as smooth invertible maps that act on vector fields and functions.\\
+
+\noindent
+Let $\phi : M \to N$ be a smooth invertible functions from a manifold $M$ to a manifold $N$. The pull-back of some function $f$ is just right composition by $\phi$, $\phi^*f = f \circ \phi$. The push-forward is just right composition of $\phi^{-1}$, $\phi_* g = g \circ \phi^{-1}$. We can do similar things to a vector field, but its slightly more involved to see whats actually happening. We can push forward a vector field $X$ by $\phi$, that is,
+$$ (\phi_* X)(\phi(z)) = T_z\phi \cdot X(z). $$
+We can impose local coordinates and see that the components are,
+$$ (T_z\phi \cdot X(z))^l := \pd {\phi^l} {z^J} X^J(z) = (\phi_* X)^l. $$
+We can then write the pull-back of a vector field as, $\phi^* Y = (\phi^{-1})_* Y$, then use the same argument as above.\\
+
+\subsection{Lie Derivatives}
+The final tool in our arsenal is called the Lie Derivative. This gives a generalisation of the idea of directional derivative. We want to be able to differentiate along a vector field. We want to define this derivative and then we can prove \textbf{Cartan's Magic Formula}!
+\begin{ndefi}[Lie Derivative]
+  Let $\a$ be a $k$-form and let $X$ be a vector field with flow $\phi_t$ on a manifold $M$. The Lie derivative of $\a$ along $X$ is,
+  $$ \pounds_X \a = \ditat 0 (\phi_t^* \a). $$
+\end{ndefi}
+
+\noindent
+We are in need of two results to actually prove Cartans magic formula. One to guarantee its well behaved and one to help us in the proof. The following proofs come from
+%TODO add tu intro to manifolds reference
+
+\begin{nprop}
+  Let $X$ be a vector field on a manifold $M$. Then $\pounds_X$ is $\R$-linear and if $\o\in \La^k$ and $\t\in \La^l$,
+  \begin{equation}
+    \pounds_X (\o \wedge \t) = (\pounds_X \o) \wedge \t + \o \wedge (\pounds_X \t)\label{eq:deriva}
+  \end{equation}
+\end{nprop}
+\begin{proof}
+  The $\R$-linearity of $\pounds_X$ is trivial by the definition. We focus on the second part. It follows from some chasing around of definitions,
+  \begin{align*}
+    \ditat 0 (\o \wedge \t)&= \ditat 0 (\phi_t^* (\o \wedge \t)) \\
+    &= \ditat 0 \phi_t^* \o \wedge \phi_t^* \t \\
+    &= \left(\ditat 0 \phi_t^* \o\right) \wedge \t + \o \wedge \left(\ditat 0 \phi_t^* \t\right) \\
+    &= (\pounds_X \o) \wedge \t + \o \wedge (\pounds_X \t).
+  \end{align*}
+\end{proof}
+
+\begin{nprop}
+  Let $X$ be a vector field on a manifold $M$. Then $d$ commutes with $\pounds_X$.
+\end{nprop}
+\begin{proof}
+  This follows again from chasing around definitions,
+  \begin{align*}
+    \pounds_X \dd \o &= \ditat 0 \phi_t^* \dd \o\\
+    &= \dd \ditat 0 \phi_t^* \o = d\pounds_X \o
+  \end{align*}
+\end{proof}
+\begin{nlemma}[Cartans Magic Formula]
+  Let $\a$ be a $k$-form and $X$ be a vector field on a manifold $M$. Then,
+  $$ \pounds_X \a = X \cont \dd\a + \dd (X \cont \a) $$
+\end{nlemma}
+\begin{proof}
+  We shall use the fact that $d$ is a local operator. This implies that we can prove this formula for an arbitrary point in an arbitrary neighbourhood on our manifold. That is we can write,
+  $$ \a = \a_{i_1\dots i_k}\dd x^1 \wedge \dots \wedge \dd x^k. $$
+  If we consider the left hand side and the right hand side, we know that they are both derivations ($\R$-linear and satisfies a property like Equation \ref{eq:deriva}). Hence we know that if the formula works for $\o$ and $\t$ it will also work for $\o \wedge \t$ and further if it works for $\o$ it will work for $\dd \o$. Hence we need to prove the above formula for a 0-form, $f$. That is check,
+  $$ \pounds_X f = \dd (X \cont f) + X \cont \dd f. $$
+  This follows from the following. Note that $X \cont f = 0$ as $f$ is a 0-form. Then,
+  \begin{align*}
+    \pounds_X f = X \cont \dd f.
+  \end{align*}
+  However, we also note,
+  \begin{align*}
+    \pounds_X f &= \ditat 0 \phi^*_t f \\
+    &= \ditat 0 f \circ \phi_t \\
+    &= Xf = X \cont \dd f.
+  \end{align*}
+  That then completes the proof.
+\end{proof}
+
+\subsection{Covariant Derivatives}
+One of the main types of terms in fluid equations are the covariant terms. These relate to derivatives of the solution along vectors. These terms in the Euler Equations look like $(\vec u \cdot \nab)\vec u$ and are also known as directional derivatives. In addition to Lie derivatives we can state these in terms of covariant derivatives. They are derivatives of the solution along tangent vectors. You can take covariant derivatives of functions, $f : M \to \R$ or of vector fields.
+\begin{ndefi}[Covariant Derivative of a function]
+  Let $M$ be a manifold, $p \in M$ and $f : M \to \R$. Then define some curve $\g : [-1, 1] \to M$ such that $\phi(0) = p$ and $\phi'(0) = \vec v$. Then the covariant derivative of $f$ along $\vec v$ at $p$ is,
+  $$ (\nab_v f)_p = \lim_{t \to 0}\frac{f(\phi(t)) - \phi(p)}{t} $$
+\end{ndefi}
+\noindent
+We note for scalar $f$, the covariant derivative is the same as the Lie derivative and the exterior derivative.
+
+\begin{ndefi}[Covariant Derivative of a vector field]
+  Let $M$ be a manifold, $p \in M$, $a,b$ be scalars, $f : M \to \R$, $\vec u : M \to T_pM$. Then the covariant derivative is defined as follows,
+  \begin{itemize}
+    \item It's linear in $v$, $\nab_{a\vec x + b\vec y}\vec u = a\nab_x\vec u + b\nab_y \vec u $,
+    \item It's additive in $u$, $\nab_{\vec v} (\vec u + \vec w) = \nab_{\vec v} \vec u + \nab_{\vec v}\vec w$,
+    \item It obeys a product rule, $\nab_{\vec v}(f\vec u) = (\nab_{\vec v}f)\vec u + f(\nab_{\vec v}\vec u) $.
+  \end{itemize}
+\end{ndefi}
+
+\noindent
+In coordinates we can write the covariant derivative as,
+$$ \nab_{\vec v}\vec u = \left( v^i u^j \Gamma_{ij}^k + v^j \pd{u^k}{x^j} \right)\vec e_k. $$
+We note $\Gamma_{ij}^k$ is a Christoffel symbol and can be written in Euclidian space as, $\Gamma_{ij}^k = \pd {\vec e_i}{x^j} \cdot \vec e^k$.

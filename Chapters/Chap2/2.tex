@@ -1,0 +1,260 @@
+% !TEX root = ../../thesis.tex
+
+
+\section{Euler-Poincar\'e Reduction}
+The Euler-Poincar\'e Equations are a set of equations that relate to a reduced Lagrangian on the Lie algebra of the manifold. We recall that a Lagrangian is a function on the tangent bundle, $L : TG \to \R$, then the reduced Lagrangian is $\ell : \frg \to \R$, i.e. the restriction of $L$ to $\frg$. The following result characterises the Euler-Poincar\'e Equations in our current case. We note this is the first of a few very similar theorems, depending on our assumptions about our groups and system. In this section, we will consider Euler-Poincar\'e reduction of manifolds without boundary for a basic Lagrangian, a Lagrangian with an advective quantity, a diffusion term and then for compressible fluids. We will then recall the theory without boundary and work towards a theory for manifolds with boundary.
+
+\subsection{Manifolds without boundary}
+We can introduce and prove the following theorem related to Lagrangians' basic reduction on manifolds without boundary. We consider a Lagrangian of basic form, $L = K - V$.
+
+\begin{nthm}[Basic Euler-Poincar\'e]
+  \label{eq:basic_ep}
+  Let $G$ be a topological group that admits a smooth manifold structure with smooth right translation, and let $: TG \to \R$ be a right invariant Lagrangian. Let $\frg$ denote the fiber $T_eG$, and let $\ell : \frg \to \R$, the restriction of $L$ to $\frg$. For a curve $\eta(t) \in G$, let $\vec u(t) = TR_{\eta(t)^{-1}}\eta(t)$. Then TFAE,
+  \begin{itemize}
+    \item $\eta(t)$ satisfies the Euler-Lagrange Equations,
+    \item $\eta(t)$ is an extremum of the action,
+    $$ S(\eta) = \int L(\eta(t), \dot \eta(t))\, \dd t, $$
+    \item $u(t)$ solves the Basic Euler-Poincar\'e equations,
+    $$ \pdt\fd \ell u = -\ad^*_u \fd \ell u, $$
+    where the coadjoint action is defined by,
+    $$ \ip{\ad_u^*v}{w} = \ip{v}{[u,w]}. $$
+    \item $u(t)$ is the extremum of the reduced action,
+    $$ s(u) = \int \ell(u(t))\dd t, $$
+    for variations,
+    $$ \d u = \dot w + [w, u], \qquad w = TR_{\eta^{-1}}\d \eta. $$
+  \end{itemize}
+\end{nthm}
+\begin{proof}
+  This proof can be found in ~\cite{holm,DBD,holm1998eulerpoincare,imas}. We will derive the Euler-Poincar\'e equations from the variational principle to show where the equations come from. We denote $\ell(\xi)$ as our reduced Lagrangian, and then we write our variational principle and integrate it by parts.
+  \begin{align*}
+    \d \int_{t_1}^{t_2} \ell(\xi)\dd t &= \int_{t_1}^{t_2} \ip{\fd \ell \xi} {\d \xi} \dd t \\
+    &= \int_{t_1}^{t_2} \ip{\fd \ell \xi} {\dot \eta - \ad_\xi\eta}\dd t \\
+    &= \int_{t_1}^{t_2} \ip{-\pdt \fd \ell \xi}{\eta} - \ip{\ad_\xi^*\fd \ell \xi}{\eta} = 0.
+  \end{align*}
+  Therefore, the Euler-Poincar\'e equations are,
+  $$ \pdt \fd \ell \xi + \ad_\xi^*\fd \ell \xi = 0. $$
+\end{proof}
+
+\noindent
+We note that for ideal fluids, the Lagrangian is just kinetic energy. Hence,
+$$ L(\eta, \dot \eta) = \frac{1}{2}\int_M (\dot \eta, \dot \eta) \mu \qquad \quad \eta \in \sd (M),\, \dot \eta \in T_e\sd (M)$$
+Then, we can show that this Lagrangian is right invariant. We remember we are reducing over some group of structure-preserving diffeomorphisms, so,
+\begin{align*}
+  L(\eta g, \dot \eta g) &= \frac{1}{2}\int_M \ip{\dot \eta g}{\dot \eta g}\mu \\
+  &= \frac{1}{2}\int_M \ip{\dot \eta}{\dot \eta} g^2\mu \\
+  &= \frac{1}{2}\int_M \ip{\dot \eta}{\dot \eta}\mu  = L(\eta, \dot \eta).
+\end{align*}
+\noindent
+Hence our Lagrangian is right invariant and we can let $g = \eta^{-1}$ and hence rewrite our Lagrangian,
+$$ L(\eta, \dot \eta) = L(\eta\eta^{-1}, \dot \eta \eta^{-1}) = L(e, \dot \eta \eta^{-1}) := \ell(\xi). $$
+We now note that,
+$$ \ell(\xi) = \frac{1}{2}\int_M \ip{\xi}{\xi}\mu. $$
+Then we can write the Euler-Poincar\'e equations for this system as,
+$$ \pd \xi t = \ad^*_\xi\xi = \pounds_\xi \xi. $$
+We note that quite nicely, we can see that this is just the Lie-Poisson Equation.\\
+
+\subsubsection{Advective Terms}
+In fluid mechanics, some quantities are transported by the flow. That is, the Lie Derivative transports them along vector fields. These are called advected quantities. Advection usually refers to two things: advected conserved quantities, as due to the advection term, new and more interesting conserved quantities are present, or to model substrate or substance being moved through the fluid. When we consider a Hamiltonian of these systems, we note that they have a parameter that turns from a parameter to a variable. These variables form a vector space, and our groups act on them linearly. Hence, we have a representation space. To see this more clearly, consider the following Lagrangian\footnote{This is equivalent to the Hamiltonian up to Legendre transform} for a spherical pendulum,
+$$ H(\vec q, \vec{\dot q}) = \frac{1}{2}m |\vec{\dot q}|^2 - mg \vec q \cdot \vec e_3. $$
+We note that the only potential energy term variable is $\vec q$. Now, considering the reduced Lagrangian,
+$$ \ell(\Oh, \Gv) = \frac{1}{2}m \mathbb{I}|\Oh|^2 - mg\Gv \cdot X. $$
+In this case, we have turned `created' another variable out of the symmetry-breaking parameter. Hence a parameter has been turned into a variable and $\Gv \in V^*$ to adjoint of the representation of $\SO(3)$.\\
+
+\noindent
+We can follow Holm, Marsden and Ratiu's paper on Semi-direct Product Theories~\cite{holm1998eulerpoincare} to consider advection in our system. Let us consider a representation space, $V$, for our Lie Group $G$ and let $L$ have invariance properties for $G$ and $V$.
+\begin{ndefi}[Representation]
+  A representation of a Lie group is a tuple $(V, \rho)$ where $V$ is the representation space and $\rho : G \to \GL(V)$ the $G$-linear action on $V$.
+\end{ndefi}
+\noindent
+We can define a semi-direct product on a Fr\'echet Group and some representation groups as follows,
+\begin{ndefi}[Semidirect Product]
+  Let $V$ be a vector space and $G$ be a Fr\'echet Group that acts on the right by linear maps on $V$. The semi-direct product is the cartesian product, $G \ti V$, where group multiplication is given by,
+  $$ (g_1,\, v_1)(g_2,\, v_2) = (g_1g_2, v_2 + v_1g_2). $$
+\end{ndefi}
+\noindent
+We note that this group has identity, $(e, 0)$ and inverses, $(g, v)^{-1} = (g^{-1}, -g^{-1}v)$. Then we can consider the Lie algebra, $\mathfrak{s} = \frg \ti V^*$, and it bestows a Lie bracket,
+$$ [(\xi_1,\, v_1),\, (\xi_2,\, v_2)] = ([\xi_1,\,\xi_2],\, v_1\xi_2 - v_2\xi_1). $$
+\begin{notation}
+   For notational purposes, we will consider the adjoint linear representation $\rho^*$ of some vector $v$ and $a \in V^*$ as,
+   $$ \rho^*_v a = v \diamond a \in \frg^*. $$
+   or,
+   $$ \ip{A \diamond a}{w}_{\frg \ti \frg^*} = \ip{A}{-\pounds_w a}_{V\ti V^*} = -\int_\mathfrak{D} A \cont \pounds_w a.  $$
+\end{notation}
+
+\noindent
+We consider our advected parameter to be some $a \in V^*$. Then, we can consider the semi-direct product of $G$ and $V^*$, $G \rtimes V^*$. We choose the semi-direct product for flexibility, the Lie algebra of $\frg \rtimes V^*$. \\
+
+\noindent
+We can define the Lagrangian as $L : G \to V^* \to \R$. Then we assume there is the right representation of the Lie Group on the vector space $V$ and $G$ acts on the right on $TG \ti V^*$, $(\eta, \dot \eta,a)h = (\eta g, \dot\eta g, ag)$ for $g \in G$. Then $L : TG \ti V^* \to \R$ is $G$-invariant. That is, if we define $L_{a_0}(v_g) = L(v_g, a_0)$, then $L_{a_0}$ is right invariant under the lift and action. Finally we can now define for $\ell : \frg \ti V^* \to \R$ by,
+$$ L(\eta\eta^{-1}, \dot\eta\eta^{-1}, a_0\eta^{-1}) := \ell(\xi, \a). $$
+We now proceed with the Euler-Poincar\'e advection theorem.
+\begin{nthm}[Euler-Poincar\'e with advection]
+  Let $M$ be a manifold and $G$ be a Fr\'echet group. Then let $(V, \rho)$ represent $G$. Suppose we have an advective quantity $a \in V^*$, and a Lagrangian $L : G \rtimes V^* \to \R$ that is right invariant under the tangent lift. Let $\eta \in G$ and $\dot\eta \in \frg$. Then the following are equivalent,
+  \begin{itemize}
+    \item Hamilton's variational principle holds, where variations vanish at endpoints,
+    $$ \int_{t_1}^{t_2} L_{a_0} (\eta(t), \dot \eta(t))\, dt = 0 $$
+    \item $\eta(t)$ satisfies the Euler-Lagrange equations for $L_{a_0}$,
+    \item The constrained variational principle holds for $\frg \ti V^*$,
+    $$ \d \int_{t_1}^{t_2} \ell(\xi, a)\,\dd t = 0 \qquad \d \xi = \dot \nu - [\xi, \nu], \quad \d a = -a\nu $$
+    \item The Euler-Poincar\'e equations hold on $\frg \ti V^*$,
+    $$ \pdt \fd \ell \xi = -\ad_\xi^* \fd \ell \xi + \fd \ell a \diamond a. $$
+    $$ \left( \pdt + \pounds_\xi \right) a = 0 $$
+  \end{itemize}
+\end{nthm}
+\begin{proof}
+  The proof here is similar to \ref{eq:basic_ep}. However, there are a few results we need to prove that are different. We first consider the time derivative of $a$ and then the variation.\\
+
+  \noindent
+  We start with a Lagrangian of the form $L(\eta, \dot \eta, a_0)$ and then assume that it's right invariant, that is, $L(\eta, \dot \eta, a_0) = L(\eta g,\, \dot \eta g,\, a_0 g)$. Then we can form a reduced Lagrangian, $L(\eta\eta^{-1},\, \dot\eta \eta^{-1},\,a_0g^{-1}) := \ell (\xi, a)$ where $a := a_0g^{-1}$. From this, we calculate,
+  \begin{align}
+    \pd a t &= \pdt (a_0g^{-1})\notag\\
+    &= -a_0g^{-1}\pd g t g^{-1} = -a\xi. \label{eq:concata}
+  \end{align}
+  Then, similarly, we can write,
+  \begin{align*}
+    \d a &= \d (a_0g^{-1}) \\
+    &= -a_0 g^{-1}\d g g^{-1} \\
+    &= -a \nu,
+  \end{align*}
+  where $\nu := \d g g^{-1}$. Now we can derive the equations,
+  \begin{align*}
+    \d \int_{t_1}^{t_2} \ell(\xi,\, a)\,\dd t &= \int_{t_1}^{t_2} \ip{\fd \ell \xi}{\d \xi} + \ip{\fd \ell a}{\d a} \, \dd t \\
+    &= \int_{t_1}^{t_2} \ip{\fd \ell \xi}{\dot \nu - [\xi,\, \nu]} + \ip{\fd \ell a}{-a\nu}\,\dd t \\
+    &= \itt \ip{\fd \ell \xi}{\dot \nu} - \ip{\fd \ell \xi}{\ad_\xi \nu} + \ip{\fd \ell a}{-a\nu}\, \dd t \\
+    &= \itt \ip{-\pdt \fd \ell \xi}{\nu} - \ip{\ad_\xi^* \fd \ell \xi}{\nu} + \ip{\fd \ell a \diamond a}{\nu} \, \dd t \\
+    &= \itt \ip{-\pdt\fd\ell\xi - \ad_\xi^*\fd\ell\xi + \fd\ell a\diamond a}{\nu}\,\dd t.
+  \end{align*}
+  Therefore, using Hamilton's principle, we have,
+  \begin{equation}
+    \pdt \fd \ell \xi = -\ad_\xi^*\fd\ell\xi + \fd\ell a\diamond a.\label{eq:ep_adv}
+  \end{equation}
+  Then considering the right concatenation using \ref{eq:concata} we get,
+  $$ \left( \pdt + \pounds_\xi \right) a = 0. $$
+  as required.
+\end{proof}
+
+\noindent
+We can derive the Euler Equations for fluids with variable densities using this theory. Consider a Lagrangian with a fluid density advective term,
+$$ L(\eta, \dot\eta, \rho) = \int_M \frac{\rho}{2}|\dot \eta|^2 + p(\rho - 1)\mu. $$
+This Lagrangian has a symmetry-breaking parameter~\cite{arthur}. Hence, we consider the symmetric part, and verifying this is right invariant is easy. Let $\eta \in \sdm$ and $\rho$ be a $0$-form. Then, we can reduce this Lagrangian into,
+$$ L(\eta\eta^{-1}, \dot\eta\eta^{-1}, \rho\rho_0^{-1}) := \ell(\vec u, D) = \int_M \frac{D}{2}|\vec u|^2 + p(D-1) \mu. $$
+Then, we take functional derivatives,
+\begin{align*}
+  \ip{\fd \ell {\vec u}}{\phi} &:= \di{}{\e} \left[ \ell(u^\flat + \e \phi, D) \right]_{\e = 0} \\
+  &= \ip{[u^\flat]D}{\phi}.\\
+  \ip{\fd \ell D}{\phi} &:= \di{}{\e} \left[ \ell(u^\flat, u^\flat + \e \phi) \right]_{\e = 0} \\
+  &= \ip{\frac{1}{2}[u^\flat]^2 + p}{\phi}.
+\end{align*}
+Then we can plug these into Equation \eqref{eq:ep_adv} and get,
+$$ \pd {[u^\flat]} t + \pounds_{\vec u} [u^\flat] = \frac{(\frac{1}{2}[u^\flat]^2 + p) \diamond D}{D}. $$
+Then, considering the cosets we have,
+$$ \pd {u^\flat} t + \pounds_{\vec u} u^\flat = F(u^\flat, D) := \frac{(\frac{1}{2}[u^\flat]^2 + p) \diamond D}{D} + \dd f. $$
+Then the advection equation is,
+$$ \left( \pdt + \pounds_{\vec u} \right)D = 0 $$
+
+
+\subsection{Manifolds with Boundary}
+\label{ss:man_w_b}
+We require a manifold with some boundary to have systems with boundary conditions. This is where the theory deviates from above. We now will have three objects: the group we reduce over, $G$, with its associated algebra, $\frg$, and its dual $\frg^*$, the principle we use to derive the equations, usually Hamilton's principle, and the manifold we consider the flow over, $M$. We note that the boundary conditions will come from $M$ and be imposed on $G$. Boundary conditions come in two different forms,
+\begin{enumerate}
+  \item Finite conditions, so conditions along a point or a path. For example, axisymmetric flow in a cylinder.
+  \item Infinite conditions, limiting conditions as you approach an infinitum. For example, waves on a plane.
+\end{enumerate}
+\noindent
+The first of these conditions requires manifolds with boundaries; the second is more complicated and requires a generalisation called manifolds with corners~\cite{joyce2010manifolds}. We will primarily be interested in the first case while diverting the second to subsequent work on this area. We will be using the ideas from papers by Marsden, Ratiu and Shkoller~\cite{marsden1999geometry,shkoller2000incompressible} to develop a more general theory that we can apply to compressible Euler-Poincar\'e equations. We can derive Neumann, Dirichlet and Mixed conditions. We will work on two new diffeomorphism groups and mainly study the Dirichlet group that corresponds to the zero on the boundary, as that is the boundary condition seen the most in this type of fluid dynamics. We introduce the manifold of diffeomorphisms with boundary as follows.
+\begin{ndefi}[Diffeomorphism group with Boundary]
+  Let $M$ be a manifold, $\tilde M$ be the double of $M$ as $H^s(M,\, M)$ isn't smooth and $\Diff^s(M)$ be the group of $C^s$ diffeomorphisms. Then, we define the diffeomorphism group with a boundary as,
+  $$ \dms = \{\eta \in H^s(M, \tilde M) \cap \Diff^s(M) : \eta (\partial M) = \partial M \}. $$
+\end{ndefi}
+
+\noindent
+Then a calculation, similar to the ones done in a paper by Ebin and Marsden~\cite{diffeost}, with $(E, \pi)$ being a vector bundle, leads to,
+$$ T_\eta \dms = \{u \in H^s(M,\, TM) : \eta = \pi \circ u,\, g(u\eta^{-1},\, n) = 0 \text{ on } \partial M,\, \mathrm{div}(u \eta^{-1}) = 0 \}. $$
+That is,
+\begin{nlemma}
+  Let $M$ be a manifold, $(E, \pi)$ be a vector bundle on $M$ and $\xi = u\eta^{-1}$. Then the tangent space of $\dms$ at $\eta$ is,
+  $$ T_\eta\dms = \{u \in \mathfrak{X}^s(M) : g(\xi,\, n) = 0 \text{ on }\partial M,\, \mathrm{div}(\xi) = 0\}, $$
+  with a map $\eta = \pi \circ u$ from the vector bundle to connect the group and tangent space.
+\end{nlemma}
+\begin{proof}
+  See~\cite{diffeost}.
+\end{proof}
+
+\noindent
+We now can define the structure-preserving group,
+\begin{ndefi}[Structure Preserving Diffeomorphism Group with Boundary]
+  Let $M$ be a manifold, then $\dms$ be as defined above and $\mu$ be the volume form of $M$. Then, the structure-preserving diffeomorphism group with boundary is,
+  $$ \sdms = \{\eta \in \dms : \eta^* \mu = \mu \}. $$
+\end{ndefi}
+\noindent
+For all our groups, we note that the left action is class $C^r$, the right action is $C^\infty$ and inversion, $\eta \mapsto \eta^{-1}$, is $C^0$ and further not Lipschitz continuous. Hence, we now work with topological groups with smooth right action.
+
+\noindent
+\subsection{Three more diffeomorphism groups}
+We define the following: let a diffeomorphism have a smoothness class. This smoothness class is a Hilbert $ H^s$ class. In practicality, we will assume we have diffeomorphisms that are sufficiently smooth enough to do the construction, but it is helpful to mention restrictions on this theory. We introduce a few bits of differential geometry,
+\begin{ndefi}[Weingarten map]
+  Let $(M,\, g)$ be a Riemannian manifold, $p \in M$, $n$ be the normal field, and $v$ be a tangent vector. Then the Weingarten map (shape operator) is a map $S: T_pM \to T_pM$, defined by,
+  $$ S(n) = -\nab_v n $$
+\end{ndefi}
+
+% Normal Bundle
+\noindent
+We can introduce our three diffeomorphism groups,
+\begin{ndefi}[Neumann Group]
+  Let $M$ be a manifold and $N$ be its normal bundle. Then, the Neumann group is defined as,
+  $$ \sdmsn = \{ \eta \in \sdms : \left.T\eta \cdot n\right|_{\partial M} \in H^{s - 3/2}(N) \text{ for all } n \in H^{s - 1/2}(N) \} $$
+\end{ndefi}
+\begin{ndefi}[Dirichlet Group]
+  Let $M$ be a manifold. Then, the Dirichlet group is defined as,
+  $$ \sdmsd = \{ \eta \in \sdms : \left. \eta \right|_{\partial M} = \Id \} $$
+\end{ndefi}
+\begin{ndefi}[Mixed Group]
+  Let $M$ be a manifold and $N$ be its normal bundle. Let the boundary $\partial M = \Ga_1 \cup \Ga_2$ and $\bar{\Ga_1} = M \setminus \Ga_2$. Then, the mixed group is,
+  \begin{align*}
+    \sdmsm = \{ \eta \in \sdms : &\quad\eta (\Ga_i) = \Ga_i,\, \left.T\eta \cdot n\right|_{\Ga_2} \in H^{s - 3/2}(\left. N \right|_{\Ga_1}) \\
+    &\text{ for all } n \in H^{s - 1/2}(\left. N \right|_{\Ga_1}),\, \left. \eta \right|_{\Ga_2} = \Id \}
+  \end{align*}
+\end{ndefi}
+
+\noindent
+Then their associated lie algebras
+\begin{ndefi}[Neumann Algebra]
+  Let $M$ be a manifold and $N$ be its normal bundle. Then, the Neumann algebra is defined as,
+  $$ T_e\sdmsn = \{ u \in T_e\sdms : 0 = (\left.\nab_n u\right|_{\partial M})^{\text{tan}} + S_n(u)\in H^{s - 3/2}(T\partial M) \text{ for all } n \in H^{s - 1/2}(N) \} $$
+\end{ndefi}
+\begin{ndefi}[Dirichlet Algebra]
+  Let $M$ be a manifold. Then, the Dirichlet algebra is defined as,
+  $$ T_e\sdmsd =  \{ u \in T_e\sdms : \left. u \right|_{\partial M} = 0\} $$
+\end{ndefi}
+\begin{ndefi}[Mixed Algebra]
+  Let $M$ be a manifold and $N$ be its normal bundle. Let the boundary $\partial M = \Ga_1 \cup \Ga_2$ and $\bar{\Ga_1} = M \setminus \Ga_2$. Then, the Mixed algebra is defined as,
+  \begin{align*}
+    T_e\sdmsm = \{ u \in T_e\sdms :\quad &0 = (\left.\nab_n u\right|_{\partial M})^{\text{tan}} + S_n(u)\in H^{s - 3/2}(T\Ga_2)\\
+    &\text{ for all } n \in H^{s - 1/2} (\left.N\right|_{\Ga_2}),\, \left. u \right|_{\Ga_1} = 0\}
+  \end{align*}
+\end{ndefi}
+\noindent
+Now, we can prove the required theorem about how this relates to Euler-Poincar\'e equations.
+\begin{nthm}[Advected Euler-Poincare with Boundary Conditions]
+  Let $G$ be a $C^\infty$ topological group, either $\sdmsn$, $\sdmsd$ or $\sdmsm$ and $\ell : \frg \ti V^* \to \frg$ be a reduced Lagrangian of the form $\ell(\xi,\, a) = \tilde \ell(\xi,\,a) + b(\xi,\,a)$ where $b$ is the tangent space boundary operator. Then the Euler-Poincar\'e equations for a system with advected quantities (similarly for no advected quantities) have the following form
+  \begin{equation}
+    \begin{split}
+      \dit \fd {\tilde \ell} \xi - \ad_\xi^* \fd {\tilde \ell} \xi + a \diamond \fd {\tilde \ell} a &= 0 \\
+      b(\xi,\, a) & =0.
+    \end{split}\label{eq:epa_bc}
+  \end{equation}
+\end{nthm}
+\begin{proof}
+  We seek to calculate the Euler-Poincar\'e equations for $\ell(\xi,\, a) = \tilde \ell(\xi,\, a) + b(\xi,\, a)$ via Hamilton's principle. Then, show that no extra erroneous terms appear. Then, finally, as $b$ vanishes at the boundary, the terms on the boundary should vanish. We note that any term involving $b$ is considered at the boundary. The calculation is standard until we reach,
+  \begin{align*}
+    \d \int_{t_1}^{t_2} - \pdt \left( \fd{\tilde \ell} \xi + \fd b \xi \right) - \ad_{\xi} \left( \fd{\tilde \ell} \xi + \fd b \xi  \right) + a \diamond \left( \fd{\tilde \ell} a + \fd b a  \right)\,\dd t &= 0
+  \end{align*}
+  \noindent
+  We note that we can decouple the boundary terms,
+  $$ \pdt \fd b \xi = -\ad_\xi \fd b \xi + a \diamond \fd b a. $$
+  Then we know if $b(\xi,\, a) = 0$, this vanishes in the above. Hence we have,
+  \begin{align*}
+    \dit \fd {\tilde \ell} \xi - \ad_\xi^* \fd {\tilde \ell} \xi + a \diamond \fd {\tilde \ell} a &= 0 \\
+    b(\xi,\, a) & =0.
+  \end{align*}
+\end{proof}

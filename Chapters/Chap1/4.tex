@@ -1,0 +1,33 @@
+% !TEX root = ../../thesis.tex
+
+\section{A short interlude into Symplectic Geometry}
+Hamilton's equations present an insight into the time evolution of a system. They rely on the Hamiltonian in its entirety to give information about the future. If we have $M$ as a manifold, then Lagrangian dynamics happens on $TM$ and Hamiltonian dynamics on $T^*M$. These present a very nice framework for rigid body dynamics. In fluid dynamics, it may help to consider our system's flow and the flow space. This requires some heavier-duty tools and generalising the idea of a Hamiltonian. We generalise this into the notion of a symplectic form. The symplectic form relates to the vector field for the flow, $\dd H$.\\
+
+\noindent
+Let $M$ be a manifold, a specific manifold we will define later, then $TM$ be the tangent space, or phase space, and $T^*M$ be the cotangent space, or the flow space. Then let $\o$ be a non-degenerate section of $T^*M \otimes T^*M$. The non-degeneracy of $\o$ means that for every $\dd H$ there is some $V_H$ such that $\dd H = \o (V_H, \cdot)$. We want two properties of our system to line up with $\o$. Firstly, we want the Hamiltonian, $H$, to be constant along the flow lines. Hence,
+$$ dH(V_H) = \o (V_H, V_H) = 0. $$
+That is, $\o$ is an alternating 2-form. Further, we want the Lie derivative of $\o$ to vanish,
+\begin{align*}
+  \pounds_{V_H} \o &= \dd (V_H \cont \o) + V_H \cont \dd \o \\
+  &= \dd (\dd H) + \dd \o(V_H) = \dd \o (V_H) = 0.
+\end{align*}
+As $H$ is arbitrary, $\o$ must be closed. Hence, we can define this idea of a symplectic form.
+\begin{ndefi}[Sympelctic Form]
+  A symplectic form on a smooth manifold, $M$, is a closed non-degenerate 2-form, $\o$.
+\end{ndefi}
+\noindent
+We define a symplectic manifold as a pair $(M, \o)$. Symplectic Manifolds are just Poisson manifolds, and the Symplectic form is usually of more interest and use. These are very useful when we get to defining symplectic leaves. These are another gateway into conserved quantities.
+\begin{ndefi}[Symplectic Leaf]
+  The symplectic leaf of a point on a Poisson manifold is the set of all points on the manifold that can be reached by paths starting at a given point, such that the velocity vectors of the paths are Hamiltonian at every moment.
+\end{ndefi}
+\noindent
+You can show that these leaves are just symplectic manifolds and have the same symplectic structure. That is, the flow from any point where the Hamiltonian behaves nicely is just a manifold with a nice symplectic structure, and you can use the theory we will develop on it!
+\begin{nthm}[]
+  The symplectic leaf of every point is a smooth, even dimensional manifold. It has natural symplectic structure defined by, $\o(\xi, \eta) = \{f, g\}$, where $\xi$ and $\eta$ are vectors at the point $x$ of the Hamiltonian fields with Hamiltonian functions $f$ and $g$.
+\end{nthm}
+\noindent
+We finally define a functor between symplectic manifolds that will be useful later,
+\begin{ndefi}[Symplectomorphism]
+  A diffeomorphism between two syplectic manifolds, $\phi : (M,\, \o) \to (N,\, \o')$ is a symplectomorphism if it preserves the symplectic form,
+  $$ \phi^* \o' = \o $$
+\end{ndefi}

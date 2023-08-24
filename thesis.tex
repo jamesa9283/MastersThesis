@@ -1,0 +1,71 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[refsection=part]{biblatex}
+\addbibresource{refs.bib}
+
+\usepackage{preamble}
+\usepackage{ox_thesis}
+\usepackage{epigraph}
+
+\usepackage{xcolor}
+
+\newcommand{\green}[1]{{\color{green} #1}}
+\newcommand{\red}[1]{{\color{red} #1}}
+
+\def\title{An assortment of theory relating to the Euler Equations on Manifolds}
+\def\author{James Arthur}
+\def\college{St Edmund Hall}
+\def\submittedtext{Submitted for the degree of}
+\def\degree{MSc Mathematical Modelling and Scientific Computing}
+\def\degreedate{Long Vacation 2023}
+
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\setcounter{page}{1}
+
+\begin{abstract}
+ \noindent
+ ABSTRACT
+\end{abstract}
+
+\begin{acknowledgements}
+  Thanks to a lot of people
+\end{acknowledgements}
+
+\newpage
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\newpage
+
+
+\foreach \i in {0,1,2,3,4,5,6} {%
+    \foreach \j in {0,1,2,3,4,5,6} {%
+      \edef\FileName{./Chapters/Chap\i/\j}%
+      \IfFileExists{\FileName}{%
+         \input{\FileName}%
+         \newpage%
+         }
+    }
+}
+
+
+\newpage
+\printbibliography
+\newpage\appendix
+\addcontentsline{toc}{chapter}{Appendix} % Add the appendix text to the document TOC
+
+% \foreach \i in {0,1,2} {%
+%     \edef\FileName{./Appendix/\i}%
+%     \IfFileExists{\FileName}{%
+%        \input{\FileName}%
+%     }
+% }
+
+
+\end{document}

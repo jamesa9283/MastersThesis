@@ -1,0 +1,249 @@
+% !TEX root = ../../thesis.tex
+
+\section{Lie-Poisson Equation}
+There are two different formalisations of mechanics. Lagrangian, which we saw above, and Hamiltonian. These two formalisms come from the idea that,
+$$ L = K - V \qquad H = K + V, $$
+Furthermore, Lagrangian dynamics happen in the tangent space of the manifold and Hamiltonian dynamics happen in the cotangent space of the manifold. The Euler-Poincar\'e and Lie-Poisson equations relate to dynamics in the cotangent space. This implies there is some way to get between them. This is called the Legendre transform.
+\begin{figure}[!ht]
+\centering
+\rotatebox[origin=c]{270}{
+\resizebox{0.45\textwidth}{!}{\input{./img/legendre.pdf_tex}}
+}\vspace{-20pt}
+\caption{Dynamics and Legendre Transform.}
+\label{fig:diffeos}
+\end{figure}
+
+\noindent
+In this section, we will study how to reduce Hamiltonians via Lie-Poisson reduction and then show why reducing on the Lagrangian via Euler-Poincar\'e reduction is usually better and then use the Legendre transform. We will see that the reduction of the Lagrangian is a lot neater and further replicates most of the modern theory. Many older Geometric Mechanics on fluids by Marsden and Arnold were mainly dedicated to Hamiltonian structures. This is because of the close connection with conserved quantities and the intuitiveness of Hamiltonians being total energy.\\
+
+\noindent
+Several different ideas arise in this area. We will look more closely at non-canonical Lie-Poisson brackets and how to calculate them and hint at the relation to Casimirs before discussing them in greater detail in the next section.\\
+
+\noindent
+We aim to study the way to get between Lagrangian and Hamiltonian through the Legendre transform. We include an excerpt from the author's special topic on Mechanical Mathematical Biology~\cite{arthur_mmb} that is relevant here.\\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+    \vspace{-10pt}
+    \subsection{Legendre Transform}
+
+    \noindent
+      Between Hamiltonians and Lagrangians, we are just working with a change of sign. A Hamiltonian is $K + V$ and a Lagrangian is $K - V$. However, if we have a Hamiltonian and want a Lagrangian, it is not necessarily obvious how to get between them. This is where the Legendre transform comes in. The Legendre transform is used in mechanics to go between a set of variables and their conjugate variables--for example, velocity and momentum. Regarding geometry, we know that Lagrangian mechanics happens on the tangent space of a manifold while Hamiltonian mechanics happens on the cotangent space of a manifold. Hence, the Legendre transform is a map between the tangent and cotangent spaces that preserves a conserved quantity, transforming from the Lagrangian to the Hamiltonian or vice versa. We will briefly show the theory and derive the Legendre transform for this problem.\\
+
+      \noindent
+      Let $M$ be a manifold and $(E, \pi)$ be a vector bundle. We quickly define a vector bundle~\cite{arthur_diffmans}.
+      \begin{ndefi}[Vector Bundle]
+        A $\mathbbm{k}$-vector bundle over $M$ of rank $k$ consists of; a bundle $\pi : E \to M$ whose fibers are $\mathbbm{k}$-vector spaces and around each point $p \in M$, there is some open $U \subset M$ and a diffeomorphism $\Phi : U \ti \mathbbm{k}^k \to E|U$ such that,
+        \begin{itemize}
+          \item $\pi \circ \Phi = \pi_1$ where $\pi_1 : U \ti \mathbbm{k}^k \to E|U$ is the projection of the first factor, and,
+          \item for each $q \in U$, the map $\Phi_q : \mathbbm{k}^k \to E_q$ such that $\Phi_q(\xi) := \Phi(q, \xi)$ is a $\mathbbm{k}$-linear isomorphism.
+        \end{itemize}
+      \end{ndefi}
+      Let $L : E \to \R$ be a smooth function known as the Lagrangian. The Legendre transformation is a smooth map between $E$ and $E^*$, the dual of $E$,
+      $$ \mathbb{F}L : E \to E^*. $$
+      We define it by, $\mathbb{F}L (v) = \dd(\left. L \right|_{E_x})$, where $E_x$ is the fiber of $E$ over $x \in M$. This says we take a covector and map it to the directional derivative.\\
+
+      \noindent
+      This localises via a trivialisation to just saying,
+      $$ p_i = \pd L {q_i}. $$
+      This is exactly how we get between conjugate and generalised variables in the derivation of Hamilton's equations. Then further, in our case, $E = TM$ and $E^* = T^*M$. This leads to the Legendre transform being an isomorphism and further a diffeomorphism. Then we reach the Legendre transform being,
+      $$ L(v) = H(p) - p \cdot v, $$
+      and further, $\mathbb{F}L = (\mathbb{F}H)^{-1}$, by using the natural isomorphism $TM \cong T^*M$~\cite{holm}. More specifically, we can write,
+      $$ \ip{\mathbb{F}L(v)}{w} := \left.\di{}{s} L(v + sw) \right|_{s=0}. $$
+    }%
+}
+
+\newpage\noindent
+In much the same way as Euler-Poincar\'e, Lie-Poisson reduction is a method to reduce equations into a more amenable form to consider conserved quantities and write numerical methods via symmetries. We will study two main things: reduced Legendre transforms and the non-canonical brackets.
+
+\subsection{The Reduced Legendre Transform}
+The next two subsections follow Holm, Schmah and Stoica~\cite{holm}, but we note that we consider a right-invariant version, while Holm considers a left-invariant system. We also loosely cite Vasylkevych and Masrden's paper~\cite{vasylkevych2007liepoisson}. We first can note some more theories about the regular Legendre transform. We define a class of Lagrangians called hyper-regular Lagrangians,
+\begin{ndefi}[Hyperregular]
+  A hyperregular Lagrangian is a Lagrangian where the Legendre transform is a diffeomorphism, and the Hessian of the Lagrangian is invertible.
+\end{ndefi}
+
+\noindent
+Then, we can say that any system with a hyperregular Lagrangian has a guaranteed Hamiltonian related to it. This is because we have produced a differentiable bijection that is non-degenerate. For the rest of this thesis, we will assume that our Lagrangians are hyperregular. We can now define the reduced Legendre transform,
+\begin{ndefi}[Reduced Legendre transform]
+  Let $L : TG \to \R$ be hyperregular and $\ell : \frg \to \R$ be the reduced Lagrangian defined by $\ell(\xi) = L(e, \xi)$. Then the reduced Legendre transform, $\fl : \frg \to \frg^*$, is defined by,
+  \begin{equation}
+    \ip{\fl (\xi)}{\eta} := \left.\di{}{s} \ell(\xi + s \eta)\right|_{s = 0} = \ip{\fd \ell \xi}{\eta}.\label{eq:rlt}
+  \end{equation}
+\end{ndefi}
+
+\noindent
+We want to show invariance on the Lagrangian leads to invariance in the Hamiltonian. We first define a special type of invariance,
+\begin{ndefi}[G-invariance]
+  Let $G$ be a Group, then we say that a Lagrangian is $G$-invariant if for any $g_0 \in G$,
+  $$ L(qg_0,\, \dot qg_0) = L(q, \dot q)$$
+\end{ndefi}
+
+\begin{nlemma}
+  Let $M$ be a manifold, $L :TM \to \R$ be $G$-invariant, then $\F L$ is $G$-invariant.
+\end{nlemma}
+\begin{proof}
+  Let $g_0 \in G$. We will consider the following calculation,
+  \begin{align*}
+    \ip{\F L(\vec qg_0, \vec{\dot q}_1g_0)}{(\vec qg_0,\, \vec{\dot q}_2g_0)} &= \left.\dit L(\vec qg_0,\, \vec {\dot q}_1g_0 + t\vec {\dot q}_2g_0 )\right|_{t = 0} \\
+    &= \left.\dit L((\vec q,\, \vec {\dot q}_1  + t\vec {\dot q}_2 )g_0)\right|_{t=0} \\
+    &= \left.\dit L(\vec q,\, \vec {\dot q}_1  + t\vec {\dot q}_2 )\right|_{t=0} \\
+    &= \ip{\F L(\vec q, \vec {\dot q}_1)}{(\vec q,\, \vec {\dot q}_2)}
+  \end{align*}
+  Therefore, $\F L(\vec qg_0,\, \vec{\dot q}g_0) = \F L(\vec q,\, \vec{\dot q})$ and so $\F L$ is $G$-invariant.
+\end{proof}
+
+\noindent
+This lemma tells us that if our Lagrangian is $G$-invariant, then the Legendre transform in $G$-invariant and as $H = E \circ (\F L)^{-1}$, where $E$ is invariant from the Lagrangian, the Hamiltonian is invariant! We can now define these reduced quantities similarly to the full quantities, prove similar lemmas, and prove finally that the reduced Hamiltonian is reduced. We call the reduced energy, $\tilde e : \frg \to \R$, defined by
+$$ \tilde e(\xi) = \ip{\fl(\xi)}{\xi} - \ell(\xi), $$
+and the reduced Hamiltonian, $h : \frg^* \to \R$ defined by,
+$$ h(\mu) = \tilde e \circ \fl^{-1}. $$
+We can name $\mu = \fl(\xi)$ and then we get,
+$$ h(\mu) = \tilde e \circ \fl^{-1}(\mu) = \ip{\mu}{\xi(\mu)} - \ell(\xi(\mu)). $$
+
+\begin{nlemma}
+  Let $M$ be a Fr\'echet Manifold, then $L : TM \to \R$ be a $G$ invariant Lagrangian. If $E$ is full energy, and $\tilde e$ is reduced energy corresponding to $L$ and $\xi = gg^{-1}$, then,
+  $$ \tilde e(\xi) = E(e,\, \xi) = E(g\,\dot g). $$
+  Suppose $L$ is hyperregular and $H$ is the Hamiltonian corresponding to $L$. If $\mu = g^{-1}\a$, then,
+  $$ h(\mu) = (e, \xi) = H(g, \a) $$
+\end{nlemma}
+\begin{proof}
+  We consider the full energy, then reduce,
+  \begin{align*}
+    \ip{\F L(g, \dot g)}{(g, \dot g)}  - L(g, \dot g) &= \ip{\F L(gg^{-1}, \dot g g^{-1})}{(gg^{-1}, \dot gg^{-1})}  - L(gg^{-1}, \dot gg^{-1}) \\
+    &= \ip{\F L(e, \xi)}{(e, \xi)}  - L(e, \xi) \\
+    &= \ip{\fl(\xi)}{(e,\xi)} - \ell(\xi) \\
+    &= \ip{(e, \fl(\xi))}{(e,\xi)} - \ell(xi) \\
+    &= \ip{\fl(\xi)}{\xi} - \ell(\xi) = \tilde e(\xi).
+  \end{align*}
+  Then, the final part of the proof follows from energy and the Legendre transform being $G$-invariant. Then noting that $H = E \circ (\F L)^{-1}$ and running through a reduction procedure and noticing the reduction variable ends up being $g^{-1}\a$.
+\end{proof}
+
+\subsection{Derivation of Lie-Poisson}
+We will now move from the Euler-Poincar\'e equations via the reduced Legendre transform to the Lie-Poisson equations. The Legendre transform moves invariances from the Lagrangian to the Hamiltonian side. The derivation is very similar to Hamilton's equations derivation. We consider the following application of product rule and Equation \ref{eq:rlt},
+\begin{align*}
+  \fd h \mu &= \ip{\mu}{\fd \xi \mu} - \ip{\fd \ell \xi}{\fd \xi \mu} + \xi(\mu) \\
+  &= \ip{\mu}{\fd \xi \mu} - \ip{\mu}{\fd \ell \mu} + \xi(\mu) \\
+  &= \xi(\mu).
+ \end{align*}
+\noindent
+Given this, we can now take the basic Euler-Poincar\'e equations and then rewrite them as follows,
+$$ \dot \mu = - \ad^*_{\fd h \mu} \mu. $$
+This is the Lie-Poisson Equation! An equivalent derivation is from the right invariant Poisson bracket. For any two smooth functions on the manifold $F, G : M \to \R$, we can define the canonical Poisson bracket as,
+$$ \{F, G\}^{\text{right}}_{\frg^*} = \ip{\mu}{\left[ \fd F \mu ,\, \fd G \mu \right]}. $$
+The Lie-Poisson reduction theorem is redundant as we will reduce on the Lagrangian side. However for completeness we include it,
+\begin{nthm}[Lie-Poisson Reduction]
+  Let $G$ be a Lie Group, then $\frg^*$ be the dual Lie algebra. If $\mathcal{F}_R(\frg^*)$ is the set of right $G$-invariant functions, then the right Lie-Poisson bracket is,
+  $$ \{F, G\}^{\text{right}}_{\frg^*} = \ip{\mu}{\left[ \fd F \mu ,\, \fd G \mu \right]}. $$
+  Further, this relates to the reduced bracket on $T^*G / G$ via the isomorphism,
+  $$ \psi : (T^**G / G) \mapsto \frg^* $$
+  $$ [g,\,\a]\mapsto g^{-1}\a $$
+\end{nthm}
+\noindent
+Further, we have a reconstruction equation,
+$$ \dot g = g \fd h \mu. $$
+This can be proven from momentum maps, from Appendix {\color{red} INSERT APPENDIX}
+
+\subsection{Lie-Poisson Reduction for advected quantities}
+We note that given a Lie algebra $\mathfrak{s} = \frg \rtimes V^*$. Then, we can start to derive the same equations as above for semidirect products. We consider the following two actions: the adjoint and the coadjoint. We can write these as,
+% \begin{nprop}[Adjoint Action]
+%   The adjoint action on $\frg \ltimes V^*$ is,
+%   $$ \Ad_{(g,v)}(\xi, u) = (\ad_g\xi,\, gu - \Ad_g\xi v) $$
+% \end{nprop}
+% \begin{proof}
+%   Considering the semidirect product algebra, we can write the following,
+%   \begin{align*}
+%     \Ad_{(g,\,v)}(\xi,\, u) &= (g,\, v) * (\xi,\, u) *  (g,\, v)^{-1} \\
+%     &= (g\xi,\, v + gu) * (g^{-1},\, -g^{-1}v) \\
+%     &= (g\xi g^{-1},\, v + gu - g\xi g^{-1} v) \\
+%     &= (\Ad_g \xi,\, gu - \Ad_g\xi) + (\Ad_g \xi,\, v) = (\Ad_g \xi,\, gu - \Ad_g\xi).
+%   \end{align*}
+% \end{proof}
+\begin{nprop}[Adjoint Action]
+  The adjoint action on $\frg \ltimes V^*$ is,
+  $$ \Ad_{(g,v)}(\xi, u) = (\Ad_g\xi,\,  ug^{-1} + vg^{-1}\Ad_g\xi) $$
+\end{nprop}
+\begin{proof}
+  We consider the following calculation,
+  \begin{align*}
+    \Ad_{(g,v)}(\xi, u) &= (g,\, v) * (\xi,\, u) * (g,\, v)^{-1} \\
+    &= (g\xi,\, u + v\xi) * (g^{-1},\, -vg^{-1}) \\
+    &= (g\xi g^{-1},\, -vg^{-1} + (u + v\xi)g^{-1}) \\
+    &= (g\xi g^{-1},\, -vg^{-1} + ug^{-1} + v\xi g^{-1}) \\
+    &= (\Ad_g \xi,\, vg^{-1}\Ad_g \xi - vg^{-1}),
+  \end{align*}
+  as required.
+\end{proof}
+
+\noindent
+We can do something similar for the coadjoint action,
+\begin{nprop}
+   The coadjoint action on $\frg \lti V^*$ is,
+   $$ \Ad^*_{(g,\, v)^{-1}} (\mu,\, a) = (\Ad_{g^{-1}}\mu - g \diamond (v^{-1}ga) ,\, g\diamond a) $$
+\end{nprop}
+\begin{proof}
+  We consider the trace pairing of the coadjoint action and then construct the required result.
+  \begin{align*}
+    \ip{\Ad^*_{(g,\, v)^{-1}} (\mu,\, a)}{(\nu_1,\, \nu_2)} &= \ip{(\mu,\, a)}{\Ad_{(g,\,v)^{-1}} (\nu_1,\, \nu_2)} \\
+    &= \ip{(\mu,\, a)}{(g,\,v)^{-1}(\nu_1,\, \nu_2)(g,\,v)} \\
+    &= \ip{(\mu,\, a)}{ (g^{-1},\, -vg^{-1})(\nu_1,\, \nu_2)(g,\,v) } \\
+    &= \ip{(\mu,\, a)}{(g^{-1}\nu_1,\, \nu_2 - vg^{-1}\nu_1)(g,\, v)} \\
+    &= \ip{(\mu,\, a)}{(g^{-1}\nu_1 g,\,v + (\nu_2 - vg^{-1}\nu_1)g)} \\
+    &= \ip{(\mu,\, a)}{(g^{-1}\nu_1 g,\,v + \nu_2g - vg^{-1}\nu_1g} \\
+    &= \left(\ip{\mu}{\Ad_{g^{-1}}\nu_1},\, \ip{(a}{v + \nu_2g - vg^{-1}\nu_1g )}\right) \\
+    &= \left( \ip{\Ad_{g^{-1}}^*\mu}{ \nu_1} ,\, \ip{a}{v} + \ip{a}{\nu_2g} - \ip{a}{vg^{-1}\nu_1g}\right) \\
+    &= \left( \ip{\Ad_{g^{-1}}^*\mu}{ \nu_1} ,\, \ip{g \diamond a}{\nu_2} - \ip{g \diamond (v^{-1}ga)}{\nu_1}\right) \\
+    &= \ip{(\Ad_{g^{-1}\mu} -g \diamond (v^{-1}ga),\, g \diamond a)}{(\nu_1,\, \nu_2)}.
+  \end{align*}
+  Therefore,
+  $$ \Ad^*_{(g,\, v)^{-1}} (\mu,\, a) = (\Ad_{g^{-1}}\mu - g \diamond (v^{-1}ga) ,\, g\diamond a) $$
+\end{proof}
+\noindent
+We note the following facts about the semidirect products and Lie brackets,
+$$  $$
+\noindent
+We now recall the definition of the Lie-Poisson bracket we gave for the basic Lie-Poisson equations and apply it to $\mathfrak{s}^* = \frg^* \ti V^*$.
+\begin{equation}
+  \{F, G\}_{\frs} = \ip{(\mu, a)}{\left[ \fd F {(\mu,\, a)},\, \fd G {(\mu,\, a)} \right]}.\label{eq:lp_aq}
+\end{equation}
+We can now prove,
+\begin{nlemma}
+  The Lie-Poisson bracket for the Lie-Poisson equations with advected quantities is,
+  $$ \{F,\, G\}_{\frs^*} = \ip{\mu}{\left[ \fd F \mu,\, \fd G \mu \right]} + \ip{a}{\fd F \mu \fd G a - \fd G \mu \fd F a} $$
+\end{nlemma}
+\begin{proof}
+  Consider Equation \ref{eq:lp_aq}, and the following computation,
+  \begin{align*}
+    \{F,\, G\}_{\frs^*} &= \ip{(\mu, a)}{\left[ \fd F {(\mu,\, a)},\, \fd G {(\mu,\, a)} \right]} \\
+    &= \ip{(\mu, a)}{\left[ \left( \fd F \mu,\, \fd F a \right),\, \left( \fd G \mu,\, \fd G a \right) \right]} \\
+    &= \ip{(\mu,\, a)}{-\left( \left[\fd F \mu,\, \fd G \mu\right],\,\fd G a\fd F \mu - \fd F a\fd G \mu \right)} \\
+    &= \ip{\mu}{\left[ \fd F \mu,\, \fd G \mu \right]} + \ip{a}{\fd F \mu\fd G a - \fd G \mu\fd F a}.
+  \end{align*}
+\end{proof}
+
+\noindent
+We can now further manipulate to prove the following,
+\begin{nthm}[Lie-Poisson Equations for advected parameters]
+  The Lie-Poisson equations for a system with advected parameters are,
+  \begin{equation}
+    \begin{split}
+      \di h t &= -\ad^*_{\fd h t} \mu + \fd h a \diamond a \\
+      \di a t &= \fd h \mu a
+    \end{split}
+  \end{equation}
+\end{nthm}
+\begin{proof}
+  Consider the following calculation,
+  \begin{align*}
+        \{F, H\}_\frs &= \ip{\mu}{\left[ \fd F \mu,\, \fd G \mu \right]} + \ip{a}{\fd F \mu\fd G a - \fd G \mu\fd F a}\\
+        &= \ip{\mu}{-\left[ \fd G \mu,\, \fd F \mu \right]} + \ip{a}{\fd F \mu\fd G a} - \ip{a}{\fd G \mu\fd F a}\\
+        &= \left( \ip{-\ad^*_{\fd G \mu} \mu}{\fd F \mu},\, \ip{\fd G a \diamond a}{\fd F \mu} - \ip{a\fd G \mu}{\fd F a} \right)\\
+        &= \ip{\left( - \ad^*_{\fd G \mu}\mu + \fd G a \diamond a,\, -\fd G a a \right)}{\left( \fd F\mu,\, \fd F a \right)}
+  \end{align*}
+  Then, we can decompose the inner products and pairings. Let $G  =h$, and we can now write,
+  \begin{equation}
+    \begin{split}
+      \di h t &= -\ad^*_{\fd h t} \mu + \fd h a \diamond a \\
+      \di a t &= \fd h \mu a
+    \end{split}
+  \end{equation}
+\end{proof}

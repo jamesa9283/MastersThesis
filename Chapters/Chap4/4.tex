@@ -1,0 +1,34 @@
+% !TEX root = ../../thesis.tex
+
+\section{Rotating Stratified Fluid}
+We finally aim to derive the Euler equations for a rotating stratified fluid. We will follow a similar procedure to the example after the advected quantity theorem. We can take the Lagrangian,
+$$ L = \int_M \left[ \rho (1 + b)\left( \frac{1}{2}|\dot\eta^2| + \dot \eta \cdot \vec R - gz \right) - p(\rho - 1) \right]. $$
+We can now reduce this to the following reduced LagrangianLagrangian, much like the compressible fluid example.
+$$ \ell(\vec u,\, D,\, b) = \int_M \left[ \rho_0(1 + b)D \left( \frac{1}{2}|\vec u|^2 + \vec u \cdot \vec R - gz \right) - p(D-1) \right]. $$
+To deal with more conserved quantities, the Euler-Poincar\'e equations become,
+\begin{equation}
+  \pdt \fd \ell \xi = -\ad^*_\xi \pd \ell \xi + \pd \ell a \diamond a + \pd \ell b \diamond b,\label{eq:ep_ad_two}
+\end{equation}
+where $a$ and $b$ are advected quantities. These advected quantities satisfy,
+$$ \left( \pdt + \pounds_{\vec u} \right)a = \left( \pdt + \pounds_{\vec u} \right)b = 0. $$
+\noindent
+We can now find the variational derivatives. By performing the calculations, we arrive at the following.
+\begin{align*}
+  \ip{\fd \ell {\vec u}}{\phi} &= \ip{\rho_0 D (1 + b)(\vec u^\flat + \vec R )}{\phi} \\
+  \ip{\fd \ell b}{\phi} &= \ip{\rho_0 D \left( \frac{1}{2}|\vec u^\flat|^2 + \vec u \cdot \vec R - gz \right)}{\phi} \\
+  \ip{\fd \ell D}{\phi} &= \ip{\rho_0 (1+b) \left( \frac{1}{2}|\vec u^\flat|^2 + \vec u \cdot \vec R - gz \right) - p}{\phi}.
+\end{align*}
+These can now be plugged into Equation \eqref{eq:ep_ad_two}. We then get,
+\begin{align*}
+  D(1 + b)\pdt (\vec u^\flat + \vec R) &+ D(1 + b)\pounds_{\vec u} (\vec u^\flat + \vec R) + D\left(\frac{1}{2}|\vec u^\flat|^2 + \vec u^\flat \cdot \vec R - gz\right) \diamond b \\
+  &+ (1+ b)\left(\frac{1}{2}|\vec u^\flat|^2 + \vec u^\flat \cdot \vec R - gz\right) \diamond D = 0.
+\end{align*}
+This isn't very manageable, so we can simplify and put this equation back into coordinates. This leaves us with,
+$$ \pd {\vec u^\flat} t + \dd (\vec u^\flat \cdot \vec R) - g\vec {\hat z} + P(\vec u^\flat,\, b,\, D) = 0. $$
+We note that $P$ is our pressure gradient term and is defined by,
+$$ P(\vec u^\flat,\, b,\, D) = \frac{1}{\rho_0}\left[ \frac{\left( \frac{1}{2}|\vec u^\flat|^2 + \vec u^\flat \cdot \vec R - gz \right)\diamond b}{1 + b} + \frac{\left( \frac{1}{2}|\vec u^\flat|^2 + \vec u^\flat \cdot \vec R - gz \right)\diamond b}{D} \right]. $$
+
+\noindent
+For these equations, we have the usual conserved quantities, and Noether Theorem tells us that,
+$$ \oint_{\g} \frac{1}{D}\fd \ell {\vec u} = \oint_{\g} \rho_0 (1 + b)(\vec u + \vec R)  = \oint_{\g} \nab p \cdot \dd \vec x. $$
+Further, the advection equation for $b$ gives us potential vorticity conservation given $q = \nab b \cdot \tcurl(\vec u + \vec R)$.

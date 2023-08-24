@@ -1,0 +1,97 @@
+% !TEX root = ../../thesis.tex
+
+\subsection{Reeb Graphs}
+Another interesting way to derive the conserved quantities of a Hamiltonian system and derive all of the Casimir's of the system is to consider Reeb graphs of the manifold you work over. In this section, we will review and expose the work of Izosimov and Khesin~\cite{tmih,izosimov2017classification}. We will return to the problem we left in the previous section of proving in 2D that Enstrophy is conserved in the Hamiltonian form of the Euler Equations. There are two main theorems we are interested in, which give the following correspondences,
+
+\[\begin{tikzcd}
+	{\text{Reeb Graphs}} & {\text{Morse Functions}} & {\text{Casimirs}}
+	\arrow[tail reversed, from=1-1, to=1-2]
+	\arrow[from=1-3, to=1-2]
+\end{tikzcd}\]
+\noindent
+The two theorems that relate to this diagram are,
+\begin{nthm}[Reeb Graphs give Morse Functions]
+	\label{thm:rggmf}
+  The mapping assigning the measured Reeb graph $\G_F$ to a simple Morse function $F$ provides a one-to-one correspondence between simple Morse functions on $M$ up to symplectomorphism and measured Reeb graphs compatible with $M$.
+\end{nthm}
+
+\begin{nthm}[Casimirs are moments of the Morse functions]
+	\label{thm:camotmf}
+  A complete set of Casimirs to the 2D Euler Equation in a neighbourhood of a Morse-type coadjoint orbit is given by the momenta,
+  $$ I_{i,e} = \int_{M_e} F^i \o, \qquad i \in \N, $$
+  for each $e \in \G$ and all circulations of the velocity $v$ over cycles in the singular levels of the vorticity function $F$ on $M$.
+\end{nthm}
+
+\noindent
+We will now define Morse functions and measures reeb graphs and then give proof of Enstrophy being conserved in the 2D Euler Equations.
+\begin{ndefi}[Morse Function]
+  Let $M$ be a closed connected space, then a morse function $F : M \to \R$ is called simple if any level set of $F$ contains at most one critical point.
+\end{ndefi}
+\noindent
+Now, we can associate a graph with a morse function. To do this, we take each critical point of $F$ and place a critical point of the graph there, as shown in Figure \ref{fig:reeb}.
+\begin{figure}[!ht]
+\centering
+\resizebox{0.6\textwidth}{!}{\input{./img/morse.pdf_tex}}
+\caption{The Reeb Graph of a manifold.}
+\label{fig:reeb}
+\end{figure}
+\noindent
+We can now define a Reeb graph as follows,
+\begin{ndefi}[Reeb Graph]
+  A Reeb  graph, $(\Ga,\, f)$ is an oriented smooth connected finite graph $\Ga$ with a continuous function $f : \Ga \to \R$ which satisfy the following,
+  \begin{enumerate}
+    \item All vertices of $\Ga$ are either $1$-valent or $3$-valent,
+    \item For each $3$-valent vertex, there are either two incoming and two outgoing or vice versa,
+    \item The function $f$ is strictly monotonous on each edge, and the edges of $\Ga$ are oriented towards the direction of increasing $f$.
+  \end{enumerate}
+\end{ndefi}
+\noindent
+It is a standard result in Morse theory that a graph $\Ga_F$ associated with a simple Morse function $F : M \to \R$ on an orientable connected surface is a Reeb graph. Further, if this surface is endowed with an area or symplectic form $\o$, then we can take the pullback of that form and define a measured reeb graph.
+\begin{ndefi}[Measured Reeb Graph]
+  Let $(\Ga,\, f)$ be a Reeb graph associated with a surface with symplectic form $\o$. Then we can define a measure $\mu = f^*\o$. Then, a measured Reeb graph is a Reeb graph with a measure, $(\Ga,\, f,\, \mu)$.
+\end{ndefi}
+\noindent
+We can say that the simple Morse functions are the same as the measured Reeb graphs up to symplectomorphism under the following compatibility conditions.
+\begin{ndefi}[Compatible]
+  We say that a closed compact surface endowed with a symplectic form, $(M,\, \o)$, is compatible with a measured reeb graph, $(\Ga,\, f,\, \mu)$ if the following are satisfied,
+	\begin{enumerate}
+		\item The dimension of the first homology group~\cite{hatcher}, $H_1(\Ga,\, \R)$ is equal to the genus of $M$,
+		\item The volume of $\Ga$ with respect to $\mu$ is the same as the volume of $M$,
+		$$ \int_\Ga \dd \mu = \int_M \o. $$
+	\end{enumerate}
+\end{ndefi}
+\noindent
+Then from this Theorem \ref{thm:rggmf} follows.
+
+\subsubsection{Classifying coadjoint orbits}
+We note that the coadjoint action of $\sdm$ on $\mathfrak{svect}(M)$ is just a symplectomorphism, a volume preserving map,
+$$ \Ad_\Phi^* [\a]= [\Phi^*\a]. $$
+The orbits of this action can be described by $\fcurl : \O^1(M) / \dd \O^0 (M) \to C^\infty(M)$ given by vorticity,
+$$ \fcurl [\a] := \frac{\dd \a}{\o}. $$
+\noindent
+This mapping is equivariant, which means that if two maps differ by a symplectomorphism, they are in the same coadjoint orbit as each other. Hence, all the simple Morse functions are in one coadjoint orbit.
+\begin{ndefi}[Morse-Type forms]
+  We say that a coset of $1$-forms, $[\a] \in \mathfrak{svect}^*(M)$, is morse type if $\fcurl[\a]$ is a simple morse function. A coadjoint orbit is Morse-type if any coset is Morse-type.
+\end{ndefi}
+\noindent
+For the remainder, let $[\a] \in \mathfrak{svect}^*(M)$ be morse-type and $F := \fcurl[\a]$. Then $\Ga_F$ is invariant under the coadjoint action! However, if $M$ is not simply connected, our theory fails as the graph branches and causes issues. Hence, we use a circulation function to deal with branches. Let $\pi : M \to \Ga_F$ be the natural projection. Take any point $x$ in the interior of some edge $e \in \Ga_F$. Then $\pi^{-1}(x)$ is a circle. It is naturally oriented, and the integral does not depend on $\a$. Hence we have a function $\fc : \Ga_F \sm V(\Ga_F) \to \R$ defined by,
+$$ \fc(x) := \int_{\pi^{-1}(x)} \a. $$
+We now define yet another graph,
+\begin{ndefi}[Circulation Measured Reeb Graph]
+  A circulation measured Reeb graph, $(\Ga,\, f,\, \mu,\, \fc)$ , is a measured Reeb graph endowed with a circulation function $\fc : \Ga_F \sm V(\Ga_F) \to \R$ defined by,
+	$$ \fc(x) := \int_{\pi^{-1}(x)} \a. $$
+\end{ndefi}
+\noindent
+We note that non-circulation graphs work for us because Fluid Dynamics problems only have `pants decompositions' and `Dehn half twists'. These more complicated ideas don't arise in this example but should be considered for more complex phenomena. We can now prove that the following momenta,
+$$ m_{i,e}(F) = \int_{M_e} F^i\o $$
+form a complete set of invariants for the 2D Euler Equations.
+\begin{nthm}
+  Let $(M,\, \o)$ be a closed connected symplectic surface, and let $F$ and $G$ be simple morse functions on $M$. Then let $\phi : \Ga_F \to \Ga_G$ be an isomorphism of abstract directed graphs which preserve moments on all edges. Then $\Ga_F$ and $\Ga_G$ are isomorphic as measured in Reeb graphs, and there is a symplectomorphism $\Phi : M \to M$ such that $\Phi_* F = G$
+\end{nthm}
+\begin{proof}
+  We first construct two intervals of the two Reeb graphs. Let $[v,\, w] \in \Ga_F$. Then we push forward by the measure using a homomorphism $f : e \to [v,\, w]$ we get a measure $\mu_f$ on an interval, $I_f = [f(v),\, f(w)]$ and similarly $I_g = [g(\phi(v)),\, g(\phi(w))]$ for $g : e \to [g(v),\, g(w)]$, we get a measure $\mu_g$. These intervals have the same moments. We aim to prove that $\mu_f = \mu_g$. This follows from the Hausdorff moment problem. Consider an interval $I$ that contains both $I_f$ and $I_g$; then the measures are measures of $I$ supported on their respective intervals. Then, by the Hausdorff moment problem, $\mu_f = \mu_g$.
+\end{proof}
+\noindent
+The above proves that if we take $F$ as a Morse vorticity function for an ideal flow $v$ on a closed surface $M$ associated with a Reeb graph $\Gamma$. Then the moments of that graph $m_{i,e}(F)$ are just the generalised enstrophies,
+$$ m_{i,e}(F) = \int_{M_i} F^i \o = \int_{M_i} \phi(\o) \dd x \wedge \dd y, $$
+in two dimensions. Then, you can single each conserved quantity out by Theorem \ref{thm:camotmf}, and we also have these conserved quantities of the 2D Euler Equations.

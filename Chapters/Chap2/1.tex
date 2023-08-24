@@ -1,0 +1,68 @@
+% !TEX root = ../../thesis.tex
+
+\chapter{Reduction, Equations and Brackets}
+\epigraph{Groups will be known by their actions}{Guillermo Moreno}
+
+\noindent
+In 1757, Euler wrote the following equation in the paper `Principes g\'en\'eraux du mouvement des fluides'.
+\begin{align*}
+  \pd {\vec u} t + ({\vec u} \cdot\nab){\vec u} &= - \nab p\\
+  \nab \cdot {\vec u} = 0.
+\end{align*}
+These are known as Euler's equations for perfect incompressible fluid flow. In the Chapter, we will take these equations, pull them apart and put them back together. We will study a more general theory of these equations by opening the eyes of the reader to fluid dynamics on general manifolds. On $\R^n$, conserved quantity and theory can be obscured by the space's flatness or even simplicity. We will lift these equations to curved surfaces and aim to prepare for the next chapter, where we will study conserved quantities. We first can manipulate these equations into something more amicable to generalise. We will then generalise them and prove that these are the generalised Euler equations by deriving them from the Lie-Poisson reduction of a Hamiltonian. This whole chapter draws from and builds on several sources,~\cite{tmih,holm,arthur,holm1998eulerpoincare,gary_fluids,gaybalmaz2009geometric,Kolev_2007,diffeost,shkoller2000incompressible,marsden1999geometry,vasylkevych2007liepoisson,}
+
+\section{Generalisation of Eulers Equations}
+\noindent
+We can replace the $\vec u \cdot \nab$ with a covariant derivative. We know that,
+$$ [\vec u \cdot \nab]_i = u^i \pd {u^i} {x^i}. $$
+However, this is very similar to the covariant derivative,
+$$ [\nab_{\vec v}\vec u]_i = \left(v^ju^i\Gamma_{ij}^k + v^j \pd {u^k}{x^j}\right)\vec e_k. $$
+We know that $\Gamma_{ij}^k$ is the Christoffel Symbol and represents some notion of twistyness of the space, so $\Gamma_{ij}^k = 0$ for $\R^n$. Hence, for flat space,
+$$ \vec u \cdot \nab = \nab_{\vec v}\vec u. $$
+Therefore, we first propose the generalisation of Euler equations by writing,
+\begin{equation}
+  \begin{split}
+    \pd {\vec u} t + \nab_{\vec u}{\vec u} &= - \nab p\\
+    \nab \cdot {\vec u} = 0.
+  \end{split}
+  \label{eq:CVDEulerEqns}
+\end{equation}
+
+\noindent
+We can rewrite the covariant derivative with something more geometric. We want to refer to the manifold that we work on explicitly. Let $M$ be a manifold with the Riemannian metric, and then we can prove the following theorem using the metric.
+\begin{nthm}
+  Let $M$ be a manifold with Riemannian metric. The Lie derivative of the one-form corresponding to a vector field on a $M$ differs from the covariant derivative along itself by a complete derivative.
+  $$ \pounds_v (v^\flat) = (\nab_vv)^\flat + \frac{1}{2}\dd \ip{v}{v}. $$
+\end{nthm}
+\begin{proof}
+  Assume we have $v$, $w$ such that they commute. That is, $\{v, w\} = 0$. Recall the translation property of the Lie derivative and the covariant derivative,
+  $$ \pounds_a \ip b c = \ip{\nab_a b}{c} + \ip{b}{\nab_a c}. $$
+  If we specialise this formula, we can get,
+  \begin{align}
+    \ip{\nab_w v}{v} &= \frac{1}{2}\dd\ip v v (w). \label{eq:211a}\\
+    \pounds_v \ip w v &= \ip{\nab_v w}{v} + \ip{w}{\nab_v v}.\label{eq:211b}
+  \end{align}
+  By noting that $\pounds_v f = \dd f(v)$. As $\{v, w\} = 0$, then,
+  \begin{equation}
+    \ip{\nab_v w}{v} = \ip{\nab_w v}{v}.\label{eq:211c}
+  \end{equation}
+  Therefore, we can substitute Equations \ref{eq:211a} and \ref{eq:211c} into Equation \ref{eq:211b}. This yields,
+  $$ \pounds_v \ip w v = \ip{\nab_v v}{w} + \frac{1}{2}\dd \ip v v (w). $$
+  It suffices to show that, $\pounds_v \ip w v = (\pounds_v v^\flat) (w)$. This follows from the naturality rule of the Lie derivative,
+  $$ \pounds_\xi (v^\flat (w)) = (\pounds_\xi v^\flat) (w) + v^\flat (\pounds_\xi w). $$
+  Then let $\xi = v$,
+  $$ \pounds_v (v^\flat(w)) = (\pounds_v v^\flat)(w). $$
+  Now given that $\flat$ is the musical ismorphism, we know $\pounds_v \ip v w = \pounds_v (v^\flat(w))$. Therefore,
+  $$ \pounds_v v^\flat = (\nab_v v)^\flat + \frac{1}{2}\dd \ip v v. $$
+\end{proof}
+
+\noindent
+That is, we can write Equation \ref{eq:CVDEulerEqns}, as the following,
+\begin{equation}
+  \begin{split}
+    \pd {\vec u^\flat} t &= -\pounds_v \vec u - \dd f \\
+    \dd \vec u^\flat &= 0
+  \end{split}
+\end{equation}
+
+% Conserved Quantity Time!

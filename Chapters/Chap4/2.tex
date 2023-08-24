@@ -1,0 +1,54 @@
+% !TEX root = ../../thesis.tex
+
+\section{M\"{o}bius Strip}
+
+The M\"obius strip brings a new level of complexity to this theory. The M\"obius strip is a non-orientable surface. This means that if you send a vortex around the strip spinning clockwise, it returns anticlockwise rotation. This obviously can cause issues for the Euler Equations and the theory surrounding them. In a paper by Vanneste on this area, he produces some numerical simulations and equations for the M\"obius strip~\cite{vanneste_2021}. We will first show the group that relates to this problem and then argue why this group is Fr\'echet Group. Then, we will discuss conserved quantities of this system.
+
+\begin{figure}[!ht]
+\centering
+\resizebox{0.45\textwidth}{!}{\input{./img/mobius.pdf_tex}}
+\caption{Mobius Strip.}
+\label{fig:mobius}
+\end{figure}
+
+\noindent
+We first note the M\"obius strip diagram above and consider the following question.
+\begin{question}
+  How do we define the M\"obius strip amicably?
+\end{question}
+\noindent
+The answer to this is quite simple. Consider the following diagram.
+
+\begin{figure}[!ht]
+\centering
+\resizebox{0.35\textwidth}{!}{\input{./img/mobius2.pdf_tex}}
+\caption{Plane representation of a Mobius Strip.}
+\label{fig:mobius}
+\end{figure}
+
+\noindent
+This is a M\"obius strip. We note that we can connect the two arrowed sides by performing a half twist and glueing. This gives rise to the following definition of a Mobius Strip. Without loss of generality, imagine we are working on the square, $[-1,\,1]\ti[-1,\,1]$. This holds as we can nondimensionalise in the $x$ and $y$ directions and get a unit square. Then, we can define our manifold as,
+$$ M = \{(x,\,y) \in [-1,\,1]\ti[-1,\,1] : -x \sim x \text{ when } y = 1\}. $$
+We can turn our manifold into boundary conditions on our diffeomorphism group. There has been much contention about what happens on the boundary of the M\"obius strip when we consider the tangent space. There are a few ways to deal with this; the easiest is to set the vector fields to vanish at the boundary. Hence, our diffeomorphism group is,
+\begin{align*}
+  G = \{\eta \in\sdm  \colon \eta(-1,\,y) = \eta(1,\, -y),\, \eta(x,\,-1) = \eta(x,\,1) = \Id\}.
+\end{align*}
+\noindent
+Now we can find the tangent space and say the Lie algebra is isomorphic to,
+$$ \frg \cong \{\xi \in \mathfrak{X}(M)\colon\, \xi(0,\,y) = \xi(1,\,-y),\, \xi(x,\,-1) = \xi(x,\, 1) = 0\}. $$
+Then, this is a Lie algebra because it doesn't introduce discontinuities into the system and performs a smooth genus-changing deformation between the square and the strip.\\
+
+\noindent
+Now, we use the theory of subsection \ref{ss:man_w_b}. This produces similar equations to the above, just with different boundary conditions. This produces,
+\begin{equation}
+  \begin{split}
+    \pd {\vec u^\flat} t &= \pounds_{\vec u} \vec u^\flat + \dd f \qquad \vec u \in \mathfrak{X}([-1,\,1]^2)\\
+    \vec u(-1,\,y) &= \vec u(1,\, -y) \\
+    \vec u(x,-1) &= \vec u(x,\,1) = 0
+  \end{split}
+\end{equation}
+where $f$ is a $0$-form.\\
+
+\noindent
+As we have a continuous manifold with just a boundary condition that vanishes. Our Casimir functions will be equivalent to Vannaste's, the generalised enstrophies. However, the non-orientability of the M\"obius strip produces the new constraint only for even functions in the enstrophy. This is because of the well-known fact that we can't integrate over non-orientable surfaces. Hence, we turn to the theory of pseudo-forms. The theory can be found in Frankel's Geometry of Physics~\cite{frankel}. This leads to the idea that we need even functions, $f$, to assert the following are conserved,
+$$ C_f(\o) = \int_M f(\o)\mu. $$

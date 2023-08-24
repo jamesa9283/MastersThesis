@@ -1,0 +1,89 @@
+% !TEX root = ../../thesis.tex
+
+\section{Casimirs}
+First, we will consider the Hamiltonian formalism to find conserved quantities with the idea of Casimir's. Then, we will briefly examine the ideas surrounding Reeb graphs and their application to this area. We cite Kolev's paper~\cite{Kolev_2007} as a good overview of this area.
+
+\subsection{The Arnold Bracket}
+As stated by Arnold in Topological Methods in Hydrodynamics~\cite{tmih}, we can find a Hamiltonian system description through a Poisson bracket. That is,
+$$ \dot F = \{F, H\}. $$
+\noindent
+To be able to use these brackets, we have to show that on a space of smooth functions, $\mathcal{F}$, they create a Hamiltonian structure,
+\begin{ndefi}[Hamiltonian Structure]
+  A Hamiltonian structure is a bilinear operation, $\{\cdot,\,\cdot\}$ on the space of smooth functionals, $\mathcal{F}$, that satisfies the following, for any $F,G \in \mathcal{F}$,
+  \begin{enumerate}
+    \item $\{F,\, G\} \in \mathcal{F}$,
+    \item $\{F,\, G\} = -\{G,\, F\}$,
+    \item $\{\{F,\, G\},\, H\} + \{\{G ,\, H\},\, F\} + \{\{H,\, F\},\, G\} = 0$.
+  \end{enumerate}
+\end{ndefi}
+\begin{remark}
+   The well-trained eye will notice that $\{\cdot,\,\cdot\}$ isn't technically a Poisson bracket as it doesn't have a Liebnitz rule. This is because local functionals don't necessarily have this property.
+\end{remark}
+\noindent
+Our first bracket is the Arnold bracket. For functionals with $L^2$ gradients on the Lie algebra, it is defined as,
+$$ \{F,\, G\}(\o) = \int_M \o\left( \fd F \o,\, \fd G \o \right) $$
+\noindent
+Proving this provides a Hamiltonian structure is a quick calculation of inner products. Further, this bracket is the Hamiltonian structure that relates to the incompressible Euler Equations. Recall we can write $\tcurl$ as follows,
+$$ \mu \cont \tcurl u = \dd u^\flat, $$
+and we know that the curl of a vector field relates to an exact $2$-form. Hence, we can write an inertia operator $A : \sv(M) \to \sv^*(M)$ defined by $u \mapsto \tcurl u$. Then we can say that $u = A^{-1}\o$ is the unique solution of the Euler Equations subject to,
+$$ \tcurl u = \o \qquad \tdiv u = 0 \qquad u \cdot n = 0 \text{ on }\partial M. $$
+Our Hamiltonian is going to be,
+$$ H(\o) = \int_M |\vec u|^2 \mu, $$
+and $\dd H = u = A^{-1}\o$. Now we consider the $L^2$ gradient of $\vec u$, and we can derive,
+\begin{align*}
+  \int_M \partial_t \vec u \cdot \d F &= \int_M \partial_t (A^{-1}\o) \cdot \d F \\
+  &= \int_M \o \cdot (\d F \ti \vec u)\\
+  &= \int_M \d F \cdot (\vec u \ti \o).
+\end{align*}
+Therefore, our bracket provides the Hamiltonian system modulo a 1-form,
+$$ \partial_t \vec u = \vec u \ti \o. $$
+This is the vorticity form of the Euler Equations. We can consider the pullback of this functional to get something more amicable to work with,
+\begin{equation}
+  \{F,\, G\}(\o) = \int_M \tcurl {\vec u} \cdot \left( \fd F {\vec u} \ti \fd G {\vec u}  \right).\label{eq:pb_bracket}
+\end{equation}
+We can show that Helicity is conserved by finding the Casimir. We define a Casimir as,
+\begin{ndefi}[Casimir]
+  We define the Casimir as a smooth function $C : M \to \R$,
+  $$ \{C, H\} = 0. $$
+\end{ndefi}
+\noindent
+Now we find the Casimirs of the bracket \eqref{eq:pb_bracket}. We consider the following argument,
+\begin{align*}
+  0 &= \int_M \tcurl {\vec u} \cdot \left( \fd C {\vec u} \ti \fd H {\vec u}  \right)\mu \\
+  &= \int_M \tcurl {\vec u} \cdot \left( \fd C {\vec u} \ti {\vec u}  \right)\mu \\
+  0 &= - \int_M \fd C {\vec u} \cdot \left( \tcurl {\vec u} \ti {\vec u} \right)\mu \\
+  &= - \int_M \fd C {\vec u} \cdot \left( (u \cdot \nab)u - \frac{1}{2}\nab(u^2) \right)\mu \\
+  &= \int_M -\fd C {\vec u} \cdot (u \cdot\nab)u + \frac{1}{2}\fd C {\vec u} \cdot \nab(u^2)\,\mu \\
+  &= \int_M \left(\fd C {\vec u} \cdot \partial_t {\vec u} + \frac{1}{2}\nab\fd C {\vec u} \cdot {\vec u}^2\right) \mu + \int_{\partial M} \frac{1}{2}\fd C {\vec u} \cdot (u^2 \cdot n) \mu_\partial  \\
+  &= \int_M \left(\partial_t\fd C {\vec u} \cdot {\vec u} + \frac{1}{2}\nab\fd C {\vec u} \cdot {\vec u}^2\right) \mu + \left[\int_M \frac{1}{2}\fd C {\vec u} \cdot {\vec u}\,\mu\right]_{t_1}^{t_2} \\
+  &= \int_M \left(\partial_t\fd C {\vec u} + \frac{1}{2}\nab\fd C {\vec u} \cdot {\vec u}\right) \cdot {\vec u}\, \mu + \left[\int_M \frac{1}{2}\fd C {\vec u} \cdot {\vec u}\,\mu\right]_{t_1}^{t_2}.
+\end{align*}
+Hence, we require,
+\begin{equation}
+  \pdt \fd C {\vec u} + \frac{1}{2}\nab \fd C {\vec u} \cdot {\vec u} = 0  \qquad \fd C {\vec u} = 0 \text{ on } \partial M.\label{eq:casimir_ee}
+\end{equation}
+We note that when we let the Casimir be Helicity, the equation \eqref{eq:casimir_ee} turns into,
+$$ \int_M ({\vec u}_t + ({\vec u} \cdot \nab){\vec u}) \cdot (1 + {\vec u}\ti \o) + ((\o_t + {\vec u} \cdot \nab \o)\ti {\vec u}) \cdot {\vec u} = 0. $$
+Hence, we have proven that Helicity is a Casimir. This bracket seems to be conserving what we want to conserve. Let us now look to enstrophy for a 2D system. We consider generalised enstrophy,
+$$ C(\o) = \int_M \phi(\o)\dd x \wedge \dd y. $$
+We can take the Fr\'echet derivative,
+$$ DC(\o) = \int_M \tcurl (\phi'(\o)\veck) \dd\a + \oint_{\partial M} \phi'(\o)\dd \a. $$
+Using the Arnold bracket requires the function's derivative to be an $L^2$ gradient. This isn't as it has boundary terms. Hence, the Arnold bracket doesn't conserve enstrophy. Further, if we set $\phi'(\o) = 0$, we would fall back to enstrophy, which is covered by the conservation of Helicity. Hence, we need a stronger bracket.\\
+
+\noindent
+In Zackharov's 1968 paper~\cite{Zackharov_bkt}, he presented the following Hamiltonian system for irrotational waves,
+$$ H = \frac{1}{2}\iiint (\tgrad \phi)^2\dd V + \frac{1}{2}\l \iint \zeta^2 \dd S. $$
+This was then generalised to include vorticity, and the bracket was found for a free boundary $\S$ and a velocity field $v$ such that,
+\begin{enumerate}
+  \item $\d v$ is a divergence-free vector field on some domain $D_\S$. Further, we have a divergence-free vector field $\fd F v$ defined one some domain $D_\S$ such that,
+  $$ D_v F(v,\, \S) = \int_{D_\S} \fd F v \cdot \d v, $$
+  where $D_v$ is the derivative with respect to $v$ with $\S$ fixed.
+  \item Similarly, there's a $\d \S$ that's normal to $\S$ and some smooth function $\fd F \S$ such that,
+  $$ D_\S F(v,\,\S) = \int_{D_\S} \fd F \S \cdot \d \S. $$
+\end{enumerate}
+\noindent
+Then the bracket is,
+$$ \{F, G\} = \int_{D_\S} \o \cdot \left( \fd F v \ti \fd G v \right) + \int_\S \left( \fd F \S \fd G \phi - \fd G \S \fd F \phi \right),$$
+where $\o = \tcurl u$ and,
+$$ \fd F \phi = \left. \fd F v \right|_{\S} \cdot n. $$
+This proof of conservation here is more involved and will be covered in my PhD thesis. \\
