@@ -1,0 +1,81 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ox_thesis}[]
+
+\renewcommand{\maketitle}{%
+\renewcommand{\footnotesize}{\small}
+\renewcommand{\footnoterule}{\relax}
+\thispagestyle{empty}
+\begin{center}
+{ \Huge {\bfseries {\title}} \\}
+{\large \vspace*{20mm} {\includegraphics[scale=0.8]{./img/oxlogo} \par} \vspace*{25mm}}
+{{\Large \author} \par}
+{\large \vspace*{1ex}
+{{\college} \par}
+\vspace*{1ex}
+{University of Oxford \par}
+\vspace*{25mm}
+{{\submittedtext} \par}
+\vspace*{1ex}
+{\it {\degree} \par}
+\vspace*{2ex}
+{\degreedate}}
+\end{center}
+\null\vfill
+}
+
+% This macro define an environment for front matter that is always
+% single column even in a double-column document.
+
+\newenvironment{alwayssingle}{%
+       \@restonecolfalse
+       \if@twocolumn\@restonecoltrue\onecolumn
+       \else\if@openright\cleardoublepage\else\clearpage\fi
+       \fi}%
+       {\if@restonecol\twocolumn
+       \else\newpage\thispagestyle{empty}\fi}
+
+
+\newenvironment{dedication}
+{\begin{alwayssingle}
+  \thispagestyle{empty}
+  \begin{center}
+  \vspace*{1.5cm}
+  {\LARGE }
+  \end{center}
+  \vspace{0.5cm}
+  \begin{verse}\begin{center}}
+{\end{center}\end{verse}\end{alwayssingle}}
+
+
+% ACKNOWLEDGEMENTS
+%
+% The acknowledgements environment puts a large, bold, centered
+% "Acknowledgements" label at the top of the page. The acknowledgements
+% themselves appear in a quote environment, i.e. tabbed in at both sides, and
+% on its own page.
+
+\newenvironment{acknowledgements}
+{\begin{alwayssingle} \thispagestyle{empty}
+\begin{center}
+\vspace*{1.5cm}
+{\Large \bfseries Acknowledgements}
+\end{center}
+\vspace{0.5cm}
+\begin{quote}}
+{\end{quote}\end{alwayssingle}}
+
+% The acknowledgementslong environment puts a large, bold, centered
+% "Acknowledgements" label at the top of the page. The acknowledgement itself
+% does not appears in a quote environment so you can get more in.
+
+\newenvironment{acknowledgementslong}
+{\begin{alwayssingle} \thispagestyle{empty}
+\begin{center}
+\vspace*{1.5cm}
+{\Large \bfseries Acknowledgements}
+\end{center}
+\vspace{0.5cm}}
+{\end{alwayssingle}}
+
+
+\endinput
