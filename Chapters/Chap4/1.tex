@@ -3,13 +3,13 @@
 \chapter{Examples}
 \epigraph{All mathematics is divided into three parts: cryptography (paid for by CIA, KGB and the like), hydrodynamics (supported by manufacturers of atomic submarines) and celestial mechanics (financed by military and by other institutions dealing with missiles, such as NASA.).}{V. I. Arnold}
 \noindent
-In this final chapter, we will spend some time producing some examples to give the reader some idea of the scope of this theory. It has many applications, from Geophysical Fluid Dynamics~\cite{ep_gfd} to computer graphics and image processing~\cite{holm} to liquid crystals~\cite{eppcf}. In this section, we will focus on Geophysical Fluid Dynamics and study some examples that will culminate in the Euler-Boussinesq equations for a rotating stratified fluid and a recreation of the very popular paper by Vannaste on fluid flow on a Mobius strip~\cite{vanneste_2021} from a classical Geometric Mechanics point of view.
+In this final chapter, we will spend some time producing some examples to give the reader some idea of the scope of this theory. It has many applications, from Geophysical Fluid Dynamics~\cite{ep_gfd} to computer graphics and image processing~\cite{holm} to liquid crystals~\cite{eppcf}. In this section, we will focus on Geophysical Fluid Dynamics and study some examples that will culminate in the Euler equations for a rotating stratified fluid and a recreation of the very popular paper by Vannaste on fluid flow on a Mobius strip~\cite{vanneste_2021} from a classical Geometric Mechanics point of view.
 
 \section{Axisymmetric Flow on a Cylinder}
 We start this examples section with a classical and simple example relating to axisymmetric flow on a cylinder. We will use much of the theory in subsection \ref{ss:man_w_b}. Recall that we need three objects: a group to reduce over, a manifold to act as a space for dynamics to happen and a Lagrangian. Here, we let the manifold be the cylinder,
 $$ M = \bar D(0,\,1) \ti [0,\,1]. $$
 The group is $\sdm$ with Dirichlet boundary conditions. We also make a modelling assumption that all the particles can be traced back to a plane, as seen in Figure \ref{fig:cylinder}. This doesn't impede the dynamics as it imposes the axisymmetric assumption but makes it easier to model. These assumptions give,
-$$ G = \{\eta \in \sdm : \eta(0) \in [0,\,1]\ti[0,\,1] \text{ and } \eta = \Id \text{ on } D(0,\,1) \ti [0,\,1]\}. $$
+$$ G = \{\eta \in \sdm : \eta(0) \in [0,\,1]\ti[0,\,1] \text{ and } \eta = \Id \text{ on } \partial M = D(0,\,1) \ti [0,\,1]\}. $$
 
 \begin{figure}[!ht]
 \centering
@@ -31,7 +31,7 @@ The second step comes from noting that $g$ is volume preserving. Hence we let $g
 $$ \ell(\vec u) = \int_M |\vec u|^2 \mu. $$
 Then, we find the variational derivative of the Lagrangian and plug it into the Euler-Poincar\'e equation. Then we get,
 $$ \pd {[\vec u^\flat]} t = \ad_{\vec u} [\vec u^\flat]. $$
-We note that we have transferred from the algebra to the dual when we took the functional derivative. We now need to impose boundary conditions. We get Dirichlet boundary conditions by using the group and considering the tangent space. Hence, our equations are,
+We note that we have transferred from the algebra to the dual when we took the functional derivative. This means we mapped $[\vec u] \mapsto \vec u + \dd f$ where $f$ is a $0$-form. We now need to impose boundary conditions. We get Dirichlet boundary conditions by using the group and considering the tangent space. Hence, our equations are,
 \begin{equation}
   \begin{split}
     \pd {\vec u^\flat} t = \ad_{\vec u} \vec u^\flat + \dd f &= \pounds_{\vec u} \vec u^\flat + \dd f \\

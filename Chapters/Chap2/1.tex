@@ -9,7 +9,7 @@ In 1757, Euler wrote the following equation in the paper `Principes g\'en\'eraux
   \pd {\vec u} t + ({\vec u} \cdot\nab){\vec u} &= - \nab p\\
   \nab \cdot {\vec u} = 0.
 \end{align*}
-These are known as Euler's equations for perfect incompressible fluid flow. In the Chapter, we will take these equations, pull them apart and put them back together. We will study a more general theory of these equations by opening the eyes of the reader to fluid dynamics on general manifolds. On $\R^n$, conserved quantity and theory can be obscured by the space's flatness or even simplicity. We will lift these equations to curved surfaces and aim to prepare for the next chapter, where we will study conserved quantities. We first can manipulate these equations into something more amicable to generalise. We will then generalise them and prove that these are the generalised Euler equations by deriving them from the Lie-Poisson reduction of a Hamiltonian. This whole chapter draws from and builds on several sources,~\cite{tmih,holm,arthur,holm1998eulerpoincare,gary_fluids,gaybalmaz2009geometric,Kolev_2007,diffeost,shkoller2000incompressible,marsden1999geometry,vasylkevych2007liepoisson,}
+These are known as Euler's equations for perfect incompressible fluid flow. In this Chapter, we will take these equations, pull them apart and put them back together. We will study a more general theory of these equations by opening the eyes of the reader to fluid dynamics on general manifolds. On $\R^n$, conserved quantities and theory can be obscured by the space's flatness or even simplicity. We will lift these equations to curved surfaces and aim to prepare for the next chapter, where we will study conserved quantities. We first can manipulate these equations into something more amicable to generalise. We will then generalise them and prove that these are the generalised Euler equations by deriving them from the Lie-Poisson reduction of a Hamiltonian. This whole chapter draws from and builds on several sources,~\cite{tmih,holm,arthur,holm1998eulerpoincare,gary_fluids,gaybalmaz2009geometric,Kolev_2007,diffeost,shkoller2000incompressible,marsden1999geometry,vasylkevych2007liepoisson}.
 
 \section{Generalisation of Eulers Equations}
 \noindent
@@ -52,7 +52,7 @@ We can rewrite the covariant derivative with something more geometric. We want t
   $$ \pounds_\xi (v^\flat (w)) = (\pounds_\xi v^\flat) (w) + v^\flat (\pounds_\xi w). $$
   Then let $\xi = v$,
   $$ \pounds_v (v^\flat(w)) = (\pounds_v v^\flat)(w). $$
-  Now given that $\flat$ is the musical ismorphism, we know $\pounds_v \ip v w = \pounds_v (v^\flat(w))$. Therefore,
+  Now given that $\flat$ is the musical isomorphism, we know $\pounds_v \ip v w = \pounds_v (v^\flat(w))$. Therefore,
   $$ \pounds_v v^\flat = (\nab_v v)^\flat + \frac{1}{2}\dd \ip v v. $$
 \end{proof}
 
@@ -61,7 +61,7 @@ That is, we can write Equation \ref{eq:CVDEulerEqns}, as the following,
 \begin{equation}
   \begin{split}
     \pd {\vec u^\flat} t &= -\pounds_v \vec u - \dd f \\
-    \dd \vec u^\flat &= 0
+    \dd \star \vec u^\flat &= 0
   \end{split}
 \end{equation}
 

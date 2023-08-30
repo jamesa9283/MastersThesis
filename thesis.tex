@@ -14,6 +14,31 @@
 \newcommand{\green}[1]{{\color{green} #1}}
 \newcommand{\red}[1]{{\color{red} #1}}
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\fancyhf{} % clear the headers
+\makeatletter
+\fancyhead[R]{%
+   % We want italics
+   \itshape
+   % The chapter number only if it's greater than 0
+   \ifnum\value{chapter}>0 \@chapapp\ \thechapter. \fi
+   % The chapter title
+   \leftmark}
+\fancyhead[L]{\thepage}
+\makeatother
+
+
+\fancypagestyle{plain}{
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+}
+\setlength{\headsep}{5mm}
+\setlength{\headheight}{14.5pt}
+
 \def\title{An assortment of theories relating to the Euler Equations on Manifolds}
 \def\author{James Arthur}
 \def\college{St Edmund Hall}
@@ -21,6 +46,10 @@
 \def\degree{MSc Mathematical Modelling and Scientific Computing}
 \def\degreedate{Long Vacation 2023}
 
+\makeatletter
+\def\footnoterule{\kern-3\p@
+  \hrule \@width 2in \kern 2.6\p@} % the \hrule is .4pt high
+\makeatother
 
 \begin{document}
 
@@ -67,15 +96,18 @@
 
 \newpage
 \printbibliography
-\newpage\appendix
-\addcontentsline{toc}{chapter}{Appendix} % Add the appendix text to the document TOC
+\newpage
+\appendix
 
-% \foreach \i in {0,1,2} {%
-%     \edef\FileName{./Appendix/\i}%
-%     \IfFileExists{\FileName}{%
-%        \input{\FileName}%
-%     }
-% }
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+% \addcontentsline{toc}{chapter}{Appendix} % Add the appendix text to the document TOC
+
+\foreach \i in {0,1,2} {%
+    \edef\FileName{./Appendix/\i}%
+    \IfFileExists{\FileName}{%
+       \input{\FileName}%
+    }
+}
 
 
 \end{document}

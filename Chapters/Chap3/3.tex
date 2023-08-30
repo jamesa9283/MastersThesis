@@ -9,7 +9,7 @@ Another interesting way to derive the conserved quantities of a Hamiltonian syst
 	\arrow[from=1-3, to=1-2]
 \end{tikzcd}\]
 \noindent
-The two theorems that relate to this diagram are,
+There are two main theorems relating to this diagram.
 \begin{nthm}[Reeb Graphs give Morse Functions]
 	\label{thm:rggmf}
   The mapping assigning the measured Reeb graph $\G_F$ to a simple Morse function $F$ provides a one-to-one correspondence between simple Morse functions on $M$ up to symplectomorphism and measured Reeb graphs compatible with $M$.
@@ -23,7 +23,7 @@ The two theorems that relate to this diagram are,
 \end{nthm}
 
 \noindent
-We will now define Morse functions and measures reeb graphs and then give proof of Enstrophy being conserved in the 2D Euler Equations.
+We will now define Morse functions and measures Reeb graphs and then give proof of Enstrophy being conserved in the 2D Euler Equations.
 \begin{ndefi}[Morse Function]
   Let $M$ be a closed connected space, then a morse function $F : M \to \R$ is called simple if any level set of $F$ contains at most one critical point.
 \end{ndefi}
@@ -46,14 +46,14 @@ We can now define a Reeb graph as follows,
   \end{enumerate}
 \end{ndefi}
 \noindent
-It is a standard result in Morse theory that a graph $\Ga_F$ associated with a simple Morse function $F : M \to \R$ on an orientable connected surface is a Reeb graph. Further, if this surface is endowed with an area or symplectic form $\o$, then we can take the pullback of that form and define a measured reeb graph.
+It is a standard result in Morse theory that a graph $\Ga_F$ associated with a simple Morse function $F : M \to \R$ on an orientable connected surface is a Reeb graph. Further, if this surface is endowed with an area or symplectic form $\o$, then we can take the pullback of that form and define a measured Reeb graph.
 \begin{ndefi}[Measured Reeb Graph]
   Let $(\Ga,\, f)$ be a Reeb graph associated with a surface with symplectic form $\o$. Then we can define a measure $\mu = f^*\o$. Then, a measured Reeb graph is a Reeb graph with a measure, $(\Ga,\, f,\, \mu)$.
 \end{ndefi}
 \noindent
 We can say that the simple Morse functions are the same as the measured Reeb graphs up to symplectomorphism under the following compatibility conditions.
 \begin{ndefi}[Compatible]
-  We say that a closed compact surface endowed with a symplectic form, $(M,\, \o)$, is compatible with a measured reeb graph, $(\Ga,\, f,\, \mu)$ if the following are satisfied,
+  We say that a closed compact surface endowed with a symplectic form, $(M,\, \o)$, is compatible with a measured Reeb graph, $(\Ga,\, f,\, \mu)$ if the following are satisfied,
 	\begin{enumerate}
 		\item The dimension of the first homology group~\cite{hatcher}, $H_1(\Ga,\, \R)$ is equal to the genus of $M$,
 		\item The volume of $\Ga$ with respect to $\mu$ is the same as the volume of $M$,
@@ -76,7 +76,7 @@ This mapping is equivariant, which means that if two maps differ by a symplectom
 \noindent
 For the remainder, let $[\a] \in \mathfrak{svect}^*(M)$ be morse-type and $F := \fcurl[\a]$. Then $\Ga_F$ is invariant under the coadjoint action! However, if $M$ is not simply connected, our theory fails as the graph branches and causes issues. Hence, we use a circulation function to deal with branches. Let $\pi : M \to \Ga_F$ be the natural projection. Take any point $x$ in the interior of some edge $e \in \Ga_F$. Then $\pi^{-1}(x)$ is a circle. It is naturally oriented, and the integral does not depend on $\a$. Hence we have a function $\fc : \Ga_F \sm V(\Ga_F) \to \R$ defined by,
 $$ \fc(x) := \int_{\pi^{-1}(x)} \a. $$
-We now define yet another graph,
+We now define yet another graph.
 \begin{ndefi}[Circulation Measured Reeb Graph]
   A circulation measured Reeb graph, $(\Ga,\, f,\, \mu,\, \fc)$ , is a measured Reeb graph endowed with a circulation function $\fc : \Ga_F \sm V(\Ga_F) \to \R$ defined by,
 	$$ \fc(x) := \int_{\pi^{-1}(x)} \a. $$

@@ -17,19 +17,19 @@ To be able to use these brackets, we have to show that on a space of smooth func
   \end{enumerate}
 \end{ndefi}
 \begin{remark}
-   The well-trained eye will notice that $\{\cdot,\,\cdot\}$ isn't technically a Poisson bracket as it doesn't have a Liebnitz rule. This is because local functionals don't necessarily have this property.
+   The well-trained eye will notice that $\{\cdot,\,\cdot\}$ isn't technically a Poisson structure as it doesn't have a Liebniz rule. This is because local functionals don't necessarily have this property.
 \end{remark}
 \noindent
 Our first bracket is the Arnold bracket. For functionals with $L^2$ gradients on the Lie algebra, it is defined as,
-$$ \{F,\, G\}(\o) = \int_M \o\left( \fd F \o,\, \fd G \o \right) $$
+$$ \{F,\, G\}(\o) = \int_M \o\left( \fd F \o,\, \fd G \o \right). $$
 \noindent
 Proving this provides a Hamiltonian structure is a quick calculation of inner products. Further, this bracket is the Hamiltonian structure that relates to the incompressible Euler Equations. Recall we can write $\tcurl$ as follows,
-$$ \mu \cont \tcurl u = \dd u^\flat, $$
-and we know that the curl of a vector field relates to an exact $2$-form. Hence, we can write an inertia operator $A : \sv(M) \to \sv^*(M)$ defined by $u \mapsto \tcurl u$. Then we can say that $u = A^{-1}\o$ is the unique solution of the Euler Equations subject to,
-$$ \tcurl u = \o \qquad \tdiv u = 0 \qquad u \cdot n = 0 \text{ on }\partial M. $$
+$$ \mu \cont \tcurl {\vec u} = \dd {\vec u}^\flat, $$
+and we know that the curl of a vector field relates to an exact $2$-form. Hence, we can write an inertia operator $A : \sv(M) \to \sv^*(M)$ defined by $\vec u \mapsto \tcurl \vec u$. Then we can say that $\vec u = A^{-1}\o$ is the unique solution of the Euler Equations subject to,
+$$ \tcurl {\vec u} = \o \qquad \tdiv {\vec u} = 0 \qquad {\vec u} \cdot n = 0 \text{ on }\partial M. $$
 Our Hamiltonian is going to be,
 $$ H(\o) = \int_M |\vec u|^2 \mu, $$
-and $\dd H = u = A^{-1}\o$. Now we consider the $L^2$ gradient of $\vec u$, and we can derive,
+and $\dd H = \vec u = A^{-1}\o$. Now we consider the $L^2$ gradient of $\vec u$, and we can derive,
 \begin{align*}
   \int_M \partial_t \vec u \cdot \d F &= \int_M \partial_t (A^{-1}\o) \cdot \d F \\
   &= \int_M \o \cdot (\d F \ti \vec u)\\
@@ -41,7 +41,7 @@ This is the vorticity form of the Euler Equations. We can consider the pullback 
 \begin{equation}
   \{F,\, G\}(\o) = \int_M \tcurl {\vec u} \cdot \left( \fd F {\vec u} \ti \fd G {\vec u}  \right).\label{eq:pb_bracket}
 \end{equation}
-We can show that Helicity is conserved by finding the Casimir. We define a Casimir as,
+We can show that Helicity is conserved by finding the Casimir. We define a Casimir,
 \begin{ndefi}[Casimir]
   We define the Casimir as a smooth function $C : M \to \R$,
   $$ \{C, H\} = 0. $$
@@ -52,9 +52,9 @@ Now we find the Casimirs of the bracket \eqref{eq:pb_bracket}. We consider the f
   0 &= \int_M \tcurl {\vec u} \cdot \left( \fd C {\vec u} \ti \fd H {\vec u}  \right)\mu \\
   &= \int_M \tcurl {\vec u} \cdot \left( \fd C {\vec u} \ti {\vec u}  \right)\mu \\
   0 &= - \int_M \fd C {\vec u} \cdot \left( \tcurl {\vec u} \ti {\vec u} \right)\mu \\
-  &= - \int_M \fd C {\vec u} \cdot \left( (u \cdot \nab)u - \frac{1}{2}\nab(u^2) \right)\mu \\
-  &= \int_M -\fd C {\vec u} \cdot (u \cdot\nab)u + \frac{1}{2}\fd C {\vec u} \cdot \nab(u^2)\,\mu \\
-  &= \int_M \left(\fd C {\vec u} \cdot \partial_t {\vec u} + \frac{1}{2}\nab\fd C {\vec u} \cdot {\vec u}^2\right) \mu + \int_{\partial M} \frac{1}{2}\fd C {\vec u} \cdot (u^2 \cdot n) \mu_\partial  \\
+  &= - \int_M \fd C {\vec u} \cdot \left( ({\vec u} \cdot \nab){\vec u} - \frac{1}{2}\nab({\vec u}^2) \right)\mu \\
+  &= \int_M -\fd C {\vec u} \cdot ({\vec u} \cdot\nab){\vec u} + \frac{1}{2}\fd C {\vec {\vec u}} \cdot \nab({\vec u}^2)\,\mu \\
+  &= \int_M \left(\fd C {\vec u} \cdot \partial_t {\vec u} + \frac{1}{2}\nab\fd C {\vec u} \cdot {\vec u}^2\right) \mu + \int_{\partial M} \frac{1}{2}\fd C {\vec u} \cdot (\vec u^2 \cdot n) \mu_\partial  \\
   &= \int_M \left(\partial_t\fd C {\vec u} \cdot {\vec u} + \frac{1}{2}\nab\fd C {\vec u} \cdot {\vec u}^2\right) \mu + \left[\int_M \frac{1}{2}\fd C {\vec u} \cdot {\vec u}\,\mu\right]_{t_1}^{t_2} \\
   &= \int_M \left(\partial_t\fd C {\vec u} + \frac{1}{2}\nab\fd C {\vec u} \cdot {\vec u}\right) \cdot {\vec u}\, \mu + \left[\int_M \frac{1}{2}\fd C {\vec u} \cdot {\vec u}\,\mu\right]_{t_1}^{t_2}.
 \end{align*}
@@ -84,6 +84,6 @@ This was then generalised to include vorticity, and the bracket was found for a 
 \noindent
 Then the bracket is,
 $$ \{F, G\} = \int_{D_\S} \o \cdot \left( \fd F v \ti \fd G v \right) + \int_\S \left( \fd F \S \fd G \phi - \fd G \S \fd F \phi \right),$$
-where $\o = \tcurl u$ and,
+where $\o = \tcurl \vec u$ and,
 $$ \fd F \phi = \left. \fd F v \right|_{\S} \cdot n. $$
 This proof of conservation here is more involved and will be covered in my PhD thesis. \\

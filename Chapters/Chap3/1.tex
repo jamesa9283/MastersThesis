@@ -12,17 +12,17 @@ In this penultimate chapter, we will discuss the conservation properties of the 
 \section{Noether Theorems}
 Noether Theorems can be derived from the variational principle and reduction. The process involves considering the terms we made vanish to produce the equations. We can state and prove the Noether Theorem for Euler-Poincar\'e equations with advected parameters.
 \begin{nthm}[Noether Theorem for Euler-Poincar\'e with advected parameters]
-  Each symmetry vector field of the Euler-Poincar\'e reduced lagrangian for the infinitesimal variations,
-  $$ \d u = \dot \nu - \ad_u \nu \qquad \d a = -\nu a, $$
+  Each symmetric vector field of the Euler-Poincar\'e reduced lagrangian for the infinitesimal variations,
+  $$ \d {\vec u} = \dot \nu - \ad_{\vec u} \nu \qquad \d a = -\nu a, $$
   corresponds to an integral of the Euler-Poincar\'e motion and a conserved quantity,
-  $$ \dit \int_{M} \ip{\fd \ell u}{\nu}\mu = 0 $$
+  $$ \dit \int_{M} \ip{\fd \ell {\vec u}}{\nu}\mu = 0. $$
   \label{thm:n_ep_ap}
 \end{nthm}
 \begin{proof}
   We will consider the derivation of the Euler-Poincar\'e equations for advection parameters. Then jump to the integration by parts of the $\pd u t$ term.
   \begin{align*}
-    0 &= \int_{t_1}^{t_2} \int_M \ip{\fd \ell u}{\pd \nu t} - \ip{\ad^*_u \pd \ell u}{\nu} + \ip{a \diamond \fd \ell a}{\nu} \dd t \\
-    &= \int_{t_1}^{t_2} \int_M \ip{-\pdt\fd \ell u - \ad^*_u \pd \ell u + a \diamond \fd \ell a}{\nu} \dd t + \int_M\left. \ip{\fd \ell u}{\nu}\right|_{t_1}^{t_2} \mu.
+    0 &= \int_{t_1}^{t_2} \int_M \ip{\fd \ell {\vec u}}{\pd \nu t} - \ip{\ad^*_{\vec u} \fd \ell {\vec u}}{\nu} + \ip{a \diamond \fd \ell a}{\nu} \dd t \\
+    &= \int_{t_1}^{t_2} \int_M \ip{-\pdt\fd \ell {\vec u} - \ad^*_{\vec u} \fd \ell {\vec u} + a \diamond \fd \ell a}{\nu} \dd t + \int_M\left. \ip{\fd \ell {\vec u}}{\nu}\right|_{t_1}^{t_2} \mu.
   \end{align*}
   We now note that the first pairing is just the Euler-Poincar\'e equations. Hence, we now can write,
   $$ \dit \int_M \ip{\fd \ell u}{\nu} \mu = 0,$$
@@ -34,7 +34,7 @@ Noether Theorems can be derived from the variational principle and reduction. Th
 \noindent
 We can now prove two lemmas for the specific case of the Euler Equations in barotropic fluids. The advective quantity is going to be $a = \rho\dd V$ and then the infinitesimal symmetry for $a$ becomes,
 $$ \pounds_\eta (\rho \dd V) = \dd (\eta \cont \rho \dd V) = 0. $$
-Using rules from the appendix, this can now be written as for some vector function, $\vec\Psi$,
+Using rules from the Appendix \ref{app:dg}, this can now be written as for some vector function, $\vec\Psi$,
 \begin{equation}
   \eta \cont \rho \dd V = \dd (\vec \Psi \cdot \dd \vec x) = \tcurl \vec\Psi \cdot \dd \vec S.\label{eq:eta_ds}
 \end{equation}
@@ -48,19 +48,25 @@ Using rules from the appendix, this can now be written as for some vector functi
 \begin{proof}
   We start with Noether's theorem for these equations and then perform a calculation.
   \begin{align*}
-    0 &= \dit \ip{\fd \ell u}{\eta} \\
-    &= \dit \int_M \fd \ell u \cdot \eta\dd V \\
+    0 &= \dit \ip{\fd \ell {\vec u}}{\eta} \\
+    &= \dit \int_M \fd \ell {\vec u} \cdot \eta\dd V \\
     &= \dit \int_M \frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x \wedge \eta \cont (\rho \dd V) \\
     &= \int_M \pdt \frac{1}{\rho}\fd \ell {\vec u} \wedge \dd(\vec\Psi \cdot \dd \vec x) + \frac{1}{\rho}\fd \ell {\vec u} \wedge \pdt \dd(\vec\Psi \cdot \dd \vec x) \\
     &= - \int_M \left( \pdt \dd \left( \frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x \right) + \pounds_{\vec u} \dd \left( \frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x \right) \right) \wedge (\vec\Psi \cdot \dd \vec x)  \\
-    &= - \int_M \left(\left( \pdt + \pounds_{\vec u} \right) \dd \left( \frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x \right)\right) \wedge (\vec\Psi \cdot \dd \vec x)
+    &= - \int_M \left(\left( \pdt + \pounds_{\vec u} \right) \dd \left( \frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x \right)\right) \wedge (\vec\Psi \cdot \dd \vec x).
   \end{align*}
-  Hence, we can say that, as we know, $\Psi \cdot \dd x \ne 0$. Then the result appears after applying \eqref{eq:eta_ds},
+  Hence, we can say that, as we know, $\vec\Psi \cdot \dd \vec x \ne 0$. Then the result appears after applying \eqref{eq:eta_ds},
   \begin{align*}
     0 &= \left( \pdt + \pounds_{\vec u} \right) \dd \left( \frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x \right) \\
     &= \left( \pdt + \pounds_{\vec u} \right) \left( \tcurl \frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec S \right).
   \end{align*}
 \end{proof}
+\noindent
+If we take the example of the variable density Euler equations, we can say that,
+$$ \fd \ell {\vec u} = D\vec u^\flat. $$
+Then we can rewrite the above as,
+$$ \left( \pdt + \pounds_{\vec u} \right) \left( \tcurl \frac{1}{D}\fd \ell {\vec u} \cdot \dd \vec S \right) = \left( \pdt + \pounds_{\vec u} \right) \left( \tcurl {\vec u} \cdot \dd \vec S \right). $$
+This makes it clearer that this geometric term is directly referencing vorticity across each. infinitesimal element.\\
 
 \noindent
 We now present two significant ideas in this area. We first iterated conserved quantities. Let us consider another vital theorem, called Ertel's theorem.
@@ -68,7 +74,7 @@ We now present two significant ideas in this area. We first iterated conserved q
   If a quantity $a$ satisfied the advection equation, and $\eta$ satisfy $\d\eta = \dot \nu + \ad_{\eta}\nu$ for the labelling symmetry. Then $\pounds_\eta a$ is also advected.
 \end{nthm}
 \begin{proof}
-  By a simple substitution, we find,
+  By a substitution of the advection equation for $a$, we find,
   $$ \pounds_\eta \left(\pdt + \pounds_u \right)a = \left(\pdt + \pounds_u\right)\pounds_\eta a = 0. $$
   This is the advection equation. Hence, $\pounds_\eta a$ is advected by the flow.
 \end{proof}
@@ -78,7 +84,7 @@ $$ \dd (\vec\Psi \cdot \dd \vec x) = \dd \left( \frac{1}{\rho}\fd \ell {\vec u} 
 This will lead us to a new conserved quantity called Helicity. Helicity is a topological invariant sometimes known as the Hopf invariant. It measures the knottedness of the vortex lines and can also be used to calculate the number of linkages. As the vortex lines are baked in the Lagrangian and hence the flow, this quantity is always conserved.
 \begin{nlemma}[Conservation of Helicity]
   The Euler-Poincar\'e equations for advected quantities, the following holds and relates to the Helicity being conserved.
-  $$ \dit\int_M \frac{1}{\rho} \fd \ell {\vec u} \cdot \tcurl\left( \frac{1}{\rho} \fd \ell {\vec u} \right) \,\dd V $$
+  $$ \dit\int_M \frac{1}{\rho} \fd \ell {\vec u} \cdot \tcurl\left( \frac{1}{\rho} \fd \ell {\vec u} \right) \,\dd V. $$
 \end{nlemma}
 \begin{proof}
   We start at the third step of the previous argument and then move forward differently,
@@ -86,11 +92,15 @@ This will lead us to a new conserved quantity called Helicity. Helicity is a top
     0 &= \dit \int_M \left(\frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x\right) \wedge \eta \cont (\rho \dd V) \\
     &= \dit \int_M \left(\frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x\right) \wedge \dd\left( \vec\Psi \cdot \dd \vec x \right) \\
     &= \dit \int_M \left(\frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x\right) \wedge \dd \left( \frac{1}{\rho}\fd \ell {\vec u} \cdot \dd \vec x \right) \\
-    &= \dit \int_M \frac{1}{\rho}\fd \ell {\vec u} \cdot \tcurl \left( \frac{1}{\rho}\fd \ell {\vec u} \right)\,\dd V
+    &= \dit \int_M \frac{1}{\rho}\fd \ell {\vec u} \cdot \tcurl \left( \frac{1}{\rho}\fd \ell {\vec u} \right)\,\dd V.
   \end{align*}
   Therefore, we can write Helicity as,
-  $$ \mathcal{H} := \int_M \frac{1}{\rho}\fd \ell {\vec u} \cdot \tcurl \left( \frac{1}{\rho}\fd \ell {\vec u} \right)\,\dd V $$
+  $$ \mathcal{H} := \int_M \frac{1}{\rho}\fd \ell {\vec u} \cdot \tcurl \left( \frac{1}{\rho}\fd \ell {\vec u} \right)\,\dd V. $$
 \end{proof}
+\noindent
+Similarly to above consider the Euler equations for variable density, this time where the dimension of the space is greater equal to three. Then we can write Helicity in the more recognisable form,
+$$ \dit \int_M \vec u \cdot \tcurl \vec u \dd V. $$
+
 
 \subsection{Kelvin-Noether Theorem}
 We can now find other conservation quantities using similar ideas to the above. Consider the following change of variables,

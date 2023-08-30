@@ -15,24 +15,24 @@ We will start with some definitions relating to Group Theory and Lie Theory. We 
 \end{ndefi}
 
 \noindent
-We define the group like this because then the definition of the Lie Group becomes obvious. If the functions induced by the two conditions in Definition \ref{def:grp} are smooth, then we have a \textit{Lie Group}. There are some pertinent examples of Lie Groups that are useful to mechanics. We use the Lie Group of length preserving rotations for rigid body dynamics, $\SO(3)$. For a detailed survey of the Geometric Mechanics of $\SO(3)$, see~\cite{arthur}. However, we are interested in the volume-preserving diffeomorphisms, $\sdm$, for hydrodynamics.
+We define the group like this because then the definition of the Lie Group becomes obvious. If the functions induced by the two conditions in Definition \ref{def:grp} are smooth, then we have a \textit{Lie group}. There are some pertinent examples of Lie groups that are useful to mechanics. We use the Lie group of length preserving rotations for rigid body dynamics, $\SO(3)$. For a detailed survey of the Geometric Mechanics of $\SO(3)$, see~\cite{arthur}. However, we are interested in the volume-preserving diffeomorphisms, $\sdm$, for hydrodynamics.
 \begin{ndefi}[Diffeomorphism]
   Let $M$ and $N$ be manifolds, then a diffeomorphism is a bijective map $\phi: M \to N$ such that both $\phi$ and $\phi^{-1}$ are differentiable. The group of diffeomorphisms are denoted $\Diff(M)$.
 \end{ndefi}
 \noindent
 We can further extend this to volume-preserving diffeomorphisms,
 \begin{ndefi}[Volume Preserving Diffeomorphism]
-  Let $\phi : M \to N$ be a diffeomorphism and $\dd\mu$ be the volume element of $M$. Then we say $\phi$ is volume preserving if $\phi(\dd \mu)$ is the volume element of $N$. The group of volume preserving diffeomorphisms are denoted $\sdm$.
+  Let $\phi : M \to N$ be a diffeomorphism and $\mu$ be the volume element of $M$. Then we say $\phi$ is volume preserving if $\phi(\mu)$ is the volume element of $N$. The group of volume preserving diffeomorphisms are denoted $\sdm$.
 \end{ndefi}
 \noindent
-We say that the volume-preserving diffeomorphism describes fluid. We mean that a diffeomorphism can describe the flow of a particle. Given a terminal point, we can describe all flows of the fluid particle by a diffeomorphism; they show the path the particle takes. We can see this in Figure \ref{fig:diffeos}.\\
+We say that the volume-preserving diffeomorphism describes fluid. We mean that a diffeomorphism can describe the flow of a particle. Given a terminal point, we can describe all flows of the fluid particle by a diffeomorphism; they show the path the particle takes. We can see this in Figure \ref{fig:diffeos}. In $\SO(3)$ we have smooth left and right actions, this makes $\SO(3)$ a Lie group. However, diffeomorphism are not smooth by left action. Therefore they are not a Lie group. They are however, a topological group or a Fr\'echet group, that provides the structure needed to do Geometric Mechanics by right action. This marvelous result means although we don't have a Lie group, we have a Fr\'echet group and can do all of the mathematics required~\cite{tatclg}. \\
 
 \noindent
 As an example, we can define the kinetic energy of a particle in a fluid as the following,
 $$ E = \frac{1}{2}\int_M \varphi_t^2 \dd x. $$
 This turns out to be nicely right invariant. Let $G = \sdm$. If we perform the operation, $R_h : G \to G$, defined by $R_h(g) = gh$, on the kinetic energy, we can write it as the following,
 $$ R_hE = \frac{1}{2}\int_M (\phi_t h)^2 \dd x. $$
-We note that $h$ is volume preserving, then it is just a relabelling of the fluid particles, and so $R_hE = E$.\\
+We note that $h$ is volume preserving, then it is just a relabelling of the fluid particles, and so $R_hE = E$. This is known as the \textit{relabelling symmetry} and is why the rest of this thesis holds. In the Lagrangian framework we consider blobs of particles, whilst in the Eularian framework we consider singular particles. The fact we consider the Lagrangian framework as equivalent to blobs of particles means that if we relabel the particles in the blob the dynamics don't change. This is the relabelling symmetry. It is equivalent to saying that for $\eta \in \Diff(M)$, then $\eta\mu = \mu$ where $\mu$ is the volume form.\\
 
 \noindent
 We also note the left multiplication by $h$ can be written as $L_h(g) = hg$.
@@ -45,7 +45,7 @@ We also note the left multiplication by $h$ can be written as $L_h(g) = hg$.
 \end{figure}
 
 \subsection{Adjoint, Coadjoints and Group Actions}
-We spend the next subsection generalising and reviewing the content from ~\cite{arthur} but for structure-preserving diffeomorphisms. We shall define the inner automorphism that quickly leads to the adjoint representation. We shall also discover the nature of the Lie Algebra of $\sdm$.\\
+We spend the next subsection generalising and reviewing the content from~\cite{arthur} but for structure-preserving diffeomorphisms. We shall define the inner automorphism that quickly leads to the adjoint representation. We shall also discover the nature of the Lie algebra of $\sdm$.\\
 
 \noindent
 We can consider the $L_h$ and the $R_h$ operators we defined before and define the inner automorphism.
@@ -73,15 +73,16 @@ If $g \in \sdm$, then $\Ad_g\xi = g\xi g^{-1}$ is the structure-preserving diffe
 We can now take the derivative of the group adjoint on $\sdm$. We can then get that $\ad_\xi\eta = -[\xi, \eta]$ for $\xi, \eta \in \mathfrak{X}(M)$ such that $\tdiv \xi = \tdiv \eta = 0$. \\
 
 \noindent
-We can further consider the coadjoint versions of the above. These are maps to the cotangent space and the dual to the Lie algebra. The dual to the Lie algebra can be described for arbitrary dimension. Let $G = \sd(M^n)$ the group of volume-preserving diffeomorphisms on a manifold $M$ with boundary $\partial M$. The commutator of divergence-free vector fields on $M$ is just $-\{v,w\}$. Then we have the following result,
+We can further consider the coadjoint versions of the above. These are maps to the cotangent space and the dual to the Lie algebra. The dual to the Lie algebra can be described for arbitrary dimension. Let $G = \sd(M)$ the group of volume-preserving diffeomorphisms on a manifold $M$ with boundary $\partial M$. The commutator of divergence-free vector fields on $M$ is just $-\{v,w\}$. Then we have the following result.
 \begin{nthm}[Dual of $\sv(M)$]
-  The Lie Algebra, $\frg$, of the group $G$ is naturally identified with the space of closed differential $(n-1)$-forms on $M$ vanishing on $\partial M$. A divergence-free vector field $v$ is identified with the $(n-1)$-form $v \cont \mu$ where $\mu$ is the volume form of $M$. Therefore, the dual to the Lie algebra is $\frg^* = \O^1(M) / \dd \O^0(M)$.
+  The Lie algebra, $\frg$, of the group $G$ is naturally identified with the space of closed differential $(n-1)$-forms on $M$ vanishing on $\partial M$. A divergence-free vector field $v$ is identified with the $(n-1)$-form $v \cont \mu$ where $\mu$ is the volume form of $M$. Therefore, the dual to the Lie algebra is $\frg^* = \O^1(M) / \dd \O^0(M)$.
 \end{nthm}
 \begin{proof}
   The proof here has two parts. Firstly we prove that the space of all $(n-1)$-forms $v \cont \mu$ is naturally identified to $\O^1(M)/ \O^0(M)$. Then we can prove that $\frg \cong \O^1(M)/ \O^0(M)$.\\
 
   \noindent
-  Recall Cartans magic formula, $\pounds_X \a = X \cont \dd \a + \dd (X \cont \a)$. If $\a = \mu$ and $X = u$, some vector field, it reduces to just saying, $\pounds_u\a = d(u \cont \mu)$. We are working over the space of volume preserving diffeomorphisms. So, when we consider the Lie derivative of the volume form over an algebra element, we want it to vanish. Hence, we require $v = u \cont \mu$ to be closed. Therefore, $v \in \O^1(M) / \O^0(M)$. As $u$ was arbitrary, $v$ is just any $(n-1)$-form, so we have our natural identification.\\
+  Recall Cartans magic formula, $\pounds_X \a = X \cont \dd \a + \dd (X \cont \a)$. If $\a = \mu$ and $X = {\vec u}$, some vector field, it reduces to just saying, $\pounds_{\vec u}\mu = \dd({\vec u} \cont \mu)$. We are working over the space of volume preserving diffeomorphisms. So, when we consider the Lie derivative of the volume form over an algebra element, we want it to vanish. Hence, we require $v = {\vec u} \cont \mu$ to be closed. Therefore, $v \in \O^1(M) / \O^0(M)$. As $\vec u$ was arbitrary, $v$ is just any $(n-1)$-form, so we have our natural identification.\\
+
 
   \noindent
   Now we seek an isomorphism, $\frg \cong \O^1(M)/ \O^0(M)$. This is more complicated and can be found in Theorem 8.3 (pg 42) of `Topological Methods of Hydrodynamics '~\cite {tmih}.
@@ -90,17 +91,18 @@ We can further consider the coadjoint versions of the above. These are maps to t
 \noindent
 As we are considering fluid flows on these manifolds. If $M$ is simply connected, we can say that the dual algebra, $\frg^*$, is just the vorticities.
 
+\newpage
 \subsection{Lie-Poisson Brackets}
 As introduced in the introduction, we can write a Hamiltonian system as,
 $$ \dot F = \{F, H\}, $$
 where $F : M \to \R$ and $H$ is the Hamiltonian. The right-hand side is just the Canonical Lie-Poisson bracket. We can write this as,
 $$ \{F, G\} := \sum_i \pd F {q_i} \pd H {p_i} - \pd F {p_i} \pd F {q_i}. $$
-This is the simplest Poisson bracket, and so is called the canonical bracket. These brackets are much like the Lie Brackets reviewed in~\cite{arthur}. However, it feeds into the theory of conserved quantities.
+This is the simplest Poisson bracket, and so is called the canonical bracket. These brackets are much like the Lie Brackets reviewed in~\cite{holm}. However, it feeds into the theory of conserved quantities.
 \begin{ndefi}[Poisson Structure]
   A Poisson structure on a smooth manifold with a bilinear form mapping, $(f,g) \mapsto \{f, g\}$ which satisfies,
   \begin{itemize}
     \item The Jacobi Identity, $\{\{f, g\}, h\} + \{\{g, h\}, f\} + \{\{f, h\}, g\} = 0$,
-    \item The Liebnitz Identity, $\{f, gh\} = \{f,g\}h + \{f,h\}g$.
+    \item The Liebniz Identity, $\{f, gh\} = \{f,g\}h + \{f,h\}g$.
   \end{itemize}
 \end{ndefi}
 \noindent

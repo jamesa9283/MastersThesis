@@ -1,6 +1,7 @@
 % !TEX root = ../thesis.tex
 
-\section{An Introduction to Differential Geometry and Exterior Calculus}
+\chapter{An Introduction to Differential Geometry and Exterior Calculus}
+\label{app:dg}
 
 In this section we will aim to give a brief overview of exterior calculus and the tools that we use in the rest of the thesis. Specifically this will entail a lot of notation and some basic ideas around Hamiltonian mechanics written using different language.\\
 
@@ -41,14 +42,14 @@ An interesting mechanical fact of the cotangent spaces is that they are spanned 
 \noindent
 In order to talk about differentiation and integration we need to have some sort of way of measuring what our manifold looks like. In normal settings this would be down to the coordinate system we are working in. However, in differential geometry there is no coordinate system. This provides a slight problem when the whole of calculus is based on small coordinated changes. Hence we introduce the idea of differential forms in differential geometry. \\
 
-\subsection{Forms}
+\section{Forms}
 
 \noindent
 \textit{Forms} are a way of talking about these infinitesimal areas in a coordinate free way. A 1-form is an infinitesimal oriented length, a 2-form is an infinitesimal orientable area, and so on. We also have 0-forms which represent infinitesimal points, the scalar functions. More formally we can define \textit{1-forms}, $\o$, which assigns a covector $v \in T^*_q M$ to each point $q \in M$. Hence we have mapping from $\vec u$ to scalar functions $\o(\vec u)$, by composing $\vec u$ with 1-forms. Further we can write 1-forms with basis $(\dd x^1, \dd x^2, \dots)$, and we can decompose them,
 $$ \o = \sum_i \o^i \dd x^i. $$
 Again we will formally define $\dd$ later. Differential Geometry has an intolerable amount of overarching definitions. Now we need to go on a slight detour to look at the wedge product,
 
-\subsection{Wedge Product}
+\section{Wedge Product}
 \noindent
 We define the \textbf{wedge product} of a $k$-form ($k = 0,1,2, \dots$) and an $\ell$-form $(\ell=0,1,2,\dots)$ as a $(k+\ell)$-form. It satisfies the following,
 \begin{enumerate}
@@ -79,14 +80,14 @@ Now we state a final result on the wedge product,
 \noindent
 A \textit{2- form} is a function that assigns a skew-symmetric bilinear map $T_xM \ti T_xM \to \R$ on the tangent space $T_xM$ to each point $x \in M$. This is used to define surface integrals and the surface form. In coordinates we see that,
 $$ \int_M \o = \int_{\phi(M)} \a \mathrm{d}x^1 \wedge \mathrm{d}x^2 $$
-where $\phi_U(M)$ just places you in local coordinates (remember that a manifold is locally just Euclidian). Then we can show that there is a certain $\a$, called $\a_S$, which allows the above to make sense and further gives you the surface area of every submanifold, $U \sub M$. This then gives us the \textit{surface form} $\dS = \a \dx^1 \wedge \mathrm{d}x^2$. This then tells us that every 2-form can be written as, $\o = \b \dS$. Note again, all of this is still coordinate independent! At no point have we chosen a set of coordinates, if at any point we did, it cancelled out under a change of variable formula.\\
+where $\phi_U(M)$ just places you in local coordinates (remember that a manifold is locally just Euclidian). Then we can show that there is a certain $\a$, called $\a_S$, which allows the above to make sense and further gives you the surface area of every submanifold, $U \ M$. This then gives us the \textit{surface form} $\dS = \a \dx^1 \wedge \mathrm{d}x^2$. This then tells us that every 2-form can be written as, $\o = \b \dS$. Note again, all of this is still coordinate independent! At no point have we chosen a set of coordinates, if at any point we did, it cancelled out under a change of variable formula.\\
 
 \noindent
 More generally we are interested in $k$-forms, these can be written in the following form,
 $$ \o = \sum_{i_1, \dots, i_k = 1}^n \o^{i_1, \dots, i_k} \dd x^{i_1} \wedge \dd x^{i_2} \wedge \dots \wedge \dd x^{i_k}. $$
 We are saying that the wedge of any $k$ $dx^j$'s is a $k$-form. We define the space of $k$-forms as $\La^k(M)$ ($k = 0,1,2, \dots$).
 
-\subsection{Contractions and vector fields}
+\section{Contractions and vector fields}
 
 We now look to study the interplay between vector fields and differential forms. These are two very important objects and we want to be able to use them together in the following theory. The contraction, $\cont$, is an operation that defined a pairing between vector fields and forms. Contraction defined the following duality relations,
 $$ \partial_q \cont \dd q = \partial_p \cont \dd p = 1  \qquad \partial_q \cont \dd p = \partial_p \cont \dd q = 0. $$
@@ -94,7 +95,7 @@ $$ \partial_q \cont \dd q = \partial_p \cont \dd p = 1  \qquad \partial_q \cont 
 \noindent
 In order to define this formally we define the exterior derivative and define vector fields,
 
-\subsection{Exterior Derivatives}
+\section{Exterior Derivatives}
 We want some way to get between different for spaces. We also want to relate vector calculus operations to geometric operations. This is where the exterior derivative comes in. We define $d : \La^k(M) \to \La^{k+1}(M)$ for some $\a = \a_{i_1, \dots, i_k} \dd x^{i_1} \wedge \dots \wedge \dd x^{i_k}$ as,
 $$ d \a = \dd\a_{i_1, \dots, i_k} \dd x^{i_1} \wedge \dots \wedge \dd x^{i_k}, $$
 where, $\dd\a = \left( \pd {\a_{i_1, \dots, i_k}} {x^j} \right)\dd x^j$.\\
@@ -113,9 +114,6 @@ Hence we can show the following properties,
     \item $\dd$ is a local operator, hence it is determined by its local properties in a neighbourhood of any $x \in M$.
    \end{enumerate}
 \end{nprop}
-\begin{proof}
-  Maybe?
-\end{proof}
 \cbar
 
 \noindent
@@ -147,7 +145,7 @@ We note quite nicely that contraction can split wedge products,
   This follows from unfolding definitions, then splitting into two sums and carefully swapping the forms around to achieve the $(-1)^k$ from moving the one form to the front.
 \end{proof}
 
-\subsection{Pullbacks and pushforwards}
+\section{Pullbacks and pushforwards}
 We discussed briefly about change of coordinates on manifolds and they coordinates don't matter because you can just construct a map between any two coordinates to create a change of coordinates. For changes of basis, these mappings are usually pullbacks or pushforwards. We can define them as smooth invertible maps that act on vector fields and functions.\\
 
 \noindent
@@ -157,7 +155,7 @@ We can impose local coordinates and see that the components are,
 $$ (T_z\phi \cdot X(z))^l := \pd {\phi^l} {z^J} X^J(z) = (\phi_* X)^l. $$
 We can then write the pull-back of a vector field as, $\phi^* Y = (\phi^{-1})_* Y$, then use the same argument as above.\\
 
-\subsection{Lie Derivatives}
+\section{Lie Derivatives}
 The final tool in our arsenal is called the Lie Derivative. This gives a generalisation of the idea of directional derivative. We want to be able to differentiate along a vector field. We want to define this derivative and then we can prove \textbf{Cartan's Magic Formula}!
 \begin{ndefi}[Lie Derivative]
   Let $\a$ be a $k$-form and let $X$ be a vector field with flow $\phi_t$ on a manifold $M$. The Lie derivative of $\a$ along $X$ is,
@@ -165,8 +163,7 @@ The final tool in our arsenal is called the Lie Derivative. This gives a general
 \end{ndefi}
 
 \noindent
-We are in need of two results to actually prove Cartans magic formula. One to guarantee its well behaved and one to help us in the proof. The following proofs come from
-%TODO add tu intro to manifolds reference
+We are in need of two results to actually prove Cartans magic formula. One to guarantee its well behaved and one to help us in the proof. The following proofs come from Tu~\cite{Tu}.
 
 \begin{nprop}
   Let $X$ be a vector field on a manifold $M$. Then $\pounds_X$ is $\R$-linear and if $\o\in \La^k$ and $\t\in \La^l$,
@@ -216,7 +213,7 @@ We are in need of two results to actually prove Cartans magic formula. One to gu
   That then completes the proof.
 \end{proof}
 
-\subsection{Covariant Derivatives}
+\section{Covariant Derivatives}
 One of the main types of terms in fluid equations are the covariant terms. These relate to derivatives of the solution along vectors. These terms in the Euler Equations look like $(\vec u \cdot \nab)\vec u$ and are also known as directional derivatives. In addition to Lie derivatives we can state these in terms of covariant derivatives. They are derivatives of the solution along tangent vectors. You can take covariant derivatives of functions, $f : M \to \R$ or of vector fields.
 \begin{ndefi}[Covariant Derivative of a function]
   Let $M$ be a manifold, $p \in M$ and $f : M \to \R$. Then define some curve $\g : [-1, 1] \to M$ such that $\phi(0) = p$ and $\phi'(0) = \vec v$. Then the covariant derivative of $f$ along $\vec v$ at $p$ is,
@@ -238,3 +235,32 @@ We note for scalar $f$, the covariant derivative is the same as the Lie derivati
 In coordinates we can write the covariant derivative as,
 $$ \nab_{\vec v}\vec u = \left( v^i u^j \Gamma_{ij}^k + v^j \pd{u^k}{x^j} \right)\vec e_k. $$
 We note $\Gamma_{ij}^k$ is a Christoffel symbol and can be written in Euclidian space as, $\Gamma_{ij}^k = \pd {\vec e_i}{x^j} \cdot \vec e^k$.
+
+\section{De Rham Complex}
+We take the following from the authors special topic on finite element methods~\cite{arthir_fems}. \\
+
+\noindent
+Consider a sequence of Hilbert spaces, each mapped into eachother by maps $\dd^k$.
+\[\begin{tikzcd}
+	\cdots & {W^{k-1}} & {W^k} & {W^{k+1}} & \cdots
+	\arrow["\dd^{k-1}",from=1-2, to=1-3]
+	\arrow["\dd^k",from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+Further, consider that $\dd^{k+1} \circ \dd^k = 0$, where $\dd$ also satisfies $\range \dd^{k} \ \dom \dd^{k+1}$. This is a Hilbert Complex. This is nice, but we can do better. Consider the spaces of smooth functions, 1-forms and 2-forms. These are Hilbert spaces. Further consider the exterior derivative as our $\dd$.
+\[\begin{tikzcd}
+	0 & {\Omega^0(M)} & {\Omega^1(M)} & {\Omega^2(M)} & 0.
+	\arrow[from=1-1, to=1-2]
+	\arrow["\dd", from=1-2, to=1-3]
+	\arrow["\dd", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+This is the de Rham complex. Further we can write it in the following way. This will help us when we convert from exterior derivatives to vector calculus.
+\[\begin{tikzcd}
+	0 & {\Omega^0(M)} & {\Omega^1(M)} & {\Omega^2(M)} & 0.
+	\arrow[from=1-1, to=1-2]
+	\arrow["\tgrad", from=1-2, to=1-3]
+	\arrow["\tcurl", from=1-3, to=1-4]
+	\arrow["\tdiv",from=1-4, to=1-5]
+\end{tikzcd}\]

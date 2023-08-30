@@ -33,9 +33,9 @@ We aim to study the way to get between Lagrangian and Hamiltonian through the Le
       \noindent
       Let $M$ be a manifold and $(E, \pi)$ be a vector bundle. We quickly define a vector bundle~\cite{arthur_diffmans}.
       \begin{ndefi}[Vector Bundle]
-        A $\mathbbm{k}$-vector bundle over $M$ of rank $k$ consists of; a bundle $\pi : E \to M$ whose fibers are $\mathbbm{k}$-vector spaces and around each point $p \in M$, there is some open $U \subset M$ and a diffeomorphism $\Phi : U \ti \mathbbm{k}^k \to E|U$ such that,
+        A $\mathbbm{k}$-vector bundle over $M$ of rank $k$ consists of; a bundle $\pi : E \to M$ whose fibers are $\mathbbm{k}$-vector spaces and around each point $p \in M$, there is some open $U \subset M$ and a diffeomorphism $\Phi : U \ti \mathbbm{k}^k \to {\left. E \right|_U}$ such that,
         \begin{itemize}
-          \item $\pi \circ \Phi = \pi_1$ where $\pi_1 : U \ti \mathbbm{k}^k \to E|U$ is the projection of the first factor, and,
+          \item $\pi \circ \Phi = \pi_1$ where $\pi_1 : U \ti \mathbbm{k}^k \to {\left. E \right|_U}$ is the projection of the first factor, and,
           \item for each $q \in U$, the map $\Phi_q : \mathbbm{k}^k \to E_q$ such that $\Phi_q(\xi) := \Phi(q, \xi)$ is a $\mathbbm{k}$-linear isomorphism.
         \end{itemize}
       \end{ndefi}
@@ -74,7 +74,7 @@ Then, we can say that any system with a hyperregular Lagrangian has a guaranteed
 \noindent
 We want to show invariance on the Lagrangian leads to invariance in the Hamiltonian. We first define a special type of invariance,
 \begin{ndefi}[G-invariance]
-  Let $G$ be a Group, then we say that a Lagrangian is $G$-invariant if for any $g_0 \in G$,
+  Let $G$ be a group, then we say that a Lagrangian is $G$-invariant if for any $g_0 \in G$,
   $$ L(qg_0,\, \dot qg_0) = L(q, \dot q)$$
 \end{ndefi}
 
@@ -101,10 +101,10 @@ We can name $\mu = \fl(\xi)$ and then we get,
 $$ h(\mu) = \tilde e \circ \fl^{-1}(\mu) = \ip{\mu}{\xi(\mu)} - \ell(\xi(\mu)). $$
 
 \begin{nlemma}
-  Let $M$ be a Fr\'echet Manifold, then $L : TM \to \R$ be a $G$ invariant Lagrangian. If $E$ is full energy, and $\tilde e$ is reduced energy corresponding to $L$ and $\xi = gg^{-1}$, then,
+  Let $M$ be a Fr\'echet group, then $L : TG \to \R$ be a $G$ invariant Lagrangian. If $E$ is full energy, and $\tilde e$ is reduced energy corresponding to $L$ and $\xi = gg^{-1}$, then,
   $$ \tilde e(\xi) = E(e,\, \xi) = E(g\,\dot g). $$
   Suppose $L$ is hyperregular and $H$ is the Hamiltonian corresponding to $L$. If $\mu = g^{-1}\a$, then,
-  $$ h(\mu) = (e, \xi) = H(g, \a) $$
+  $$ h(\mu) = (e, \xi) = H(g, \a). $$
 \end{nlemma}
 \begin{proof}
   We consider the full energy, then reduce,
@@ -112,10 +112,10 @@ $$ h(\mu) = \tilde e \circ \fl^{-1}(\mu) = \ip{\mu}{\xi(\mu)} - \ell(\xi(\mu)). 
     \ip{\F L(g, \dot g)}{(g, \dot g)}  - L(g, \dot g) &= \ip{\F L(gg^{-1}, \dot g g^{-1})}{(gg^{-1}, \dot gg^{-1})}  - L(gg^{-1}, \dot gg^{-1}) \\
     &= \ip{\F L(e, \xi)}{(e, \xi)}  - L(e, \xi) \\
     &= \ip{\fl(\xi)}{(e,\xi)} - \ell(\xi) \\
-    &= \ip{(e, \fl(\xi))}{(e,\xi)} - \ell(xi) \\
+    &= \ip{(e, \fl(\xi))}{(e,\xi)} - \ell(\xi) \\
     &= \ip{\fl(\xi)}{\xi} - \ell(\xi) = \tilde e(\xi).
   \end{align*}
-  Then, the final part of the proof follows from energy and the Legendre transform being $G$-invariant. Then noting that $H = E \circ (\F L)^{-1}$ and running through a reduction procedure and noticing the reduction variable ends up being $g^{-1}\a$.
+  Then, the final part of the proof follows from energy and the Legendre transform being $G$-invariant. Then noting that $H = E \,\circ\, (\F L)^{-1}$ and running through a reduction procedure and noticing the reduction variable ends up being $g^{-1}\a$.
 \end{proof}
 
 \subsection{Derivation of Lie-Poisson}
@@ -130,18 +130,18 @@ Given this, we can now take the basic Euler-Poincar\'e equations and then rewrit
 $$ \dot \mu = - \ad^*_{\fd h \mu} \mu. $$
 This is the Lie-Poisson Equation! An equivalent derivation is from the right invariant Poisson bracket. For any two smooth functions on the manifold $F, G : M \to \R$, we can define the canonical Poisson bracket as,
 $$ \{F, G\}^{\text{right}}_{\frg^*} = \ip{\mu}{\left[ \fd F \mu ,\, \fd G \mu \right]}. $$
-The Lie-Poisson reduction theorem is redundant as we will reduce on the Lagrangian side. However for completeness we include it,
+The Lie-Poisson reduction theorem is redundant as we will reduce on the Lagrangian side. However for completeness we include it.
 \begin{nthm}[Lie-Poisson Reduction]
-  Let $G$ be a Lie Group, then $\frg^*$ be the dual Lie algebra. If $\mathcal{F}_R(\frg^*)$ is the set of right $G$-invariant functions, then the right Lie-Poisson bracket is,
+  Let $G$ be a Fr\'echet group, then $\frg^*$ be the dual Lie algebra. If $\mathcal{F}_R(\frg^*)$ is the set of right $G$-invariant functions, then the right Lie-Poisson bracket is,
   $$ \{F, G\}^{\text{right}}_{\frg^*} = \ip{\mu}{\left[ \fd F \mu ,\, \fd G \mu \right]}. $$
   Further, this relates to the reduced bracket on $T^*G / G$ via the isomorphism,
-  $$ \psi : (T^**G / G) \mapsto \frg^* $$
+  $$ \psi : (T^*G / G) \mapsto \frg^* $$
   $$ [g,\,\a]\mapsto g^{-1}\a $$
 \end{nthm}
 \noindent
 Further, we have a reconstruction equation,
 $$ \dot g = g \fd h \mu. $$
-This can be proven from momentum maps, from Appendix {\color{red} INSERT APPENDIX}
+This can be proven from momentum maps, from Appendix \ref{app:mm}
 
 \subsection{Lie-Poisson Reduction for advected quantities}
 We note that given a Lie algebra $\mathfrak{s} = \frg \rtimes V^*$. Then, we can start to derive the same equations as above for semidirect products. We consider the following two actions: the adjoint and the coadjoint. We can write these as,
@@ -159,7 +159,7 @@ We note that given a Lie algebra $\mathfrak{s} = \frg \rtimes V^*$. Then, we can
 %   \end{align*}
 % \end{proof}
 \begin{nprop}[Adjoint Action]
-  The adjoint action on $\frg \ltimes V^*$ is,
+  The adjoint action on $\frg \rtimes V^*$ is,
   $$ \Ad_{(g,v)}(\xi, u) = (\Ad_g\xi,\,  ug^{-1} + vg^{-1}\Ad_g\xi) $$
 \end{nprop}
 \begin{proof}
@@ -177,7 +177,7 @@ We note that given a Lie algebra $\mathfrak{s} = \frg \rtimes V^*$. Then, we can
 \noindent
 We can do something similar for the coadjoint action,
 \begin{nprop}
-   The coadjoint action on $\frg \lti V^*$ is,
+   The coadjoint action on $\frg \rtimes V^*$ is,
    $$ \Ad^*_{(g,\, v)^{-1}} (\mu,\, a) = (\Ad_{g^{-1}}\mu - g \diamond (v^{-1}ga) ,\, g\diamond a) $$
 \end{nprop}
 \begin{proof}
@@ -199,9 +199,9 @@ We can do something similar for the coadjoint action,
 \end{proof}
 \noindent
 We note the following facts about the semidirect products and Lie brackets,
-$$  $$
+$$ [(\xi_1,\, v_1),\, (\xi_2,\,v_2)] = ([\xi_1,\,\xi_2],\, v_2\xi_1 - v_1\xi_2). $$
 \noindent
-We now recall the definition of the Lie-Poisson bracket we gave for the basic Lie-Poisson equations and apply it to $\mathfrak{s}^* = \frg^* \ti V^*$.
+We now recall the definition of the Lie-Poisson bracket we gave for the basic Lie-Poisson equations and apply it to $\mathfrak{s}^* = \frg^* \rtimes V^*$.
 \begin{equation}
   \{F, G\}_{\frs} = \ip{(\mu, a)}{\left[ \fd F {(\mu,\, a)},\, \fd G {(\mu,\, a)} \right]}.\label{eq:lp_aq}
 \end{equation}
@@ -239,11 +239,11 @@ We can now further manipulate to prove the following,
         &= \left( \ip{-\ad^*_{\fd G \mu} \mu}{\fd F \mu},\, \ip{\fd G a \diamond a}{\fd F \mu} - \ip{a\fd G \mu}{\fd F a} \right)\\
         &= \ip{\left( - \ad^*_{\fd G \mu}\mu + \fd G a \diamond a,\, -\fd G a a \right)}{\left( \fd F\mu,\, \fd F a \right)}
   \end{align*}
-  Then, we can decompose the inner products and pairings. Let $G  =h$, and we can now write,
+  Then, we can decompose the inner products and pairings. Let $G$ be the reduced Hamiltonian, and we can now write,
   \begin{equation}
     \begin{split}
       \di h t &= -\ad^*_{\fd h t} \mu + \fd h a \diamond a \\
-      \di a t &= \fd h \mu a
+      \di a t &= \fd h \mu a.
     \end{split}
   \end{equation}
 \end{proof}

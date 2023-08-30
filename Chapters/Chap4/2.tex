@@ -2,7 +2,7 @@
 
 \section{M\"{o}bius Strip}
 
-The M\"obius strip brings a new level of complexity to this theory. The M\"obius strip is a non-orientable surface. This means that if you send a vortex around the strip spinning clockwise, it returns anticlockwise rotation. This obviously can cause issues for the Euler Equations and the theory surrounding them. In a paper by Vanneste on this area, he produces some numerical simulations and equations for the M\"obius strip~\cite{vanneste_2021}. We will first show the group that relates to this problem and then argue why this group is Fr\'echet Group. Then, we will discuss conserved quantities of this system.
+The M\"obius strip brings a new level of complexity to this theory. The M\"obius strip is a non-orientable surface. This means that if you send a vortex around the strip spinning clockwise, it returns anticlockwise rotation. This is also equivalent to a manifold having a volume form~\cite{Tu}. This obviously can cause issues for the Euler Equations and the theory surrounding them. In a paper by Vanneste on this area, he produces some numerical simulations and equations for the M\"obius strip~\cite{vanneste_2021}. We will first show the group that relates to this problem and then argue why this group is Fr\'echet Group. Then, we will discuss conserved quantities of this system.
 
 \begin{figure}[!ht]
 \centering
@@ -52,3 +52,46 @@ where $f$ is a $0$-form.\\
 \noindent
 As we have a continuous manifold with just a boundary condition that vanishes. Our Casimir functions will be equivalent to Vannaste's, the generalised enstrophies. However, the non-orientability of the M\"obius strip produces the new constraint only for even functions in the enstrophy. This is because of the well-known fact that we can't integrate over non-orientable surfaces. Hence, we turn to the theory of pseudo-forms. The theory can be found in Frankel's Geometry of Physics~\cite{frankel}. This leads to the idea that we need even functions, $f$, to assert the following are conserved,
 $$ C_f(\o) = \int_M f(\o)\mu. $$
+
+\noindent
+The theories reliance on pseudo-forms makes more sense when we define them.
+\begin{ndefi}[Pseudo-form]
+  Let $M$ be a manifold, then a pseudo-$k$-form, $\a_o$, is a $k$-form that for each orientation $o$ of the manifold,
+  $$ \a_o = -\a_o, $$
+  when the orientation of the manifold is flipped.
+\end{ndefi}
+\noindent
+We also note that even on non-orientable manifolds the tangent bundle is always orientable.
+\begin{nprop}
+  For any manifold, $M$, $TM$ is orientable
+\end{nprop}
+\begin{proof}
+  For any manifold $T^*M$ has a symplectic form, $\o$. This symplectic form is a volume form for any $2n$-dimensional manifold. Hence the cotangent bundle, a $2n$-dimensional manifold, is orientable. Further as $T^*M$ and $TM$ are diffeomorphic, via some isomorphism $\phi$, then $TM$ also has volume form $\phi (\o)$. Therefore $TM$ is orientable.
+\end{proof}
+
+\noindent
+We now have that $TM$ is always orientable and that the idea of pseudo-forms. Hence let us rewrite Noether's Theorem in this context. Let any form we mention for the rest of the example be a pseudo-form. We need to ask the following: In order to perform integration on manifolds we require a volume form, the volume form comes from orientability, so how do we integrate non-orientable manifolds? We can't just integrate these manifolds as a non-orientable manifold doesn't have a volume form. However we know that integrals are invariant up to quotienting by zero measure sets. Therefore we aim to quotient our manifold by a zero measure set and make it orientable. This is done by considering an involution that relates to the orientation. Hence if we consider the involution,
+$$ \s : x \mapsto -x. $$
+Then we can look at $M \sm \s$ where $M$ is just the M\"obius strip. We see that $M\sm \s = [-1,\, 1] \ti [-1,\,1]$, which is just the square. This explains why the above equations are on the square rather than the M\"obius strip and the boundary conditions are the only part that enforces the M\"obius strip. We are working with a group as diffeomorphisms, hence our group is,
+$$ G \sm \s = \sdm([-1,\,1]^2). $$
+This is differentiable and has right inverse hence we write Noether's Theorem.
+\begin{nthm}[Noether Theorem for the M\"obius Strip]
+  Each symmetric vector field of the Euler-Poincar\'e reduced Lagrangian for the infinitesimal variation, $\d \vec u = \dot\nu - \ad_{\vec u}\nu$, corresponds to an integral of the Euler-Poincar\'e motion and a conserved quantity,
+  $$ \dit \int_{-1}^1 \int_{-1}^1 \ip{\vec u^\flat}{\nu} \dd x\dd y = 0 $$
+\end{nthm}
+\begin{proof}
+  The proof here involves specialising Noethers Theorem. Firstly let our domain of integration $M$ be $N \sm \s$ where $N$ is the M\"obius strip and $\s : x \mapsto -x$ across one of the vertical boundaries. Then $M \sm \s = [-1,\,1]^2$, which is orientable with volume for $\mu$. Therefore Noethers Theorem becomes,
+  $$ \int_{M\sm \s} \ip{\fd \ell {\vec u}}{\nu} \mu = \int_{-1}^1 \int_{-1}^1 \ip{\fd \ell {\vec u}}{\nu}\, \dd x \dd y. $$
+  Now we note that $\fd \ell {\vec u} = \vec u^\flat$ and we are done.
+\end{proof}
+\noindent
+Now we can notice that the above calculations for vorticity and helicity follows as they do above on $[-1,\,1]^2$. We see the integration above when we have boundary is,
+$$ -\int_M \left( \pdt + \pounds_{\vec u}\right)\dd \left( \frac{1}{\rho} \fd \ell {\vec u}\cdot \dd \vec x \right) \wedge (\vec\Psi \cdot \dd \vec x) - \int_{\partial M}\left( \pdt + \pounds_{\vec u}\right) \left( \frac{1}{\rho} \fd \ell {\vec u}\cdot \dd \vec x \right) \wedge (\vec\Psi \cdot \dd \vec x) = 0. $$
+We now set $\rho = 1$ for an incompressible flow and note $\fd \ell {\vec u} = \vec u^\flat$. Therefore the conserved quantities from this calculation is,
+\begin{align*}
+  \left( \pdt + \pounds_{\vec u}\right)\dd \left(\vec u^\flat \cdot \dd\vec x\right) &= 0 \\
+  \left( \pdt + \pounds_{\vec u}\right) \left( \vec u^\flat\cdot \dd \vec x \right) &= 0 & \text{ on } \partial M.
+\end{align*}
+This first of these quantities is the vorticity in the domain and the second allows for continuity and reconstruction of this conservation along the boundary. The second condition restricts the first and if these contradict, for example on more complex geometries, then the conservation quantity fails to be conserved. However, when we consider Helicity, we note that we never perform an integration by parts in the derivation. Therefore, there are no extra boundary terms. Further, Ertel's theorem doesn't require an integration by parts. Hence the following is conserved,
+$$ \mathcal{H} = \int_{-1}^1 \int_{-1}^1 \vec u^\flat \cdot \rot \vec u\, \dd x\dd y. $$
+We note that $\rot \vec u$ is the 2D scalar curl, and further its equivalent to Helicity on the M\"obius strip as the integral over the M\"obius strip is equivalent to the integral over the square.

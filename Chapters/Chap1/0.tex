@@ -6,7 +6,7 @@
 Geometric Mechanics is based on deriving equations from symmetries baked into physical systems. In most physical systems, these symmetries are left unexploited and lead to a variety of theories and further information about our systems that is very useful. We can derive so-called conserved quantities of these physical systems. Conserved quantities give insight into how the system behaves and can help when we attempt to solve these systems numerically. \\
 
 \noindent
-Historically, the area can be traced back to least action principles applied to mechanical systems by Maurperius in 1744. Then optics used the ideas later, and Euler, Liebnitz and Lagrange started the boom of the least action principle. Lagrange deduced the Euler-Lagrange Equations in the 1750s,
+Historically, the area can be traced back to least action principles applied to mechanical systems by Maurperius in 1744. Then Optics used the ideas later, and Euler, Liebniz and Lagrange started the boom of the least action principle. Lagrange deduced the Euler-Lagrange Equations in the 1750s,
 $$ \pd L q - \dit \pd L {\dot q} = 0. $$
 Hamilton deduced the `Hamilton' least action principle in 1835,
 $$ \d \int_{t_1}^{t_2} F[\vec x] \, \dd \vec x = 0. $$
@@ -14,27 +14,27 @@ From Hamilton's principle, you can derive equations from a Lagrangian. Then, in 
 $$ \dit \fd \ell \xi - \ad^*_\xi \fd \ell \xi = 0. $$
 
 \noindent
-While the Lagrangian framework was developing, there was a concurrent development for the Hamiltonian framework. The history here is more convoluted as the path to understanding was rewritten several times. This framework takes a Lagrangian and then considers a Legendre transform of the Lagrangian. This involves using some Lagrange multipliers, which can be written as Clebsch variables, leading to Hamilton's Equations. The canonical Hamilton's equations using the trivial Clebsch variables,
+While the Lagrangian framework was developing, there was a concurrent development for the Hamiltonian framework. The history here is more convoluted as the path to understanding was rewritten several times. This framework takes a Lagrangian and then considers a Legendre transform of the Lagrangian. This involves using some Lagrange multipliers, which can be written as Clebsch variables, leading to Hamilton's Equations. The canonical Hamilton's equations using the trivial Clebsch variables are,
 $$ \pd {\vec q} t = \pd H {\vec p} \qquad \pd {\vec p} t = -\pd H {\vec q}. $$
 If we consider these equations in higher generality. That is, written on some manifold. Not only do Hamilton's equations conserve the Hamiltonian, but they also conserve the canonical symplectic form.
 $$ \o = \dd p_i \wedge \dd q_i $$
-where $p_i$ and $q_i$ are local coordinates. By a quick calculation, we can verify that,
+where $p_i$ and $q_i$ are local coordinates and momenta. By a quick calculation, we can verify that,
 $$ \di F t = \pd F q \pd H p - \pd F p \pd H q := \{F,\, H\}, $$
-where $H$ is the Hamiltonian. You can write a Hamiltonian system this way, writing the Lie-Poisson bracket on the right-hand side. This leads to the study of conserved quantities when the Lie bracket vanishes. These are Casimirs.
+where $H$ is the Hamiltonian. You can write a Hamiltonian system this way, writing the Lie-Poisson bracket on the right-hand side. This leads to the study of conserved quantities when the Lie bracket vanishes. These are Casimirs.\\
 
 \noindent
-One of the current main figures in modern Geometric Mechanics is Professor Darryl Holm at Imperial College. Holm was inspired by work done before him by Poisson, Lie, Arnold, Marsden, Axton and Hamilton, to name a few. His idea was to move forward and use the theory before him and to apply this, conglomerate it and present a new area of mathematics—geometric Mechanics. Trained as a Physicist, Darryl presented ideas on Geometry in his work at Los Alamos labs. He was then elected as the first director of the Nonlinear Systems Institute after presenting how Geometry can be used to create new solution criteria to equations of interest.\\
+One of the current main figures in modern Geometric Mechanics is Professor Darryl Holm at Imperial College. Holm was inspired by work done before him by Poisson, Lie, Arnold, Marsden, Axton and Hamilton, to name a few. His idea was to move forward and use the theory before him and to apply this, conglomerate it and present a new area of mathematics— Geometric Mechanics. Trained as a Physicist, Darryl presented ideas on Geometry in his work at Los Alamos labs. He was then elected as the first director of the Nonlinear Systems Institute after presenting how Geometry can be used to create new solution criteria to equations of interest.\\
 
 \noindent
-From there, the idea spread further, with Darryl writing his infamous book, The Green Book' to all Geometric Mechanists. While Darryl continued to work at the coalface, new ideas were developing, and new mathematicians were starting work. The ideas of Sympelectic Geometry were starting to be developed in the area by Bridges. Further, the applications of this work to Numerical Analysis were starting to form with mathematicians such as Cotter and Gay-Balmaz hearing of Geometric Mechanics and getting interested in the conservation of quantities in numerical schemes and how this relates to Geometric Mechanics. \\
+From there, the idea spread further, with Darryl writing his infamous book, The Green Book' to all Geometric Mechanists~\cite{holm}. While Darryl continued to work at the coalface, new ideas were developing, and new mathematicians were starting work. The ideas of Symplectic Geometry were starting to be developed in the area by Bridges. Further, the applications of this work to Numerical Analysis were starting to form with mathematicians such as Cotter and Gay-Balmaz hearing of Geometric Mechanics and getting interested in the conservation of quantities in numerical schemes and how this relates to Geometric Mechanics. \\
 
 \noindent
-Then, the question of industrial applications was raised with the team of Professor Tom Bridges, Dr Matt Turner and Dr Hamid Alemi Ardakani. They were interested in the application of this work in wave energy generators. They studied new variational principles similar to Hamilton's Principle, such as the Luke-Bateman principle,
+Then, the question of industrial applications was raised with the team of Professor Tom Bridges, Dr Matt Turner, Dr Cesare Tronci and Dr Hamid Alemi Ardakani. They were interested in the application of this work in wave energy generators. They studied new variational principles similar to Hamilton's Principle, such as the Luke-Bateman principle,
 $$ \d\int_{t_1}^{t_2}\int_{\mathcal{Q}} - \rho \left( \pd \Phi t + \frac{1}{2}\nab\Phi \cdot \nab \Phi - \nab\Phi \cdot \left( \vec v_0 + \vec \o \times \vec r \right) + U \right)\, \dd \mathcal{Q}\,\dd t = 0. $$
 These are more general and consider more complicated fluid interactions, such as coupling and free surfaces. This is still an ongoing project and one that the author will be joining next year under Dr Hamid Alemi Ardakani.\\
 
 \noindent
-We can now move forward and consider this thesis. Alongside this work, Arnold wrote a lot of mathematics relating to the Ideal Fluid Euler Equations and Euler-Poincar\'e reduction. In this thesis, we will review that work, then use other sources and work forward to review and create a new theory for the Euler Equations on general manifolds. One of our main examples of the thesis will be to recreate the paper of Vanneste~\cite{vanneste_2021} regarding Geometric Mechanics. Then, we will consider the derivation of the 2D Euler Equations from the 3D Euler Equations and then consider conserved quantities. This thesis aims twofold: to understand and expose the current research in Geometric Mechanics and to fill holes in the theory by adding examples.\\
+We can now move forward and consider this thesis. Alongside this work, Arnold wrote a lot of mathematics relating to the Ideal Fluid Euler Equations and Euler-Poincar\'e reduction. In this thesis, we will review that work, then use other sources and work forward to review and create a new theory for the Euler Equations on general manifolds. One of our main examples of the thesis will be to recreate the paper of Vanneste~\cite{vanneste_2021} in the language of Geometric Mechanics. This thesis aims twofold: to understand and expose the current research in Geometric Mechanics and to fill holes in the theory by adding examples. This theory was written in very abstract ways so we aim to provide more intuitive descriptions and produce informative examples and intuitive proofs. The new material in this thesis relates to the examples, proofs and explanations.\\
 
 \noindent
 The motivation for using this type of mathematics is as follows. Many PDE systems can be described in a coordinate-dependent environment. The derivation of these equations is usually found by considering conservation laws and then fitting terms to that, then integrating and pulling equations out. This assumes our system already has these conserved quantities. These derivations are made quite difficult when we consider complex chemical behaviour. These conservation laws are no longer as obvious. Hence, we propose to derive these `standard' equations by considering the energy. We consider the Lagrangian or the Hamiltonian,
@@ -57,18 +57,18 @@ We are interested in considering the motion from the spatial frame. We can use a
 \end{equation}
 Then by manipulating the Lagrangian \eqref{eq:lag_sp}, we can now rewrite it again letting $\Gamma (t) = \vec R(t)\vec e_3$,
 $$ L(\vec R, \dot{\vec R}, \vec\Gamma) = \frac{1}{2}m |\dot{\vec R}X|^2 - mg\vec\Gamma \cdot X. $$
-Then, we can notice that this Lagrangian concerning the symmetric part, the first term, is right symmetric and has a symmetry-breaking parameter. Therefore we take $g \mapsto g\vec R^{-1}$. So,
+Then, we can notice that by considering the symmetric part of the Lagrangian, is right symmetric and the whole Lagrangian has a symmetry-breaking parameter. Therefore we take $g \mapsto g\vec R^{-1}$. So,
 $$ L(\vec R\vec R^{-1}, \dot{\vec R}\vec R^{-1}, \vec{\tilde{\Gamma}}) := \ell(\Oh, \vec{\tilde{\Gamma}}) = \frac{1}{2}m \mathbb{I} |\Oh|^2 - mg\vec{\tilde{\Gamma}} \cdot X, $$
 where $\mathbb{I} = |X|^2I - XX^T$. Then you can plug this into the Euler-Poincar\'e equations for right invariant systems on $\SO(3)$ and get,
 $$ \mathbb{I}\Oh_t = \mathbb{I}\Oh  \ti \Ov + mg X \ti \vec{\tilde{\Gamma}}. $$
 
 
 \noindent
-The thesis will be structured as follows,
+This motivates how we can go from Lagrangian and Hamiltonian descriptions of systems to very informative equations for systems in non-standard variables, such as the angular momentum, $\Oh$. We now aim for this thesis to derive similar equations in fluid dynamics situations. The thesis will be structured as follows,
 \begin{itemize}
-  \item This first chapter will lay down the introductory material for the theory we will use later. This part of the thesis is critical for readers not well versed in Geometric Mechanics as it lays out the operators and functionals we use without definition in the rest of the thesis. This chapter covers Fundamental Differential Geometry, Exterior Calculus, Symplectic Geometry and Geometric Fluid Dynamics.
+  \item This first chapter will lay down the introductory material for the theory we will use later. This part of the thesis is critical for readers not well versed in Geometric Mechanics as it lays out the operators and functionals we use without definition in the rest of the thesis. This chapter covers Symplectic Geometry and Geometric Fluid Dynamics. For an introduction to Differential Geometry see Appendix \ref{app:dg}.
   \item Then, we will study the mechanics and PDEs for different fluid systems on manifolds. We will write these PDEs in the language of exterior calculus. We will learn the Lagrangian and Hamiltonian frameworks through Euler-Poincar\'e reduction and Lie-Poisson reduction. We will derive the associated equations and introduce the canonical Lie-Poisson bracket. We will then describe equations with advected quantities and give some motivation for the EP-Diff equations.
   \item Finally, to complete the theory, we will then study the conservation laws of our systems with Noether and Casimir Theory. We will prove the generalised Noether Theorem and Kelvin-Noether Theorem for the Euler-Poincar\'e equations on $\sdm$ and then study the Casimirs and introduce the non-canonical Lie-Poisson bracket.
-  \item To conclude the thesis, we will then study several examples relating to the theory. Such as axisymmetric fluid flow on a cylinder, derivation of 2D Eulers Equations from 3D, Fluid flow on a sphere and then the M\"obius strip.
+  \item To conclude the thesis, we will then study several examples relating to the theory. Such as axisymmetric fluid flow on a cylinder, Rotating Stratified Fluid and then the M\"obius strip.
 \end{itemize}
 
