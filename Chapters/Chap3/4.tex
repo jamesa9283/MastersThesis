@@ -82,12 +82,12 @@ $$ E = \int_M |\vec u|^2\mu \qquad H = \int_M \vec u \cdot \mathrm{rot} \vec u\m
 Unfortunately, the conserved quantities in Figure \ref{fig:conservation} present non-conservation. Due to us using a Crank-Nicholson timestep, which is symplectic, we can say that the error in our scheme comes from our spatial approximation. This is expected as, in general, finite element schemes are not structure-preserving or symplectic. This leads us to search for a new scheme to conserve these quantities. We will overview the theory of structure-preserving numerical methods. \\
 
 \noindent
-The idea is as follows: We can discretise the theory presented in this document. Let $F : T^*Q \ti \R \to T^*Q$ be an integrator, where $T^*Q$ is just the tangent space of phase space, manifold, $Q$ and $\R$ is the space where the time steps $h$ live in. Then we can derive a discrete Euler-Lagrange equation from a discrete Lagrangian $L_d : TQ \ti \R \to \R$ and discrete Hamilton's equations from $H_d : T^*Q\to \R$. Then we can define the so called discrete Euler-Lagrange equations. From this we ca discretise into methods in several ways.\\
+The idea is as follows: We can discretise the theory presented in this document. Let $F : T^*Q \ti \R \to T^*Q$ be an integrator, where $T^*Q$ is just the tangent space of phase space, manifold, $Q$ and $\R$ is the space where the time steps $h$ live in. Then, we can derive a discrete Euler-Lagrange equation from a discrete Lagrangian $L_d : TQ \ti \R \to \R$ and discrete Hamilton's equations from $H_d : T^*Q\to \R$. Then, we can define the so-called discrete Euler-Lagrange equations. From this, we can discretise into methods in several ways.\\
 
 \noindent
-One of the simplest examples of symplectic method is midpoint rule. We take a Hamiltonian, $H : T^*Q \to \R$ and define the method for $(p_0,\,q_0) \mapsto (p_1,\,q_1)$ where $z_0 = (p_0,\,q_0)$ and $z_1 = (p_1,\,q_1)$. Then we define,
+One of the simplest examples of the symplectic method is the midpoint rule. We take a Hamiltonian, $H : T^*Q \to \R$ and define the method for $(p_0,\,q_0) \mapsto (p_1,\,q_1)$ where $z_0 = (p_0,\,q_0)$ and $z_1 = (p_1,\,q_1)$. Then, we define,
 $$ \frac{z_1-z_0}{h} = X_H \left( \frac{z_0 + z_1}{2} \right). $$
-Then in the Lagrangian setup we define the discrete midpoint Lagrangian as,
+Then, in the Lagrangian setup, we define the discrete midpoint Lagrangian as,
 $$ L_d^{1/2} (q_1,\,q_0,\, h) = hL\left(\frac{q_1 + q_0}{2},\, \frac{q_1 - q_0}{h}\right). $$
 Then we can write the scheme as,
 \begin{align*}
@@ -97,10 +97,10 @@ Then we can write the scheme as,
 \noindent
 This can be used for our system,
 $$ L = H = \frac{1}{2}\int_M |\dot \eta|^2 \mu. $$
-This unfortunately leaves us with a rather trivial scheme.
+This, unfortunately, leaves us with a rather trivial scheme.
 \begin{align*}
   p_{k+1} = p_k \\
   q_{k+1} = q_k + hp_k.
 \end{align*}
-where $q_i$ increases by a fixed step. A similar scheme is derived from a St\"ormer-Verlet scheme. Hence we need something more complicated. A multisymplectic scheme. This again is an area that branches further than this thesis. They are methods that provide discrete conservation laws that agree with what we have seen in this conservation section. For details see Bridges' paper~\cite{hamil_pdes}.
+where $q_i$ increases by a fixed step. A similar scheme is derived from a St\"ormer-Verlet scheme. Hence, we need something more complicated. A multisymplectic scheme. This, again, is an area that branches further than this thesis. They are methods that provide discrete conservation laws that agree with what we have seen in this conservation section. For details, see Bridges' paper~\cite{hamil_pdes}.
 

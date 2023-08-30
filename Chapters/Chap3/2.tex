@@ -17,13 +17,13 @@ To be able to use these brackets, we have to show that on a space of smooth func
   \end{enumerate}
 \end{ndefi}
 \begin{remark}
-   The well-trained eye will notice that $\{\cdot,\,\cdot\}$ isn't technically a Poisson structure as it doesn't have a Liebniz rule. This is because local functionals don't necessarily have this property.
+   The well-trained eye will notice that $\{\cdot,\,\cdot\}$ isn't technically a Poisson structure as it doesn't have a Leibniz rule. This is because local functionals don't necessarily have this property.
 \end{remark}
 \noindent
 Our first bracket is the Arnold bracket. For functionals with $L^2$ gradients on the Lie algebra, it is defined as,
 $$ \{F,\, G\}(\o) = \int_M \o\left( \fd F \o,\, \fd G \o \right). $$
 \noindent
-Proving this provides a Hamiltonian structure is a quick calculation of inner products. Further, this bracket is the Hamiltonian structure that relates to the incompressible Euler Equations. Recall we can write $\tcurl$ as follows,
+Proving this provides a Hamiltonian structure is a quick calculation of inner products. Further, this bracket is the Hamiltonian structure related to the incompressible Euler Equations. Recall we can write $\tcurl$ as follows,
 $$ \mu \cont \tcurl {\vec u} = \dd {\vec u}^\flat, $$
 and we know that the curl of a vector field relates to an exact $2$-form. Hence, we can write an inertia operator $A : \sv(M) \to \sv^*(M)$ defined by $\vec u \mapsto \tcurl \vec u$. Then we can say that $\vec u = A^{-1}\o$ is the unique solution of the Euler Equations subject to,
 $$ \tcurl {\vec u} = \o \qquad \tdiv {\vec u} = 0 \qquad {\vec u} \cdot n = 0 \text{ on }\partial M. $$

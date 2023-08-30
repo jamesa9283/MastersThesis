@@ -12,14 +12,14 @@ In this penultimate chapter, we will discuss the conservation properties of the 
 \section{Noether Theorems}
 Noether Theorems can be derived from the variational principle and reduction. The process involves considering the terms we made vanish to produce the equations. We can state and prove the Noether Theorem for Euler-Poincar\'e equations with advected parameters.
 \begin{nthm}[Noether Theorem for Euler-Poincar\'e with advected parameters]
-  Each symmetric vector field of the Euler-Poincar\'e reduced lagrangian for the infinitesimal variations,
+  Each symmetric vector field of the Euler-Poincar\'e reduced Lagrangian for the infinitesimal variations,
   $$ \d {\vec u} = \dot \nu - \ad_{\vec u} \nu \qquad \d a = -\nu a, $$
   corresponds to an integral of the Euler-Poincar\'e motion and a conserved quantity,
   $$ \dit \int_{M} \ip{\fd \ell {\vec u}}{\nu}\mu = 0. $$
   \label{thm:n_ep_ap}
 \end{nthm}
 \begin{proof}
-  We will consider the derivation of the Euler-Poincar\'e equations for advection parameters. Then jump to the integration by parts of the $\pd u t$ term.
+  We will consider the derivation of the Euler-Poincar\'e equations for advection parameters. Then, jump to the integration by parts of the $\pd u t$ term.
   \begin{align*}
     0 &= \int_{t_1}^{t_2} \int_M \ip{\fd \ell {\vec u}}{\pd \nu t} - \ip{\ad^*_{\vec u} \fd \ell {\vec u}}{\nu} + \ip{a \diamond \fd \ell a}{\nu} \dd t \\
     &= \int_{t_1}^{t_2} \int_M \ip{-\pdt\fd \ell {\vec u} - \ad^*_{\vec u} \fd \ell {\vec u} + a \diamond \fd \ell a}{\nu} \dd t + \int_M\left. \ip{\fd \ell {\vec u}}{\nu}\right|_{t_1}^{t_2} \mu.
@@ -64,9 +64,9 @@ Using rules from the Appendix \ref{app:dg}, this can now be written as for some 
 \noindent
 If we take the example of the variable density Euler equations, we can say that,
 $$ \fd \ell {\vec u} = D\vec u^\flat. $$
-Then we can rewrite the above as,
+Then, we can rewrite the above as,
 $$ \left( \pdt + \pounds_{\vec u} \right) \left( \tcurl \frac{1}{D}\fd \ell {\vec u} \cdot \dd \vec S \right) = \left( \pdt + \pounds_{\vec u} \right) \left( \tcurl {\vec u} \cdot \dd \vec S \right). $$
-This makes it clearer that this geometric term is directly referencing vorticity across each. infinitesimal element.\\
+This makes it clearer that this geometric term directly references vorticity across each. infinitesimal element.\\
 
 \noindent
 We now present two significant ideas in this area. We first iterated conserved quantities. Let us consider another vital theorem, called Ertel's theorem.
@@ -74,7 +74,7 @@ We now present two significant ideas in this area. We first iterated conserved q
   If a quantity $a$ satisfied the advection equation, and $\eta$ satisfy $\d\eta = \dot \nu + \ad_{\eta}\nu$ for the labelling symmetry. Then $\pounds_\eta a$ is also advected.
 \end{nthm}
 \begin{proof}
-  By a substitution of the advection equation for $a$, we find,
+  By substitution of the advection equation for $a$, we find,
   $$ \pounds_\eta \left(\pdt + \pounds_u \right)a = \left(\pdt + \pounds_u\right)\pounds_\eta a = 0. $$
   This is the advection equation. Hence, $\pounds_\eta a$ is advected by the flow.
 \end{proof}
@@ -98,7 +98,7 @@ This will lead us to a new conserved quantity called Helicity. Helicity is a top
   $$ \mathcal{H} := \int_M \frac{1}{\rho}\fd \ell {\vec u} \cdot \tcurl \left( \frac{1}{\rho}\fd \ell {\vec u} \right)\,\dd V. $$
 \end{proof}
 \noindent
-Similarly to above consider the Euler equations for variable density, this time where the dimension of the space is greater equal to three. Then we can write Helicity in the more recognisable form,
+Similarly to the above, consider the Euler equations for variable density, where the dimension of the space is greater or equal to three. Then, we can write Helicity in the more recognisable form,
 $$ \dit \int_M \vec u \cdot \tcurl \vec u \dd V. $$
 
 

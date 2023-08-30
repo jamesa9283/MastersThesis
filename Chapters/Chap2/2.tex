@@ -2,7 +2,7 @@
 
 
 \section{Euler-Poincar\'e Reduction}
-The Euler-Poincar\'e Equations are a set of equations that relate to a reduced Lagrangian on the Lie algebra of the manifold. We recall that a Lagrangian is a function on the tangent bundle, $L : TG \to \R$, then the reduced Lagrangian is $\ell : \frg \to \R$, i.e. the restriction of $L$ to $\frg$. The following result characterises the Euler-Poincar\'e Equations in our current case. We note this is the first of a few very similar theorems, depending on our assumptions about our groups and system. In this section, we will consider Euler-Poincar\'e reduction of manifolds without boundary for a basic Lagrangian, a Lagrangian with an advective quantity, a diffusion term and then for compressible fluids. We will then recall the theory without boundary and work towards a theory for manifolds with boundary.
+The Euler-Poincar\'e Equations are a set of equations that relate to a reduced Lagrangian on the Lie algebra of the manifold. We recall that a Lagrangian is a function on the tangent bundle, $L : TG \to \R$, then the reduced Lagrangian is $\ell : \frg \to \R$, i.e. the restriction of $L$ to $\frg$. The following result characterises the Euler-Poincar\'e Equations in our current case. This is the first of very similar theorems, depending on our assumptions about our groups and systems. In this section, we will consider Euler-Poincar\'e reduction of manifolds without boundary for a basic Lagrangian, a Lagrangian with an advective quantity, a diffusion term and then for compressible fluids. We will then recall the theory without boundary and work towards a theory for manifolds with boundary.
 
 \subsection{Manifolds without boundary}
 We can introduce and prove the following theorem related to basic Lagrangian reduction on manifolds without boundary. We consider a Lagrangian of basic form, $L = K - V$.
@@ -51,12 +51,12 @@ We now note that,
 $$ \ell({\vec u}) = \frac{1}{2}\int_M \ip{{\vec u}}{{\vec u}}\mu. $$
 Then we can write the Euler-Poincar\'e equations for this system as,
 $$ \pd {\vec u} t = \ad^*_{\vec u}{[\vec u]} = \pounds_{\vec u} [{\vec u}]. $$
-Note, that $[\vec u]\in \frg^*$ is the coset of $\vec u$ up to 1-forms. This is just the Lie-Poisson Equation, these are the variant of the Euler-Poincar\'e equations for the Hamiltonian, but in this case our Lagrangian is the total energy and hence the Hamiltonian.\\
+Note that $[\vec u]\in \frg^*$ is the coset of $\vec u$ up to 1-forms. This is just the Lie-Poisson Equation; these are the variant of the Euler-Poincar\'e equations for the Hamiltonian, but in this case, our Lagrangian is the total energy and hence the Hamiltonian.\\
 
 \subsubsection{Advective Terms}
 In fluid mechanics, some quantities are transported by the flow. That is, the Lie Derivative transports them along vector fields. These are called advected quantities. Advection usually refers to two things: advected conserved quantities, as due to the advection term, new and more interesting conserved quantities are present, or to model substrate or substance being moved through the fluid. When we consider a Hamiltonian of these systems, we note that they have a parameter that turns from a parameter to a variable. These variables form a vector space, and our groups act on them linearly. Hence, we have a representation space. To see this more clearly, consider the following Lagrangian\footnote{This is equivalent to the Hamiltonian up to Legendre transform} for a spherical pendulum,
 $$ L(\vec q, \vec{\dot q}) = \frac{1}{2}m |\vec{\dot q}|^2 - mg \vec q \cdot \vec e_3. $$
-Which is the same as the Hamiltonian up to Legendre transform. We note that the only potential energy term variable is $\vec q$. Now, considering the reduced Lagrangian,
+Which is the same as the Hamiltonian up to Legendre transform. The only potential energy term variable is $\vec q$. Now, considering the reduced Lagrangian,
 $$ \ell(\Oh, \Gv) = \frac{1}{2}m \mathbb{I}|\Oh|^2 - mg\Gv \cdot X. $$
 In this case, we have turned `created' another variable out of the symmetry-breaking parameter, $mg \vec q \cdot \vec e_3$. Hence a parameter has been turned into a variable and $\Gv \in V^*$ the adjoint of the representation of $\SO(3)$.\\
 
@@ -134,7 +134,7 @@ We now proceed with the Euler-Poincar\'e advection theorem.
 \end{proof}
 
 \noindent
-We can derive the Euler equations for fluids with variable densities using this theory. Consider a Lagrangian with a fluid density advective term,
+Using this theory, we can derive the Euler equations for fluids with variable densities. Consider a Lagrangian with a fluid density advective term,
 $$ L(\eta, \dot\eta, \rho) = \int_M \frac{\rho}{2}|\dot \eta|^2 + p(\rho - 1)\mu. $$
 This Lagrangian has a symmetry-breaking parameter~\cite{arthur}. Hence, we consider the symmetric part, and verifying this is right invariant is easy. Let $\eta \in \sdm$ and $\rho$ be a $0$-form. Then, we can reduce this Lagrangian into,
 $$ L(\eta\eta^{-1}, \dot\eta\eta^{-1}, \rho\rho_0^{-1}) := \ell(\vec u, D) = \int_M \frac{D}{2}|\vec u|^2 + p(D-1) \mu. $$
@@ -194,7 +194,7 @@ We now can define the structure-preserving group,
   $$ \sdms = \{\eta \in \dms : \eta^* \mu = \mu \}. $$
 \end{ndefi}
 \noindent
-For all our groups, we note that the left action is class $C^r$, the right action is $C^\infty$ and inversion, $\eta \mapsto \eta^{-1}$, is $C^0$ and further not Lipschitz continuous. Therefore we are now working with topological groups with smooth right action, Fr\'enet groups.
+For all our groups, we note that the left action is class $C^r$, the right action is $C^\infty$ and inversion, $\eta \mapsto \eta^{-1}$, is $C^0$ and further not Lipschitz continuous. Therefore, we are now working with topological groups with smooth right action, Fr\'enet groups.
 
 \noindent
 \subsection{Three more diffeomorphism groups}
@@ -206,7 +206,7 @@ We define the following: let a diffeomorphism have a smoothness class. This smoo
 
 % Normal Bundle
 \begin{ndefi}[Normal Bundle]
-  Let $M$ be a manifold. If $M$ has a metric, then given some $A \sub M$, $p \in M$ and $u \in T_pM$ we can say that the normal space of $A$ is all vectors $v \in T_pM$ such that $g(u,v) = 0$. This denoted, $N_pS$. Then the normal bundle is,
+  Let $M$ be a manifold. If $M$ has a metric, then given some $A \sub M$, $p \in M$ and $u \in T_pM$, we can say that the normal space of $A$ is all vectors $v \in T_pM$ such that $g(u,v) = 0$. This denoted $N_pS$. Then, the normal bundle is,
   $$ NS := \coprod_{p \in S} N_pS. $$
   The disjoint union of the normal spaces.
 \end{ndefi}
@@ -229,7 +229,7 @@ We can introduce our three diffeomorphism groups,
 \end{ndefi}
 
 \noindent
-Then their associated Lie algebras,
+Then, their associated Lie algebras,
 \begin{ndefi}[Neumann Algebra]
   Let $M$ be a manifold and $N$ be its normal bundle. Then, the Neumann algebra is defined as,
   $$ T_e\sdmsn = \{ u \in T_e\sdms : 0 = (\left.\nab_n u\right|_{\partial M})^{\text{tan}} + S_n(u)\in H^{s - 3/2}(T\partial M) \text{ for all } n \in H^{s - 1/2}(N) \}. $$
